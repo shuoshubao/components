@@ -1,0 +1,18 @@
+{
+  "name": "components-docs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "dumi dev",
+    "build": "dumi build && node deploy-gh"
+  },
+  "dependencies": {
+    "@ke/form": "^1.2.10",
+    "@ke/table": "^1.1.10",
+    "antd": "^4.17.1",
+    "react": "^16.12.0"
+  },
+  "devDependencies": {
+    "dumi": "^1.1.0"
+  }
+}
