@@ -35,8 +35,8 @@ nav:
         <tr>
             <td>输入</td>
             <td>input</td>
-            <td>input-number</td>
-            <td>range-number</td>
+            <td>number</td>
+            <td>number-range</td>
             <td colspan="2">slider</td>
         </tr>
         <tr>
@@ -289,17 +289,17 @@ export default () => {
   };
   const columns = [
     {
-      name: 'input-number-1',
+      name: 'number-1',
       label: '数字输入框1',
       template: {
-        tpl: 'input-number'
+        tpl: 'number'
       }
     },
     {
-      name: 'input-number-2',
+      name: 'number-2',
       label: '数字输入框2',
       template: {
-        tpl: 'input-number',
+        tpl: 'number',
         min: 0,
         max: 1,
         step: 0.1
@@ -309,7 +309,7 @@ export default () => {
       name: 'minValueName,maxValueName',
       label: '数字范围',
       template: {
-        tpl: 'range-number',
+        tpl: 'number-range',
         min: 0,
         max: 1,
         step: 0.1
@@ -435,7 +435,7 @@ export default () => {
 
 ### DatePicker
 
-日期相关分两种: 单日期(template.tpl: 'date-picker'), 日期范围(template.tpl: 'range-picker')
+日期相关分两种: 单日期(template.tpl: 'date-picker'), 日期范围(template.tpl: 'data-range-picker')
 
 日期范围需要俩字段, 即开始时间和结束时间; 仍然通过一个 **name** 字段来配置, 只需要通过 _,_ 连接就行, 例如 `name: 'startAt,endAt'`
 
@@ -466,14 +466,14 @@ export default () => {
       label: '日期范围',
       name: 'startTime1,endTime1',
       template: {
-        tpl: 'range-picker'
+        tpl: 'date-range-picker'
       }
     },
     {
       label: '日期范围',
       name: 'startTime2,endTime2',
       template: {
-        tpl: 'range-picker',
+        tpl: 'date-range-picker',
         format: 'YYYY-MM-DD'
       }
     }

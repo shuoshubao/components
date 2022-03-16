@@ -78,7 +78,7 @@ template 的作用是用一段 json 来描述一个基础的 antd 表单元素�
   </tbody>
   <tbody>
     <tr>
-      <td rowspan="2">range-number</td>
+      <td rowspan="2">number-range</td>
       <td>separator</td>
       <td>分割符</td>
       <td>string</td>

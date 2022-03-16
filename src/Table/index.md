@@ -700,7 +700,7 @@ export default () => {
       dataIndex: 'age',
       editable: true,
       template: {
-        tpl: 'input-number'
+        tpl: 'number'
       }
     },
     {
