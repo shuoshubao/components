@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "dumi dev",
-    "build": "dumi build && node deploy-gh"
+    "deploy": "dumi build && node deploy-gh",
+    "build": "echo \"成功了\""
   },
   "dependencies": {
     "@ke/form": "^1.2.12",
