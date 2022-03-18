@@ -1,0 +1,179 @@
+{
+  "name": "Form",
+  "desc": "配置化表单",
+  "props": [
+    {
+      "name": "columns",
+      "desc": "配置",
+      "type": "IFormColumn[]",
+      "optionalValue": "",
+      "default": "[]",
+      "version": ""
+    },
+    {
+      "name": "autoSubmit",
+      "desc": "自动触发搜索",
+      "type": "boolean",
+      "optionalValue": "",
+      "default": "true",
+      "version": ""
+    },
+    {
+      "name": "showSearchBtn",
+      "desc": "展示按钮: 搜索",
+      "type": "boolean",
+      "optionalValue": "",
+      "default": "false",
+      "version": ""
+    },
+    {
+      "name": "showResetBtn",
+      "desc": "展示按钮: 重置",
+      "type": "boolean",
+      "optionalValue": "",
+      "default": "false",
+      "version": ""
+    },
+    {
+      "name": "labelWidth",
+      "desc": "Form.Item label 的宽度",
+      "type": "number",
+      "optionalValue": "",
+      "default": "0",
+      "version": ""
+    },
+    {
+      "name": "visibleFilterPanel",
+      "desc": "是否显示 筛选区",
+      "type": "boolean",
+      "optionalValue": "",
+      "default": "false",
+      "version": ""
+    },
+    {
+      "name": "cardProps",
+      "desc": "antd Card 组件的属性",
+      "type": "{}",
+      "optionalValue": "",
+      "default": "{ size: 'small', bordered: false }",
+      "version": ""
+    },
+    {
+      "name": "formProps",
+      "desc": "antd Form 组件的属性",
+      "type": "{}",
+      "optionalValue": "",
+      "default": "{ layout: 'inline' }",
+      "version": ""
+    },
+    {
+      "name": "onValuesChange",
+      "desc": "antd Form onValuesChange, 通过此实现级联功能",
+      "type": "({key, value, changedFields, allFields}, { columns, updateColumns, ...formNode }): void",
+      "optionalValue": "",
+      "default": "null",
+      "version": ""
+    }
+  ],
+  "events": [
+    {
+      "name": "onSubmit",
+      "desc": "提交事件",
+      "signature": "(params: IAnyObject) => void",
+      "args": "params: 搜索参数",
+      "version": ""
+    }
+  ],
+  "methods": [
+    {
+      "name": "getFormData",
+      "desc": "获取表单的数据, 先校验规则",
+      "signature": "",
+      "args": "",
+      "version": ""
+    }
+  ],
+  "columns": [
+    {
+      "name": "name",
+      "desc": "字段名",
+      "type": "string",
+      "optionalValue": "",
+      "default": "''",
+      "version": ""
+    },
+    {
+      "name": "label",
+      "desc": "label 标签的文本",
+      "type": "ReactNode",
+      "optionalValue": "",
+      "default": "''",
+      "version": ""
+    },
+    {
+      "name": "defaultValue",
+      "desc": "默认值",
+      "type": "any",
+      "optionalValue": "",
+      "default": "''",
+      "version": ""
+    },
+    {
+      "name": "tooltip",
+      "desc": "label 旁边的提示",
+      "type": "string | string[]",
+      "optionalValue": "",
+      "default": "''",
+      "version": ""
+    },
+    {
+      "name": "immediate",
+      "desc": "是否立即触发提交事件",
+      "type": "boolean",
+      "optionalValue": "",
+      "default": "true",
+      "version": ""
+    },
+    {
+      "name": "inline",
+      "desc": "true: 和其他元素在一行; false: 独占一行",
+      "type": "boolean",
+      "optionalValue": "",
+      "default": "true",
+      "version": ""
+    },
+    {
+      "name": "placeholder",
+      "desc": "表单子组件的placeholder",
+      "type": "string",
+      "optionalValue": "",
+      "default": "内部有默认处理",
+      "version": ""
+    },
+    {
+      "name": "style",
+      "desc": "form-item 样式",
+      "type": "CSSProperties",
+      "optionalValue": "",
+      "default": "{}",
+      "version": ""
+    },
+    {
+      "name": "formListConfig",
+      "desc": "Form.List 配置, 动态增减表单项\n<pre class='dynamic-table-render-code'><code>{\n  min: 最少数据,\n  max: 最大数据,\n  record: 新增的空值,\n  rules: 整体校验规则\n}</code></pre>",
+      "type": "<pre class='dynamic-table-render-code'><code>{\n  min: number,\n  max: number,\n  record: object,\n  rules: array\n}</code></pre>",
+      "optionalValue": "",
+      "default": "null",
+      "version": ""
+    },
+    {
+      "name": "template",
+      "desc": "模板的配置",
+      "type": "{ tpl: '', ...props }",
+      "optionalValue": "",
+      "default": "{ tpl: 'input', width: 200 }",
+      "version": ""
+    }
+  ],
+  "maintainer": "fangt11"
+}

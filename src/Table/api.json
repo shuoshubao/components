@@ -1,0 +1,88 @@
+{
+  "name": "Table",
+  "desc": "配置化表格",
+  "props": [
+    {
+      "name": "columns",
+      "desc": "配置",
+      "type": "ITableColumn[]",
+      "optionalValue": "",
+      "default": "[]",
+      "version": ""
+    },
+    {
+      "name": "dataSource",
+      "desc": "数据源",
+      "type": "object[]",
+      "optionalValue": "",
+      "default": "[]",
+      "version": ""
+    },
+    {
+      "name": "remoteConfig",
+      "desc": "接口配置",
+      "type": "IRemoteConfig",
+      "optionalValue": "",
+      "default": "null",
+      "version": ""
+    },
+    {
+      "name": "extraConfig",
+      "desc": "其他配置都放在这里<br/>showTotal: 在左上角展示总条数<br/>storageKey: 展示表头配置,存储展示状态的localStorage的唯一标识<br/>fullScreen: 全屏",
+      "type": "<pre class='dynamic-table-render-code'><code>{\n  showTotal: boolean,\n  storageKey: string,\n  fullScreen: boolean\n}</code></pre>",
+      "optionalValue": "",
+      "default": "<pre class='dynamic-table-render-code'><code>{\n  showTotal: false,\n  storageKey: '',\n  fullScreen: false\n}</code></pre>",
+      "version": ""
+    }
+  ],
+  "events": [],
+  "methods": [
+    {
+      "name": "search",
+      "desc": "触发表格的远端数据请求, 即调用 remoteConfig.fetch",
+      "args": "params: 接口所需参数",
+      "version": ""
+    },
+    {
+      "name": "getDataSource",
+      "desc": "获取数据 dataSource",
+      "args": "",
+      "version": ""
+    }
+  ],
+  "columns": [
+    {
+      "name": "template",
+      "desc": "模板的配置",
+      "type": "{ tpl: '', ...props }",
+      "optionalValue": "",
+      "default": "{ tpl: 'text', emptyText: '--' }",
+      "version": ""
+    },
+    {
+      "name": "visible",
+      "desc": "列的可见性",
+      "type": "boolean",
+      "optionalValue": "",
+      "default": "true",
+      "version": ""
+    },
+    {
+      "name": "tooltip",
+      "desc": "列的文案的提示文案",
+      "type": "string | string[]",
+      "optionalValue": "",
+      "default": "true",
+      "version": ""
+    },
+    {
+      "name": "editable",
+      "desc": "是否可编辑",
+      "type": "boolean",
+      "optionalValue": "",
+      "default": "false",
+      "version": ""
+    }
+  ],
+  "maintainer": "fangt11"
+}
