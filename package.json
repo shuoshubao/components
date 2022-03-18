@@ -4,16 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "dumi dev",
-    "deploy": "dumi build && node deploy-gh",
-    "build": "echo \"成功了\""
+    "build": "dumi build && node deploy-gh"
   },
-  "dependencies1": {
+  "dependencies": {
     "@ke/form": "^1.2.12",
     "@ke/table": "^1.1.11",
     "antd": "^4.17.1",
     "react": "^16.12.0"
   },
-  "devDependencies1": {
+  "devDependencies": {
     "dumi": "^1.1.0"
   }
 }
