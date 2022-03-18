@@ -7,13 +7,13 @@
     "deploy": "dumi build && node deploy-gh",
     "build": "echo \"成功了\""
   },
-  "dependencies": {
+  "dependencies1": {
     "@ke/form": "^1.2.12",
     "@ke/table": "^1.1.11",
     "antd": "^4.17.1",
     "react": "^16.12.0"
   },
-  "devDependencies": {
+  "devDependencies1": {
     "dumi": "^1.1.0"
   }
 }
