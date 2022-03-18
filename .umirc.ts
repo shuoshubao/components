@@ -11,7 +11,7 @@ const styles = [
 export default defineConfig({
   title: '组件文档',
   favicon: 'https://img.alicdn.com/tfs/TB1YHEpwUT1gK0jSZFhXXaAtVXa-28-27.svg',
-  outputPath: 'docs-dist',
+  outputPath: 'dist',
   mode: 'site',
   404: false,
   hash: true,
