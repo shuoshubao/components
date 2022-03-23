@@ -33,9 +33,32 @@
       "optionalValue": "",
       "default": "<pre class='dynamic-table-render-code'><code>{\n  showTotal: false,\n  storageKey: '',\n  fullScreen: false\n}</code></pre>",
       "version": ""
+    },
+    {
+      "name": "draggable",
+      "desc": "开启拖拽排序",
+      "type": "boolean",
+      "optionalValue": "",
+      "default": "false",
+      "version": ""
     }
   ],
-  "events": [],
+  "events": [
+    {
+      "name": "onEditableCellSave",
+      "desc": "",
+      "signature": "",
+      "args": "",
+      "version": ""
+    },
+    {
+      "name": "onDragSortEnd",
+      "desc": "拖拽排序完成回调",
+      "signature": "",
+      "args": "{ newDataSource, dataSource, oldIndex, newIndex }",
+      "version": ""
+    }
+  ],
   "methods": [
     {
       "name": "search",
@@ -47,6 +70,18 @@
       "name": "getDataSource",
       "desc": "获取数据 dataSource",
       "args": "",
+      "version": ""
+    },
+    {
+      "name": "handleRemoveRow",
+      "desc": "删除一条数据",
+      "args": "key: 要删除行的rowKey值",
+      "version": ""
+    },
+    {
+      "name": "handleMoveRow",
+      "desc": "换行",
+      "args": "oldIndex: fromIndex, newIndex: toIndex",
       "version": ""
     }
   ],

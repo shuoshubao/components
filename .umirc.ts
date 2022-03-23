@@ -42,7 +42,7 @@ export default defineConfig({
   links: [
     {
       rel: 'stylesheet',
-      href: 'https://file.ljcdn.com/bs/antd/4.16.6/dist/antd.min.css'
+      href: 'https://file.ljcdn.com/bs/antd/4.19.2/dist/antd.min.css'
     }
   ],
   styles,

@@ -131,6 +131,8 @@ export default () => {
 
 ## 内置模板
 
+除了以下列举的模板外, 还支持 Form 组件所有的模板, 这里就不赘述, 详见: [编辑](#编辑)
+
 <table class="custom-table-header-left">
     <colgroup>
         <col width="80px" />
@@ -139,7 +141,7 @@ export default () => {
         <tr>
             <th></th>
             <th colspan="6">展示类</th>
-            <th>操作</th>
+            <th colspan="2">操作</th>
             <th colspan="4">数字类</th>
         </tr>
     </thead>
@@ -152,6 +154,7 @@ export default () => {
             <td>enum</td>
             <td>date</td>
             <td>code</td>
+            <td>sort</td>
             <td>link</td>
             <td>digit</td>
             <td>percent</td>
@@ -166,6 +169,7 @@ export default () => {
             <td>枚举</td>
             <td>日期</td>
             <td>代码</td>
+            <td>排序</td>
             <td>按钮组</td>
             <td>数字</td>
             <td>百分比</td>
@@ -405,6 +409,13 @@ const dataSource = [
 
 export default () => {
   const columns = [
+    {
+      title: '排序',
+      width: 50,
+      template: {
+        tpl: 'sort'
+      }
+    },
     {
       title: '链接',
       tooltip: 'href: 路径; query: 额外参数; 其他Button的属性透传',
@@ -662,7 +673,7 @@ export default () => {
 ```jsx
 import React, { useRef, useEffect } from 'react';
 import Table from '@ke/table';
-import { OptionsData3 } from '../mock';
+import { showMessage, OptionsData3 } from '../mock';
 
 const dataSource = [
   { id: 1, name: 'Tom', sex: 1, age: 3, birth: '2019-01-01', studyStart: '2010-09-01', studyEnd: '2014-07-01' },
@@ -730,7 +741,7 @@ export default () => {
             {
               text: '保存',
               onClick: () => {
-                console.log(record);
+                showMessage('当前行的数据', record);
               }
             }
           ];
@@ -749,6 +760,225 @@ export default () => {
         }
       }}
       pagination={false}
+    />
+  );
+};
+```
+
+## 排序(拖拽)
+
+跟拖拽排序有关的配置
+
+- **draggable: true** 拖拽整行
+- **{ tpl: 'sort' }** 拖拽句柄
+- onDragSortEnd 拖拽排序完成回调
+
+### 拖拽排序
+
+```jsx
+import React, { useRef, useEffect } from 'react';
+import Table from '@ke/table';
+import { showMessage, OptionsData3 } from '../mock';
+
+const dataSource = [
+  { id: 1, name: 'Tom', sex: 1 },
+  { id: 2, name: 'Jerry', sex: 2 },
+  { id: 3, name: 'Herry', sex: 1 }
+];
+
+export default () => {
+  const columns = [
+    {
+      title: '姓名',
+      dataIndex: 'name'
+    },
+    {
+      title: '性别',
+      dataIndex: 'sex',
+      template: {
+        tpl: 'enum',
+        options: OptionsData3,
+        shape: 'dot'
+      }
+    },
+    {
+      title: '操作',
+      template: {
+        tpl: 'link',
+        render: (text, record, index) => {
+          return [
+            {
+              text: '保存',
+              onClick: () => {
+                showMessage('当前行的数据', record);
+              }
+            }
+          ];
+        }
+      }
+    }
+  ];
+  return <Table rowKey="id" draggable columns={columns} dataSource={dataSource} pagination={false} />;
+};
+```
+
+### 拖拽手柄列
+
+如果你想换个图标, 配置 **{ tpl: 'sort', icon: ReactNode }** 即可
+
+```jsx
+import React, { useRef, useEffect } from 'react';
+import Table from '@ke/table';
+import { showMessage, OptionsData3 } from '../mock';
+
+const dataSource = [
+  { id: 1, name: 'Tom', sex: 1 },
+  { id: 2, name: 'Jerry', sex: 2 },
+  { id: 3, name: 'Herry', sex: 1 }
+];
+
+export default () => {
+  const columns = [
+    {
+      title: '排序',
+      width: 50,
+      template: {
+        tpl: 'sort'
+      }
+    },
+    {
+      title: '姓名',
+      dataIndex: 'name'
+    },
+    {
+      title: '性别',
+      dataIndex: 'sex',
+      template: {
+        tpl: 'enum',
+        options: OptionsData3,
+        shape: 'dot'
+      }
+    },
+    {
+      title: '操作',
+      template: {
+        tpl: 'link',
+        render: (text, record, index) => {
+          return [
+            {
+              text: '保存',
+              onClick: () => {
+                showMessage('当前行的数据', record);
+              }
+            }
+          ];
+        }
+      }
+    }
+  ];
+  return <Table rowKey="id" columns={columns} dataSource={dataSource} pagination={false} />;
+};
+```
+
+### 拖拽排序+编辑
+
+拖拽排序 + 编辑 + 远端数据 + 分页
+
+```jsx
+import React, { useRef, useEffect } from 'react';
+import Table from '@ke/table';
+import { showMessage, OptionsData3 } from '../mock';
+
+const dataSource = [
+  { id: 1, name: 'Tom', sex: 1, birth: '2019-01-01', studyStart: '2010-09-01', studyEnd: '2014-07-01' },
+  { id: 2, name: 'Jerry', sex: 2, birth: '2017-02-23', studyStart: '2017-09-01', studyEnd: '2010-07-01' },
+  { id: 3, name: 'Herry', sex: 1, birth: '2019-07-01', studyStart: '2005-09-01', studyEnd: '2008-07-01' },
+  { id: 4, name: 'Tuffy', sex: 1, birth: '2010-07-01', studyStart: '2005-09-01', studyEnd: '2008-07-01' }
+];
+
+export default () => {
+  const tableRef = useRef();
+
+  useEffect(() => {
+    tableRef.current.search();
+  }, [tableRef]);
+
+  const columns = [
+    {
+      title: '排序',
+      width: 50,
+      template: {
+        tpl: 'sort'
+      }
+    },
+    {
+      title: '姓名',
+      dataIndex: 'name',
+      editable: true,
+      template: {
+        tpl: 'input'
+      }
+    },
+    {
+      title: '性别',
+      dataIndex: 'sex',
+      editable: true,
+      template: {
+        tpl: 'select',
+        options: OptionsData3
+      }
+    },
+    {
+      title: '生日',
+      dataIndex: 'birth',
+      editable: true,
+      template: {
+        tpl: 'date-picker'
+      }
+    },
+    {
+      title: '就读时间',
+      dataIndex: 'studyStart,studyEnd',
+      editable: true,
+      width: 260,
+      template: {
+        tpl: 'date-range-picker'
+      }
+    },
+    {
+      title: '操作',
+      template: {
+        tpl: 'link',
+        render: (text, record, index) => {
+          return [
+            {
+              text: '保存',
+              onClick: () => {
+                showMessage('当前行的数据', record);
+              }
+            }
+          ];
+        }
+      }
+    }
+  ];
+
+  return (
+    <Table
+      rowKey="id"
+      ref={tableRef}
+      columns={columns}
+      remoteConfig={{
+        fetch: async () => {
+          return {
+            list: dataSource,
+            total: dataSource.length
+          };
+        }
+      }}
+      pagination={{
+        defaultPageSize: 2
+      }}
     />
   );
 };

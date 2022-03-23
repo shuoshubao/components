@@ -8,8 +8,8 @@
   },
   "dependencies": {
     "@ke/form": "^1.2.14",
-    "@ke/table": "^1.1.13",
-    "antd": "^4.17.1",
+    "@ke/table": "^1.1.14",
+    "antd": "^4.19.2",
     "react": "^16.12.0"
   },
   "devDependencies": {

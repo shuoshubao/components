@@ -37,7 +37,7 @@ nav:
             <td>input</td>
             <td>number</td>
             <td>number-range</td>
-            <td colspan="2">slider</td>
+            <td colspan="3">slider</td>
         </tr>
         <tr>
             <td>枚举</td>
@@ -64,7 +64,7 @@ nav:
 </table>
 
 <Alert type="info">
-    当然, 除了以上 **14** 个内置组件, 你还可以开发自定义组件!
+    当然, 除了以上 16 个内置组件, 你还可以开发自定义组件!
 </Alert>
 
 ## 基本使用
@@ -103,9 +103,9 @@ export default () => {
 ```jsx
 import React, { useRef, useState } from 'react';
 import Form from '@ke/form';
-import { Button, message, notification } from 'antd';
+import { Button } from 'antd';
 import { rules, sleep } from '@nbfe/tools';
-import { CityOptionsData } from '../mock';
+import { showMessage, CityOptionsData } from '../mock';
 
 const { required, selectRequired } = rules;
 
@@ -128,24 +128,16 @@ export default () => {
   // 1.1 如果失败 **formData** 返回null, 且弹窗提示信息: '表单项填写存在错误！请检查'
   // 1.2 校验通过则返回表单数据
   const handleSubmit = async () => {
-    const formData = await formRef.current.validateFields();
+    const formData = await formRef.current.getFormData();
     console.log(111, formData);
     if (!formData) {
       return;
     }
-    notification.info({
-      message: '表单数据',
-      description: (
-        <pre>
-          <code>{JSON.stringify(formData, '', 2)}</code>
-        </pre>
-      ),
-      duration: 3
-    });
+    showMessage('表单数据', formData);
     setSubmitLoading(true);
     // 这里模仿接口请求
     await sleep();
-    message.success('操作成功!');
+    showMessage('操作成功!');
     setSubmitLoading(false);
   };
 
@@ -210,17 +202,12 @@ export default () => {
 
 ```jsx
 import React from 'react';
-import { notification } from 'antd';
 import Form from '@ke/form';
-import { OptionsData } from '../mock';
+import { showMessage, OptionsData } from '../mock';
 
 export default () => {
   const handleSubmit = (params) => {
-    notification.info({
-      message: '触发了提交事件',
-      description: ['参数为', JSON.stringify(params)].join(':'),
-      duration: 3
-    });
+    showMessage('触发了提交事件, 参数为:', params);
   };
   const columns = [
     {
@@ -276,16 +263,11 @@ export default () => {
 
 ```jsx
 import React from 'react';
-import { notification } from 'antd';
 import Form from '@ke/form';
 
 export default () => {
   const handleSubmit = (params) => {
-    notification.info({
-      message: '触发了提交事件',
-      description: ['参数为', JSON.stringify(params)].join(':'),
-      duration: 3
-    });
+    showMessage('触发了提交事件, 参数为:', params);
   };
   const columns = [
     {
@@ -326,17 +308,12 @@ tabs 一般独占一行, 且在第一行
 
 ```jsx
 import React from 'react';
-import { notification } from 'antd';
 import Form from '@ke/form';
 import { TabsOptionsData, OptionsData, MoreOptionsData } from '../mock';
 
 export default () => {
   const handleSubmit = (params) => {
-    notification.info({
-      message: '触发了提交事件',
-      description: ['参数为', JSON.stringify(params)].join(':'),
-      duration: 3
-    });
+    showMessage('触发了提交事件, 参数为:', params);
   };
 
   const columns = [
@@ -441,17 +418,12 @@ export default () => {
 
 ```jsx
 import React from 'react';
-import { notification } from 'antd';
 import Form from '@ke/form';
-import { TabsOptionsData, OptionsData } from '../mock';
+import { showMessage, TabsOptionsData, OptionsData } from '../mock';
 
 export default () => {
   const handleSubmit = (params) => {
-    notification.info({
-      message: '触发了提交事件',
-      description: ['参数为', JSON.stringify(params)].join(':'),
-      duration: 3
-    });
+    showMessage('触发了提交事件, 参数为:', params);
   };
 
   const columns = [
@@ -492,10 +464,10 @@ Select Cascader TreeSelect AutoComplete 这四个组件其实本质上都属于�
 
 ```jsx
 import React from 'react';
-import { version, notification } from 'antd';
+import { version } from 'antd';
 import { sleep } from '@nbfe/tools';
 import Form from '@ke/form';
-import { CascaderOptions, TreeData } from '../mock';
+import { showMessage, CascaderOptions, TreeData } from '../mock';
 
 const mockEmailData = (str) => {
   return [1, 2, 3].map((v) => {
@@ -509,11 +481,7 @@ const mockEmailData = (str) => {
 
 export default () => {
   const handleSubmit = (params) => {
-    notification.info({
-      message: '触发了提交事件',
-      description: ['参数为', JSON.stringify(params)].join(':'),
-      duration: 3
-    });
+    showMessage('触发了提交事件, 参数为:', params);
   };
   const columns = [
     {
@@ -573,17 +541,14 @@ export default () => {
 
 ```jsx
 import React from 'react';
-import { version, notification } from 'antd';
+import { version } from 'antd';
 import { sleep } from '@nbfe/tools';
 import Form from '@ke/form';
+import { showMessage } from '../mock';
 
 export default () => {
   const handleSubmit = (params) => {
-    notification.info({
-      message: '触发了提交事件',
-      description: ['参数为', JSON.stringify(params)].join(':'),
-      duration: 3
-    });
+    showMessage('触发了提交事件, 参数为:', params);
   };
   const columns = [
     {
@@ -613,12 +578,13 @@ export default () => {
 
 ```jsx
 import React, { useRef, useState } from 'react';
-import { Button, Input, notification } from 'antd';
+import { Button, Input } from 'antd';
 import PlusCircleOutlined from '@ant-design/icons/PlusCircleOutlined';
 import MinusCircleOutlined from '@ant-design/icons/MinusCircleOutlined';
 import { map, cloneDeep } from 'lodash';
 import { isUniq } from '@nbfe/tools';
 import Form from '@ke/form';
+import { showMessage } from '../mock';
 
 // 自定义组件
 const CustomComponent = (props) => {
@@ -680,15 +646,7 @@ export default () => {
     if (!formData) {
       return;
     }
-    notification.info({
-      message: '表单数据',
-      description: (
-        <pre>
-          <code>{JSON.stringify(formData, '', 2)}</code>
-        </pre>
-      ),
-      duration: 3
-    });
+    showMessage('表单数据', formData);
   };
   const columns = [
     {
@@ -742,11 +700,12 @@ export default () => {
 
 ```jsx
 import React, { useRef } from 'react';
-import { Button, Input, Space, notification } from 'antd';
+import { Button, Input, Space } from 'antd';
 import PlusCircleOutlined from '@ant-design/icons/PlusCircleOutlined';
 import MinusCircleOutlined from '@ant-design/icons/MinusCircleOutlined';
 import { isUniq } from '@nbfe/tools';
 import Form from '@ke/form';
+import { showMessage } from '../mock';
 
 const isUniqCollection = (collection) => {
   return isUniq(collection.map((v) => Object.entries(v).flat().join('__')));
@@ -790,15 +749,7 @@ export default () => {
     if (!formData) {
       return;
     }
-    notification.info({
-      message: '表单数据',
-      description: (
-        <pre>
-          <code>{JSON.stringify(formData, '', 2)}</code>
-        </pre>
-      ),
-      duration: 3
-    });
+    showMessage('表单数据', formData);
   };
 
   const columns = [

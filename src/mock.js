@@ -1,3 +1,8 @@
+import React from 'react';
+import { message, notification } from 'antd';
+import { isString } from 'lodash';
+import { blue, red } from '@ant-design/colors';
+
 export const OptionsData = [
   {
     label: '选项1',
@@ -35,11 +40,13 @@ export const OptionsData2 = [
 export const OptionsData3 = [
   {
     label: '男',
-    value: 1
+    value: 1,
+    color: blue.primary
   },
   {
     label: '女',
-    value: 2
+    value: 2,
+    color: red.primary
   }
 ];
 
@@ -143,3 +150,19 @@ export const TreeData = [
     value: '0-1'
   }
 ];
+
+export const showMessage = (title, json) => {
+  if (!json) {
+    message.success(title);
+    return;
+  }
+  notification.info({
+    message: title,
+    description: (
+      <pre style={{ margin: 0, background: '#f6f7f9', padding: 5 }}>
+        <code>{JSON.stringify(json, '', 2)}</code>
+      </pre>
+    ),
+    duration: 3
+  });
+};
