@@ -7,8 +7,8 @@
     "build": "dumi build && node deploy-gh"
   },
   "dependencies": {
-    "@ke/form": "^1.2.12",
-    "@ke/table": "^1.1.11",
+    "@ke/form": "^1.2.14",
+    "@ke/table": "^1.1.13",
     "antd": "^4.17.1",
     "react": "^16.12.0"
   },
