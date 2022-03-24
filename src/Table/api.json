@@ -91,7 +91,7 @@
       "desc": "模板的配置",
       "type": "{ tpl: '', ...props }",
       "optionalValue": "",
-      "default": "{ tpl: 'text', emptyText: '--' }",
+      "default": { "tpl": "text", "emptyText": "--" },
       "version": ""
     },
     {
@@ -111,11 +111,43 @@
       "version": ""
     },
     {
+      "name": "transform",
+      "desc": "数据转换器, 接口数据的进一步处理",
+      "type": "(text, record, index) => any",
+      "optionalValue": "",
+      "default": "null",
+      "version": ""
+    },
+    {
       "name": "editable",
       "desc": "是否可编辑",
       "type": "boolean",
       "optionalValue": "",
       "default": "false",
+      "version": ""
+    },
+    {
+      "name": "rules",
+      "desc": "校验规则",
+      "type": "rules[]",
+      "optionalValue": "",
+      "default": "[]",
+      "version": ""
+    },
+    {
+      "name": "filters",
+      "desc": "筛选项",
+      "type": "{ label, value }[]",
+      "optionalValue": "",
+      "default": "[]",
+      "version": ""
+    },
+    {
+      "name": "filterMultiple",
+      "desc": "筛选项-true: 多选; false: 单选",
+      "type": "{ label, value }[]",
+      "optionalValue": "",
+      "default": "[]",
       "version": ""
     }
   ],

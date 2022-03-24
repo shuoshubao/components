@@ -8,26 +8,9 @@ template 的作用是用一段 json 来描述一个基础的 antd 表单元素�
 
 ### 表单子组件的配置
 
-<style>
-.table-form-props thead th,
-.table-form-props tbody td {
-  padding: 6px 12px;
-  text-align: left;
-}
-
-.table-form-props tbody td:first-child > div:first-child {
-  margin-bottom: 20px;
-}
-
-.table-form-props tbody td pre {
-  padding: 5px !important;
-  margin: 0;
-}
-</style>
-
-<table class="table-form-props">
+<table>
   <colgroup>
-    <col width="130px" />
+    <col width="160px" />
     <col width="100px" />
     <col width="" />
     <col width="" />
@@ -143,7 +126,7 @@ template 的作用是用一段 json 来描述一个基础的 antd 表单元素�
       <td>远端数据源配置</td>
       <td>
         <div>IRemoteConfig</div>
-        <pre>{<br />  fetch: async(query) => {<br />  // query 是用户输入的内容<br />  await sleep()<br />  return { label, value }[]<br />  }<br />}</pre>
+        <pre>{<br />  fetch: async(query) => {<br />    // query 是用户输入的内容<br />    await sleep()<br />    return { label, value }[]<br />  }<br />}</pre>
       </td>
       <td>null</td>
     </tr>
@@ -182,7 +165,7 @@ template 的作用是用一段 json 来描述一个 render 函数, 其中使用�
 
 ### 渲染器的配置
 
-<table class="table-form-props">
+<table>
   <colgroup>
     <col width="100px" />
     <col width="150px" />

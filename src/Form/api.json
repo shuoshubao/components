@@ -55,7 +55,7 @@
       "desc": "antd Card 组件的属性",
       "type": "{}",
       "optionalValue": "",
-      "default": "{ size: 'small', bordered: false }",
+      "default": { "size": "small", "bordered": false },
       "version": ""
     },
     {
@@ -63,7 +63,7 @@
       "desc": "antd Form 组件的属性",
       "type": "{}",
       "optionalValue": "",
-      "default": "{ layout: 'inline' }",
+      "default": { "layout": "inline" },
       "version": ""
     },
     {
@@ -155,7 +155,7 @@
       "desc": "form-item 样式",
       "type": "CSSProperties",
       "optionalValue": "",
-      "default": "{}",
+      "default": {},
       "version": ""
     },
     {
@@ -171,7 +171,7 @@
       "desc": "模板的配置",
       "type": "{ tpl: '', ...props }",
       "optionalValue": "",
-      "default": "{ tpl: 'input', width: 200 }",
+      "default": { "tpl": "input", "width": 200 },
       "version": ""
     }
   ],

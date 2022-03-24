@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Typography } from 'antd';
 import Table from '@ke/table';
+import { isObject } from 'lodash';
 
 const { Title } = Typography;
 
@@ -14,6 +15,16 @@ export default ({ api }) => {
     return {
       ...v,
       render: (value) => {
+        if (isObject(value)) {
+          return (
+            <pre className="dynamic-table-render-code">
+              <code>{JSON.stringify(value, '', 2)}</code>
+            </pre>
+          );
+        }
+        if (v.dataIndex === 'type') {
+          return <div style={{ color: '#c41d7f' }} dangerouslySetInnerHTML={{ __html: value }} />;
+        }
         return <div dangerouslySetInnerHTML={{ __html: value }} />;
       }
     };
@@ -26,6 +37,13 @@ export default ({ api }) => {
     return {
       ...v,
       render: (value) => {
+        if (isObject(value)) {
+          return (
+            <pre className="dynamic-table-render-code">
+              <code>{JSON.stringify(value, '', 2)}</code>
+            </pre>
+          );
+        }
         return <div dangerouslySetInnerHTML={{ __html: value }} />;
       }
     };
@@ -38,6 +56,13 @@ export default ({ api }) => {
     return {
       ...v,
       render: (value) => {
+        if (isObject(value)) {
+          return (
+            <pre className="dynamic-table-render-code">
+              <code>{JSON.stringify(value, '', 2)}</code>
+            </pre>
+          );
+        }
         return <div dangerouslySetInnerHTML={{ __html: value }} />;
       }
     };

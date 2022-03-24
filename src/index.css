@@ -81,3 +81,18 @@ body .__dumi-default-navbar-tool {
 .dynamic-table + .dynamic-table {
   margin-top: 10px;
 }
+
+.markdown table thead th,
+.markdown table tbody td {
+  padding: 10px;
+  text-align: left;
+}
+
+.markdown table tbody td:first-child > div:first-child {
+  margin-bottom: 20px;
+}
+
+.markdown table tbody td pre {
+  padding: 5px !important;
+  margin: 0;
+}
