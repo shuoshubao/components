@@ -1,9 +1,74 @@
 {
   "name": "Descriptions",
-  "desc": "配置化 Descriptions",
+  "desc": "配置化定义列表",
   "props": [],
   "events": [],
   "methods": [],
-  "columns": [],
+  "columns": [
+    {
+      "name": "label",
+      "desc": "label",
+      "type": "string",
+      "optionalValue": "",
+      "default": "''",
+      "version": ""
+    },
+    {
+      "name": "name",
+      "desc": "字段名",
+      "type": "string",
+      "optionalValue": "",
+      "default": "''",
+      "version": ""
+    },
+    {
+      "name": "template",
+      "desc": "模板的配置",
+      "type": "{ tpl: '', ...props }",
+      "optionalValue": "",
+      "default": { "tpl": "text", "emptyText": "--" },
+      "version": ""
+    },
+    {
+      "name": "tooltip",
+      "desc": "label 的提示文案",
+      "type": "string | string[]",
+      "optionalValue": "",
+      "default": "true",
+      "version": ""
+    },
+    {
+      "name": "render",
+      "desc": "自定义 render",
+      "type": "(text, record, index) => ReactNode",
+      "optionalValue": "",
+      "default": "null",
+      "version": ""
+    },
+    {
+      "name": "transform",
+      "desc": "数据转换器, 接口数据的进一步处理",
+      "type": "(text, record, index) => any",
+      "optionalValue": "",
+      "default": "null",
+      "version": ""
+    },
+    {
+      "name": "visible",
+      "desc": "可见性",
+      "type": "boolean",
+      "optionalValue": "",
+      "default": "true",
+      "version": ""
+    },
+    {
+      "name": "key",
+      "desc": "key",
+      "type": "string",
+      "optionalValue": "",
+      "default": "''",
+      "version": ""
+    }
+  ],
   "maintainer": "fangt11"
 }

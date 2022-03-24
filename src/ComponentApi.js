@@ -75,12 +75,14 @@ export default ({ api }) => {
   };
   return (
     <Fragment>
-      <Table
-        title={() => <Title level={4}>属性</Title>}
-        columns={propsColumns}
-        dataSource={props}
-        {...commonTableProps}
-      />
+      {!!props.length && (
+        <Table
+          title={() => <Title level={4}>属性</Title>}
+          columns={propsColumns}
+          dataSource={props}
+          {...commonTableProps}
+        />
+      )}
       {!!events.length && (
         <Table
           title={() => <Title level={4}>事件</Title>}

@@ -104,7 +104,7 @@
     },
     {
       "name": "tooltip",
-      "desc": "列的文案的提示文案",
+      "desc": "title 的提示文案",
       "type": "string | string[]",
       "optionalValue": "",
       "default": "true",
