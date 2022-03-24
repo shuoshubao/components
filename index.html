@@ -243,6 +243,7 @@
         .ant-input {
         border-color: #ff4d4f;
       }
+      .dynamic-form.dynamic-form-antd-v3 .ant-form-item-explain-error,
       .dynamic-form.dynamic-form-antd-v3 .ant-form-error {
         color: #ff4d4f;
       }
@@ -278,71 +279,6 @@
         .ant-form-item.dynamic-form-form-item
         .ant-btn:not(:first-child) {
         margin-left: 10px;
-      }
-      .dynamic-form
-        .ant-form-item
-        .dynamic-form-number-range
-        .dynamic-form-number-range-min,
-      .dynamic-form
-        .ant-form-item
-        .dynamic-form-number-range
-        .dynamic-form-number-range-max {
-        margin-right: 0;
-        position: relative;
-        z-index: 2;
-      }
-      .dynamic-form
-        .ant-form-item
-        .dynamic-form-number-range
-        .dynamic-form-number-range-min:hover,
-      .dynamic-form
-        .ant-form-item
-        .dynamic-form-number-range
-        .dynamic-form-number-range-max:hover,
-      .dynamic-form
-        .ant-form-item
-        .dynamic-form-number-range
-        .dynamic-form-number-range-min:focus,
-      .dynamic-form
-        .ant-form-item
-        .dynamic-form-number-range
-        .dynamic-form-number-range-max:focus {
-        border-left-color: #40a9ff;
-        border-right-color: #40a9ff;
-      }
-      .dynamic-form
-        .ant-form-item
-        .dynamic-form-number-range
-        .dynamic-form-number-range-min
-        .ant-input-number-input,
-      .dynamic-form
-        .ant-form-item
-        .dynamic-form-number-range
-        .dynamic-form-number-range-max
-        .ant-input-number-input {
-        text-align: center;
-        padding: 0 24px 0 4px;
-      }
-      .dynamic-form
-        .ant-form-item
-        .dynamic-form-number-range
-        .dynamic-form-number-range-min {
-        border-right-color: transparent;
-      }
-      .dynamic-form
-        .ant-form-item
-        .dynamic-form-number-range
-        .dynamic-form-number-range-max {
-        border-left-color: transparent;
-      }
-      .dynamic-form
-        .ant-form-item
-        .dynamic-form-number-range
-        .dynamic-form-number-range-separator {
-        border-left: 0;
-        border-right: 0;
-        pointer-events: none;
-        background-color: #fff;
       }
       .dynamic-form .ant-form-item-label > label::before {
         display: none !important;
@@ -385,6 +321,40 @@
         .dynamic-form-filter-panel-tags
         .ant-tag:last-child {
         margin-right: 0;
+      }
+      .dynamic-form-number-range .dynamic-form-number-range-min,
+      .dynamic-form-number-range .dynamic-form-number-range-max {
+        margin-right: 0;
+        position: relative;
+        z-index: 2;
+      }
+      .dynamic-form-number-range .dynamic-form-number-range-min:hover,
+      .dynamic-form-number-range .dynamic-form-number-range-max:hover,
+      .dynamic-form-number-range .dynamic-form-number-range-min:focus,
+      .dynamic-form-number-range .dynamic-form-number-range-max:focus {
+        border-left-color: #40a9ff;
+        border-right-color: #40a9ff;
+      }
+      .dynamic-form-number-range
+        .dynamic-form-number-range-min
+        .ant-input-number-input,
+      .dynamic-form-number-range
+        .dynamic-form-number-range-max
+        .ant-input-number-input {
+        text-align: center;
+        padding: 0 24px 0 4px;
+      }
+      .dynamic-form-number-range .dynamic-form-number-range-min {
+        border-right-color: transparent;
+      }
+      .dynamic-form-number-range .dynamic-form-number-range-max {
+        border-left-color: transparent;
+      }
+      .dynamic-form-number-range .dynamic-form-number-range-separator {
+        border-left: 0;
+        border-right: 0;
+        pointer-events: none;
+        background-color: #fff;
       }
       .ant-tooltip.dynamic-form-tooltip .ant-tooltip-inner a {
         margin: 0 4px;
@@ -831,12 +801,6 @@
       .dynamic-table .ant-table-tbody > tr.dynamic-table-drop-over-upward td {
         border-top: 2px dashed #1890ff;
       }
-      .dynamic-table .ant-typography {
-        margin-bottom: 0;
-      }
-      .dynamic-table .ant-progress-line {
-        width: calc(100% - 25px);
-      }
       .dynamic-table-filter-dropdown {
         font-size: 0;
         user-select: none;
@@ -889,10 +853,22 @@
         height: 24px;
         padding: 0px 7px;
       }
+      .dynamic-table-row-dragging .ant-typography,
+      .dynamic-table .ant-typography,
+      .dynamic-table-descriptions .ant-typography {
+        margin-bottom: 0;
+      }
+      .dynamic-table-row-dragging .ant-progress-line,
+      .dynamic-table .ant-progress-line,
+      .dynamic-table-descriptions .ant-progress-line {
+        width: calc(100% - 25px);
+      }
+      .dynamic-table-row-dragging .dynamic-table-render-tag,
       .dynamic-table .dynamic-table-render-tag,
       .dynamic-table-descriptions .dynamic-table-render-tag {
         margin: 0;
       }
+      .dynamic-table-row-dragging .dynamic-table-render-enum-circle,
       .dynamic-table .dynamic-table-render-enum-circle,
       .dynamic-table-descriptions .dynamic-table-render-enum-circle {
         display: inline-block;
@@ -904,18 +880,26 @@
         min-width: 40px;
         white-space: nowrap;
       }
+      .dynamic-table-row-dragging .dynamic-table-render-enum-dot,
       .dynamic-table .dynamic-table-render-enum-dot,
       .dynamic-table-descriptions .dynamic-table-render-enum-dot,
+      .dynamic-table-row-dragging .dynamic-table-render-enum-square,
       .dynamic-table .dynamic-table-render-enum-square,
       .dynamic-table-descriptions .dynamic-table-render-enum-square {
         display: inline-flex;
         align-items: center;
       }
+      .dynamic-table-row-dragging
+        .dynamic-table-render-enum-dot
+        .dynamic-table-render-enum-badge,
       .dynamic-table
         .dynamic-table-render-enum-dot
         .dynamic-table-render-enum-badge,
       .dynamic-table-descriptions
         .dynamic-table-render-enum-dot
+        .dynamic-table-render-enum-badge,
+      .dynamic-table-row-dragging
+        .dynamic-table-render-enum-square
         .dynamic-table-render-enum-badge,
       .dynamic-table
         .dynamic-table-render-enum-square
@@ -928,11 +912,17 @@
         height: 6px;
         margin-right: 5px;
       }
+      .dynamic-table-row-dragging
+        .dynamic-table-render-enum-dot
+        .dynamic-table-render-enum-text,
       .dynamic-table
         .dynamic-table-render-enum-dot
         .dynamic-table-render-enum-text,
       .dynamic-table-descriptions
         .dynamic-table-render-enum-dot
+        .dynamic-table-render-enum-text,
+      .dynamic-table-row-dragging
+        .dynamic-table-render-enum-square
         .dynamic-table-render-enum-text,
       .dynamic-table
         .dynamic-table-render-enum-square
@@ -942,6 +932,9 @@
         .dynamic-table-render-enum-text {
         white-space: nowrap;
       }
+      .dynamic-table-row-dragging
+        .dynamic-table-render-enum-dot
+        .dynamic-table-render-enum-badge,
       .dynamic-table
         .dynamic-table-render-enum-dot
         .dynamic-table-render-enum-badge,
@@ -950,6 +943,7 @@
         .dynamic-table-render-enum-badge {
         border-radius: 50%;
       }
+      .dynamic-table-row-dragging .dynamic-table-render-code,
       .dynamic-table .dynamic-table-render-code,
       .dynamic-table-descriptions .dynamic-table-render-code {
         width: 100%;
@@ -1037,12 +1031,6 @@
       .dynamic-table-descriptions .ant-descriptions-item:not(:last-child) {
         padding-right: 10px;
       }
-      .dynamic-table-descriptions .ant-typography {
-        margin-bottom: 0;
-      }
-      .dynamic-table-descriptions .ant-progress-line {
-        width: calc(100% - 25px);
-      }
       .dynamic-table-descriptions.dynamic-table-antd-v3
         .ant-descriptions-title {
         display: flex;
@@ -1060,6 +1048,7 @@
       .dynamic-table-row-dragging {
         z-index: 2;
         background: #fafafa;
+        overflow: hidden;
         box-shadow: 0 1px 2px -2px #00000029, 0 3px 6px #0000001f,
           0 5px 12px 4px #00000017;
       }
@@ -1067,11 +1056,9 @@
         background: #fafafa;
         padding: 10px;
       }
-      .dynamic-table-row-dragging td .ant-typography {
-        margin-bottom: 0;
-      }
-      .dynamic-table-row-dragging td .ant-progress-line {
-        width: calc(100% - 25px);
+      .dynamic-table-row-dragging .dynamic-form-number-range {
+        position: relative;
+        top: -20px;
       }
     </style>
     <style>
@@ -1101,6 +1088,6 @@
   <body>
     <div id="root"></div>
 
-    <script src="./dist/umi.9fb5ab59.js"></script>
+    <script src="./dist/umi.f2b09441.js"></script>
   </body>
 </html>
