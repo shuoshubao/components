@@ -887,14 +887,7 @@ export default () => {
 ```jsx
 import React, { useRef, useEffect } from 'react';
 import Table from '@ke/table';
-import { showMessage, OptionsData3 } from '../mock';
-
-const dataSource = [
-  { id: 1, name: 'Tom', sex: 1, birth: '2019-01-01', studyStart: '2010-09-01', studyEnd: '2014-07-01' },
-  { id: 2, name: 'Jerry', sex: 2, birth: '2017-02-23', studyStart: '2017-09-01', studyEnd: '2010-07-01' },
-  { id: 3, name: 'Herry', sex: 1, birth: '2019-07-01', studyStart: '2005-09-01', studyEnd: '2008-07-01' },
-  { id: 4, name: 'Tuffy', sex: 1, birth: '2010-07-01', studyStart: '2005-09-01', studyEnd: '2008-07-01' }
-];
+import { showMessage, OptionsData3, getRemoteTableData } from '../mock';
 
 export default () => {
   const tableRef = useRef();
@@ -969,15 +962,12 @@ export default () => {
       ref={tableRef}
       columns={columns}
       remoteConfig={{
-        fetch: async () => {
-          return {
-            list: dataSource,
-            total: dataSource.length
-          };
+        fetch: async (params) => {
+          return getRemoteTableData(params);
         }
       }}
       pagination={{
-        defaultPageSize: 2
+        defaultPageSize: 3
       }}
     />
   );

@@ -46,16 +46,16 @@
   "events": [
     {
       "name": "onEditableCellSave",
-      "desc": "",
+      "desc": "编辑单元格时的回调",
       "signature": "",
-      "args": "",
+      "args": "({ index, dataIndex, value }): Promise<void>",
       "version": ""
     },
     {
       "name": "onDragSortEnd",
       "desc": "拖拽排序完成回调",
       "signature": "",
-      "args": "{ newDataSource, dataSource, oldIndex, newIndex }",
+      "args": "{ newDataSource, dataSource, fromIndex, toIndex }",
       "version": ""
     }
   ],
@@ -81,7 +81,7 @@
     {
       "name": "handleMoveRow",
       "desc": "换行",
-      "args": "oldIndex: fromIndex, newIndex: toIndex",
+      "args": "fromIndex, toIndex",
       "version": ""
     }
   ],

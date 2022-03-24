@@ -166,3 +166,23 @@ export const showMessage = (title, json) => {
     duration: 3
   });
 };
+
+export const dataSource = [
+  { id: 1, name: 'Tom', sex: 1, birth: '2019-01-01', studyStart: '2010-09-01', studyEnd: '2014-07-01' },
+  { id: 2, name: 'Jerry', sex: 2, birth: '2017-02-23', studyStart: '2017-09-01', studyEnd: '2010-07-01' },
+  { id: 3, name: 'Herry', sex: 1, birth: '2019-07-01', studyStart: '2005-09-01', studyEnd: '2008-07-01' },
+  { id: 4, name: 'Tuffy', sex: 1, birth: '2010-07-01', studyStart: '2005-09-01', studyEnd: '2008-07-01' },
+  { id: 5, name: 'Hi', sex: 1, birth: '2010-07-01', studyStart: '2005-09-01', studyEnd: '2008-07-01' },
+  { id: 6, name: 'Hello', sex: 1, birth: '2010-07-01', studyStart: '2005-09-01', studyEnd: '2008-07-01' },
+  { id: 7, name: 'Bye', sex: 1, birth: '2010-07-01', studyStart: '2005-09-01', studyEnd: '2008-07-01' }
+];
+
+export const getRemoteTableData = (params) => {
+  const { currentPage, pageSize } = params;
+  const pivot = (currentPage - 1) * pageSize;
+  const list = dataSource.slice(pivot, currentPage * pageSize);
+  return {
+    list,
+    total: dataSource.length
+  };
+};
