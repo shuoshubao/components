@@ -878,6 +878,21 @@
       .dynamic-table-descriptions .ant-progress-line {
         width: calc(100% - 25px);
       }
+      .dynamic-table-row-dragging .dynamic-table-render-sort,
+      .dynamic-table .dynamic-table-render-sort,
+      .dynamic-table-descriptions .dynamic-table-render-sort {
+        color: #333;
+        cursor: grab;
+      }
+      .dynamic-table-row-dragging
+        .dynamic-table-render-sort.dynamic-table-render-sort-disabled,
+      .dynamic-table
+        .dynamic-table-render-sort.dynamic-table-render-sort-disabled,
+      .dynamic-table-descriptions
+        .dynamic-table-render-sort.dynamic-table-render-sort-disabled {
+        cursor: not-allowed;
+        color: #d9d9d9;
+      }
       .dynamic-table-row-dragging .dynamic-table-render-tag,
       .dynamic-table .dynamic-table-render-tag,
       .dynamic-table-descriptions .dynamic-table-render-tag {
@@ -1103,6 +1118,6 @@
   <body>
     <div id="root"></div>
 
-    <script src="./dist/umi.3fbe00bf.js"></script>
+    <script src="./dist/umi.d4bb0653.js"></script>
   </body>
 </html>
