@@ -668,7 +668,7 @@ export default () => {
 ## 编辑
 
 - `column.editable = true`
-- `column.template.tpl = 'input' | 'select' ... ` (全部模板参考 [内置表单组件](/components/form))
+- `column.template.tpl = 'input' | 'select' ...` (全部模板参考 [内置表单组件](/components/form))
 
 ```jsx
 import React, { useRef, useEffect } from 'react';
@@ -765,15 +765,22 @@ export default () => {
 };
 ```
 
-## 排序(拖拽)
+## 拖拽排序
 
 跟拖拽排序有关的配置
 
-- **draggable: true** 拖拽整行
-- **{ tpl: 'sort' }** 拖拽句柄
+- 拖拽整行
+  - draggable: true
+  - extraConfig?.disabledSort: (record, index)=> boolean
+- 拖拽句柄
+  - template.tpl: 'sort'
+  - template.handler: ReactNode
+  - template?.disabledSort: (record, index)=> boolean
 - onDragSortEnd 拖拽排序完成回调
 
-### 拖拽排序
+**disabledSort** 默认为 null, 当为函数时, 返回布尔值, 决定该行是否禁用拖拽排序
+
+### 拖拽整行排序
 
 ```jsx
 import React, { useRef, useEffect } from 'react';

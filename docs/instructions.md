@@ -148,11 +148,17 @@ template 的作用是用一段 json 来描述一个基础的 antd 表单元素�
   </tbody>
   <tbody>
     <tr>
-      <td>sort</td>
+      <td rowspan="2">sort</td>
       <td>handler</td>
       <td>拖拽的图标</td>
       <td>ReactNode</td>
-      <td>&lt;MenuOutlined style={{ cursor: 'grab', color: '#999' }} /></td>
+      <td>&lt;MenuOutlined /></td>
+    </tr>
+    <tr>
+      <td>disabledSort</td>
+      <td>禁用拖拽排序</td>
+      <td>(record, index)=> boolean</td>
+      <td>null</td>
     </tr>
   </tbody>
 </table>
