@@ -5,6 +5,27 @@ import { isObject } from 'lodash';
 
 const { Title } = Typography;
 
+const getRender = (item) => {
+  return (value) => {
+    if (Array.isArray(value)) {
+      return value.map((v, i) => {
+        return <div key={i}>{v}</div>;
+      });
+    }
+    if (isObject(value)) {
+      return (
+        <pre className="dynamic-table-render-code">
+          <code>{JSON.stringify(value, '', 2)}</code>
+        </pre>
+      );
+    }
+    if (item.dataIndex === 'type') {
+      return <div style={{ color: '#c41d7f' }} dangerouslySetInnerHTML={{ __html: value }} />;
+    }
+    return <div dangerouslySetInnerHTML={{ __html: value }} />;
+  };
+};
+
 export default ({ api }) => {
   const propsColumns = [
     { title: '属性名', dataIndex: 'name' },
@@ -14,19 +35,7 @@ export default ({ api }) => {
   ].map((v) => {
     return {
       ...v,
-      render: (value) => {
-        if (isObject(value)) {
-          return (
-            <pre className="dynamic-table-render-code">
-              <code>{JSON.stringify(value, '', 2)}</code>
-            </pre>
-          );
-        }
-        if (v.dataIndex === 'type') {
-          return <div style={{ color: '#c41d7f' }} dangerouslySetInnerHTML={{ __html: value }} />;
-        }
-        return <div dangerouslySetInnerHTML={{ __html: value }} />;
-      }
+      render: getRender(v)
     };
   });
   const eventsColumns = [
@@ -36,16 +45,7 @@ export default ({ api }) => {
   ].map((v) => {
     return {
       ...v,
-      render: (value) => {
-        if (isObject(value)) {
-          return (
-            <pre className="dynamic-table-render-code">
-              <code>{JSON.stringify(value, '', 2)}</code>
-            </pre>
-          );
-        }
-        return <div dangerouslySetInnerHTML={{ __html: value }} />;
-      }
+      render: getRender(v)
     };
   });
   const methodsColumns = [
@@ -55,16 +55,7 @@ export default ({ api }) => {
   ].map((v) => {
     return {
       ...v,
-      render: (value) => {
-        if (isObject(value)) {
-          return (
-            <pre className="dynamic-table-render-code">
-              <code>{JSON.stringify(value, '', 2)}</code>
-            </pre>
-          );
-        }
-        return <div dangerouslySetInnerHTML={{ __html: value }} />;
-      }
+      render: getRender(v)
     };
   });
   const { props = [], events = [], methods = [], columns } = api;

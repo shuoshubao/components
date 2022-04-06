@@ -12,6 +12,8 @@ nav:
 - 集成分页功能
 - 内置丰富模板
 - 可编辑单元格
+- 拖拽排序\_整行
+- 拖拽排序\_句柄
 
 ## 基本使用
 
@@ -623,48 +625,6 @@ export default () => {
 
 ~~当业务中存在相似的模板时, 请封装对应的 render 函数即可, 千万别大量复制粘贴\~)~~
 
-## 工具栏
-
-- `extraConfig.showTotal = true` // 在左上角展示总条数
-- `extraConfig.fullScreen = true` // 展示全屏按钮
-- `extraConfig.storageKey = 'uniqId'` // 表头配置, 如果一个页面有多个表格需要表头设置功能, 请确保 key 不同, 用以存储各个表格的状态
-
-```jsx
-import React from 'react';
-import Table from '@ke/table';
-
-const dataSource = [
-  { id: 1, name: 'Tom', sex: 1, age: 3 },
-  { id: 2, name: 'Jerry', sex: 1, age: 5 }
-];
-
-export default () => {
-  const columns = [
-    {
-      title: '姓名',
-      dataIndex: 'name'
-    },
-    {
-      title: '性别',
-      dataIndex: 'sex'
-    },
-    {
-      title: '年龄',
-      dataIndex: 'age'
-    }
-  ];
-  return (
-    <Table
-      rowKey="id"
-      columns={columns}
-      dataSource={dataSource}
-      pagination={false}
-      extraConfig={{ showTotal: true, fullScreen: true, storageKey: 'one' }}
-    />
-  );
-};
-```
-
 ## 编辑
 
 - `column.editable = true`
@@ -976,6 +936,48 @@ export default () => {
       pagination={{
         defaultPageSize: 3
       }}
+    />
+  );
+};
+```
+
+## 工具栏
+
+- `extraConfig.showTotal = true` // 在左上角展示总条数
+- `extraConfig.fullScreen = true` // 展示全屏按钮
+- `extraConfig.storageKey = 'uniqId'` // 表头配置, 如果一个页面有多个表格需要表头设置功能, 请确保 key 不同, 用以存储各个表格的状态
+
+```jsx
+import React from 'react';
+import Table from '@ke/table';
+
+const dataSource = [
+  { id: 1, name: 'Tom', sex: 1, age: 3 },
+  { id: 2, name: 'Jerry', sex: 1, age: 5 }
+];
+
+export default () => {
+  const columns = [
+    {
+      title: '姓名',
+      dataIndex: 'name'
+    },
+    {
+      title: '性别',
+      dataIndex: 'sex'
+    },
+    {
+      title: '年龄',
+      dataIndex: 'age'
+    }
+  ];
+  return (
+    <Table
+      rowKey="id"
+      columns={columns}
+      dataSource={dataSource}
+      pagination={false}
+      extraConfig={{ showTotal: true, fullScreen: true, storageKey: 'one' }}
     />
   );
 };

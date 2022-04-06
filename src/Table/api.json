@@ -28,18 +28,44 @@
     },
     {
       "name": "extraConfig",
-      "desc": "其他配置都放在这里<br/>showTotal: 在左上角展示总条数<br/>storageKey: 展示表头配置,存储展示状态的localStorage的唯一标识<br/>fullScreen: 全屏",
-      "type": "<pre class='dynamic-table-render-code'><code>{\n  showTotal: boolean,\n  storageKey: string,\n  fullScreen: boolean\n}</code></pre>",
+      "desc": [
+        "其他配置都放在这里",
+        "showTotal: 在左上角展示总条数",
+        "storageKey: 展示表头配置,存储展示状态的localStorage的唯一标识",
+        "fullScreen: 全屏"
+      ],
+      "type": "<pre class='dynamic-table-render-code'><code>{\n  showTotal: boolean,\n  storageKey: string,\n  fullScreen: boolean,\n  disabledSort: (record, index) => boolean\n}</code></pre>",
       "optionalValue": "",
-      "default": "<pre class='dynamic-table-render-code'><code>{\n  showTotal: false,\n  storageKey: '',\n  fullScreen: false\n}</code></pre>",
+      "default": {
+        "showTotal": false,
+        "storageKey": "''",
+        "fullScreen": false,
+        "disabledSort": null
+      },
       "version": ""
     },
     {
       "name": "draggable",
-      "desc": "开启拖拽排序",
+      "desc": "开启拖拽排序(拖拽整行)",
       "type": "boolean",
       "optionalValue": "",
       "default": "false",
+      "version": ""
+    },
+    {
+      "name": "prependHeader",
+      "desc": "Table 左上角插槽",
+      "type": "ReactNode",
+      "optionalValue": "",
+      "default": "null",
+      "version": ""
+    },
+    {
+      "name": "appendHeader",
+      "desc": "Table 右上角插槽",
+      "type": "ReactNode",
+      "optionalValue": "",
+      "default": "null",
       "version": ""
     }
   ],
@@ -91,7 +117,10 @@
       "desc": "模板的配置",
       "type": "{ tpl: '', ...props }",
       "optionalValue": "",
-      "default": { "tpl": "text", "emptyText": "--" },
+      "default": {
+        "tpl": "text",
+        "emptyText": "--"
+      },
       "version": ""
     },
     {

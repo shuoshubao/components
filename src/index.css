@@ -96,3 +96,7 @@ body .__dumi-default-navbar-tool {
   padding: 5px !important;
   margin: 0;
 }
+
+.dynamic-table .ant-table-tbody > tr > td {
+  vertical-align: top;
+}
