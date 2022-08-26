@@ -1,30 +1,30 @@
-import React, { Fragment } from 'react';
-import { Typography } from 'antd';
-import Table from '@ke/table';
-import { isObject } from 'lodash';
+import React, { Fragment } from 'react'
+import { Typography, Table } from 'antd'
+// import Table from '../lib/Table'
+import { isObject } from 'lodash'
 
-const { Title } = Typography;
+const { Title } = Typography
 
-const getRender = (item) => {
-  return (value) => {
+const getRender = item => {
+  return value => {
     if (Array.isArray(value)) {
       return value.map((v, i) => {
-        return <div key={i}>{v}</div>;
-      });
+        return <div key={i}>{v}</div>
+      })
     }
     if (isObject(value)) {
       return (
         <pre className="dynamic-table-render-code">
           <code>{JSON.stringify(value, '', 2)}</code>
         </pre>
-      );
+      )
     }
     if (item.dataIndex === 'type') {
-      return <div style={{ color: '#c41d7f' }} dangerouslySetInnerHTML={{ __html: value }} />;
+      return <div style={{ color: '#c41d7f' }} dangerouslySetInnerHTML={{ __html: value }} />
     }
-    return <div dangerouslySetInnerHTML={{ __html: value }} />;
-  };
-};
+    return <div dangerouslySetInnerHTML={{ __html: value }} />
+  }
+}
 
 export default ({ api }) => {
   const propsColumns = [
@@ -32,38 +32,38 @@ export default ({ api }) => {
     { title: '说明', dataIndex: 'desc' },
     { title: '类型', dataIndex: 'type' },
     { title: '默认值', dataIndex: 'default' }
-  ].map((v) => {
+  ].map(v => {
     return {
       ...v,
       render: getRender(v)
-    };
-  });
+    }
+  })
   const eventsColumns = [
     { title: '事件名', dataIndex: 'name' },
     { title: '说明', dataIndex: 'desc' },
     { title: '参数', dataIndex: 'args' }
-  ].map((v) => {
+  ].map(v => {
     return {
       ...v,
       render: getRender(v)
-    };
-  });
+    }
+  })
   const methodsColumns = [
     { title: '方法名', dataIndex: 'name' },
     { title: '说明', dataIndex: 'desc' },
     { title: '参数', dataIndex: 'args' }
-  ].map((v) => {
+  ].map(v => {
     return {
       ...v,
       render: getRender(v)
-    };
-  });
-  const { props = [], events = [], methods = [], columns } = api;
+    }
+  })
+  const { props = [], events = [], methods = [], columns } = api
   const commonTableProps = {
     rowKey: 'name',
     size: 'small',
     pagination: false
-  };
+  }
   return (
     <Fragment>
       {!!props.length && (
@@ -99,5 +99,5 @@ export default ({ api }) => {
         />
       )}
     </Fragment>
-  );
-};
+  )
+}

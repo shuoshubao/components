@@ -72,9 +72,9 @@ nav:
 ### 搜索组件
 
 ```jsx
-import React from 'react';
-import Form from '@ke/form';
-import { OptionsData } from '../mock';
+import React from 'react'
+import { Form } from '@nbfe/components'
+import { OptionsData } from '../mock'
 
 export default () => {
   const columns = [
@@ -91,9 +91,9 @@ export default () => {
         options: OptionsData
       }
     }
-  ];
-  return <Form columns={columns} autoSubmit={false} showSearchBtn />;
-};
+  ]
+  return <Form columns={columns} autoSubmit={false} showSearchBtn />
+}
 ```
 
 ### 表单组件
@@ -101,19 +101,19 @@ export default () => {
 当作为表单组件时, 需要手动把查询和重置按钮隐藏; Form 元素的子元素将被放到表单项的最底部
 
 ```jsx
-import React, { useRef, useState } from 'react';
-import Form from '@ke/form';
-import { Button } from 'antd';
-import { rules, sleep } from '@nbfe/tools';
-import { showMessage, CityOptionsData } from '../mock';
+import React, { useRef, useState } from 'react'
+import { Form } from '@nbfe/components'
+import { Button } from 'antd'
+import { rules, sleep } from '@nbfe/tools'
+import { showMessage, CityOptionsData } from '../mock'
 
-const { required, selectRequired } = rules;
+const { required, selectRequired } = rules
 
 export default () => {
-  const formRef = useRef();
+  const formRef = useRef()
 
   // 表单正在提交
-  const [submitLoading, setSubmitLoading] = useState(false);
+  const [submitLoading, setSubmitLoading] = useState(false)
 
   // 详情数据
   const detailData = {
@@ -121,25 +121,25 @@ export default () => {
     name: '硕鼠宝',
     school: '',
     city: 1
-  };
+  }
 
   // 表单提交
   // 1. 表单校验
   // 1.1 如果失败 **formData** 返回null, 且弹窗提示信息: '表单项填写存在错误！请检查'
   // 1.2 校验通过则返回表单数据
   const handleSubmit = async () => {
-    const formData = await formRef.current.getFormData();
-    console.log(111, formData);
+    const formData = await formRef.current.getFormData()
+    console.log(111, formData)
     if (!formData) {
-      return;
+      return
     }
-    showMessage('表单数据', formData);
-    setSubmitLoading(true);
+    showMessage('表单数据', formData)
+    setSubmitLoading(true)
     // 这里模仿接口请求
-    await sleep();
-    showMessage('操作成功!');
-    setSubmitLoading(false);
-  };
+    await sleep()
+    showMessage('操作成功!')
+    setSubmitLoading(false)
+  }
 
   const columns = [
     {
@@ -173,12 +173,12 @@ export default () => {
         allowClear: true
       }
     }
-  ].map((v) => {
+  ].map(v => {
     return {
       ...v,
       defaultValue: detailData[v.name]
-    };
-  });
+    }
+  })
   return (
     <Form
       ref={formRef}
@@ -192,8 +192,8 @@ export default () => {
         提交
       </Button>
     </Form>
-  );
-};
+  )
+}
 ```
 
 ## 内置模板
@@ -201,14 +201,14 @@ export default () => {
 ### Input
 
 ```jsx
-import React from 'react';
-import Form from '@ke/form';
-import { showMessage, OptionsData } from '../mock';
+import React from 'react'
+import { Form } from '@nbfe/components'
+import { showMessage, OptionsData } from '../mock'
 
 export default () => {
-  const handleSubmit = (params) => {
-    showMessage('触发了提交事件, 参数为:', params);
-  };
+  const handleSubmit = params => {
+    showMessage('触发了提交事件, 参数为:', params)
+  }
   const columns = [
     {
       name: 'input1',
@@ -254,21 +254,21 @@ export default () => {
         inputType: 'password'
       }
     }
-  ];
-  return <Form columns={columns} onSubmit={handleSubmit} showSearchBtn autoSubmit={false} />;
-};
+  ]
+  return <Form columns={columns} onSubmit={handleSubmit} showSearchBtn autoSubmit={false} />
+}
 ```
 
 ### InputNumber_RangeNumber
 
 ```jsx
-import React from 'react';
-import Form from '@ke/form';
+import React from 'react'
+import { Form } from '@nbfe/components'
 
 export default () => {
-  const handleSubmit = (params) => {
-    showMessage('触发了提交事件, 参数为:', params);
-  };
+  const handleSubmit = params => {
+    showMessage('触发了提交事件, 参数为:', params)
+  }
   const columns = [
     {
       name: 'number-1',
@@ -297,9 +297,9 @@ export default () => {
         step: 0.1
       }
     }
-  ];
-  return <Form columns={columns} onSubmit={handleSubmit} autoSubmit={false} />;
-};
+  ]
+  return <Form columns={columns} onSubmit={handleSubmit} autoSubmit={false} />
+}
 ```
 
 ### Select_Radio_Checkbox_Tabs
@@ -307,14 +307,14 @@ export default () => {
 tabs 一般独占一行, 且在第一行
 
 ```jsx
-import React from 'react';
-import Form from '@ke/form';
-import { TabsOptionsData, OptionsData, MoreOptionsData } from '../mock';
+import React from 'react'
+import { Form } from '@nbfe/components'
+import { TabsOptionsData, OptionsData, MoreOptionsData } from '../mock'
 
 export default () => {
-  const handleSubmit = (params) => {
-    showMessage('触发了提交事件, 参数为:', params);
-  };
+  const handleSubmit = params => {
+    showMessage('触发了提交事件, 参数为:', params)
+  }
 
   const columns = [
     {
@@ -405,9 +405,9 @@ export default () => {
         options: MoreOptionsData
       }
     }
-  ];
-  return <Form columns={columns} onSubmit={handleSubmit} autoSubmit={false} />;
-};
+  ]
+  return <Form columns={columns} onSubmit={handleSubmit} autoSubmit={false} />
+}
 ```
 
 ### DatePicker
@@ -417,14 +417,14 @@ export default () => {
 日期范围需要俩字段, 即开始时间和结束时间; 仍然通过一个 **name** 字段来配置, 只需要通过 _,_ 连接就行, 例如 `name: 'startAt,endAt'`
 
 ```jsx
-import React from 'react';
-import Form from '@ke/form';
-import { showMessage, TabsOptionsData, OptionsData } from '../mock';
+import React from 'react'
+import { Form } from '@nbfe/components'
+import { showMessage, TabsOptionsData, OptionsData } from '../mock'
 
 export default () => {
-  const handleSubmit = (params) => {
-    showMessage('触发了提交事件, 参数为:', params);
-  };
+  const handleSubmit = params => {
+    showMessage('触发了提交事件, 参数为:', params)
+  }
 
   const columns = [
     {
@@ -449,9 +449,9 @@ export default () => {
         format: 'YYYY-MM-DD'
       }
     }
-  ];
-  return <Form columns={columns} onSubmit={handleSubmit} autoSubmit={false} />;
-};
+  ]
+  return <Form columns={columns} onSubmit={handleSubmit} autoSubmit={false} />
+}
 ```
 
 ### Cascader_AutoComplete_TreeSelect
@@ -463,26 +463,26 @@ Select Cascader TreeSelect AutoComplete 这四个组件其实本质上都属于�
 针对这类 case, 本组件设计了 **remoteConfig** 概念! 即用一段配置来描述接口请求
 
 ```jsx
-import React from 'react';
-import { version } from 'antd';
-import { sleep } from '@nbfe/tools';
-import Form from '@ke/form';
-import { showMessage, CascaderOptions, TreeData } from '../mock';
+import React from 'react'
+import { version } from 'antd'
+import { sleep } from '@nbfe/tools'
+import { Form } from '@nbfe/components'
+import { showMessage, CascaderOptions, TreeData } from '../mock'
 
-const mockEmailData = (str) => {
-  return [1, 2, 3].map((v) => {
-    const name = [str, v].join('');
+const mockEmailData = str => {
+  return [1, 2, 3].map(v => {
+    const name = [str, v].join('')
     return {
       value: name,
       label: `${name}(${name}@qq.com)`
-    };
-  });
-};
+    }
+  })
+}
 
 export default () => {
-  const handleSubmit = (params) => {
-    showMessage('触发了提交事件, 参数为:', params);
-  };
+  const handleSubmit = params => {
+    showMessage('触发了提交事件, 参数为:', params)
+  }
   const columns = [
     {
       label: '级联选择',
@@ -491,7 +491,7 @@ export default () => {
         tpl: 'cascader',
         remoteConfig: {
           fetch: async () => {
-            await sleep();
+            await sleep()
             // 完整的接口数据
             return {
               code: 0,
@@ -499,7 +499,7 @@ export default () => {
                 cityData: CascaderOptions
               },
               mesg: 'success'
-            };
+            }
           },
           path: 'data.cityData'
         }
@@ -512,8 +512,8 @@ export default () => {
         tpl: 'tree-select',
         remoteConfig: {
           fetch: async () => {
-            await sleep();
-            return TreeData;
+            await sleep()
+            return TreeData
           }
         }
       }
@@ -524,32 +524,32 @@ export default () => {
       template: {
         tpl: 'auto-complete',
         remoteConfig: {
-          fetch: async (query) => {
+          fetch: async query => {
             // 这里是为了模拟接口请求, 实际上, 你可使用任意 Promise
-            await sleep(0.1);
-            return !query ? [] : mockEmailData(query);
+            await sleep(0.1)
+            return !query ? [] : mockEmailData(query)
           }
         }
       }
     }
-  ];
-  return <Form columns={columns} onSubmit={handleSubmit} autoSubmit={false} />;
-};
+  ]
+  return <Form columns={columns} onSubmit={handleSubmit} autoSubmit={false} />
+}
 ```
 
 ### Slider_Switch
 
 ```jsx
-import React from 'react';
-import { version } from 'antd';
-import { sleep } from '@nbfe/tools';
-import Form from '@ke/form';
-import { showMessage } from '../mock';
+import React from 'react'
+import { version } from 'antd'
+import { sleep } from '@nbfe/tools'
+import { Form } from '@nbfe/components'
+import { showMessage } from '../mock'
 
 export default () => {
-  const handleSubmit = (params) => {
-    showMessage('触发了提交事件, 参数为:', params);
-  };
+  const handleSubmit = params => {
+    showMessage('触发了提交事件, 参数为:', params)
+  }
   const columns = [
     {
       label: '滑动输入条1',
@@ -567,9 +567,9 @@ export default () => {
         tpl: 'switch'
       }
     }
-  ];
-  return <Form columns={columns} onSubmit={handleSubmit} autoSubmit={false} />;
-};
+  ]
+  return <Form columns={columns} onSubmit={handleSubmit} autoSubmit={false} />
+}
 ```
 
 ## 自定义组件
@@ -577,30 +577,30 @@ export default () => {
 只需要给 **template: tpl** 传入一个 [受控组件](https://zh-hans.reactjs.org/docs/forms.html#controlled-components)
 
 ```jsx
-import React, { useRef, useState } from 'react';
-import { Button, Input } from 'antd';
-import PlusCircleOutlined from '@ant-design/icons/PlusCircleOutlined';
-import MinusCircleOutlined from '@ant-design/icons/MinusCircleOutlined';
-import { map, cloneDeep } from 'lodash';
-import { isUniq } from '@nbfe/tools';
-import Form from '@ke/form';
-import { showMessage } from '../mock';
+import React, { useRef, useState } from 'react'
+import { Button, Input } from 'antd'
+import PlusCircleOutlined from '@ant-design/icons/PlusCircleOutlined'
+import MinusCircleOutlined from '@ant-design/icons/MinusCircleOutlined'
+import { map, cloneDeep } from 'lodash'
+import { isUniq } from '@nbfe/tools'
+import { Form } from '@nbfe/components'
+import { showMessage } from '../mock'
 
 // 自定义组件
-const CustomComponent = (props) => {
-  const { value = [], onChange, min = 1, max = 5 } = props;
+const CustomComponent = props => {
+  const { value = [], onChange, min = 1, max = 5 } = props
 
-  const onAdd = (i) => {
-    const newValue = cloneDeep(value);
-    newValue.splice(i + 1, 0, '');
-    onChange(newValue);
-  };
+  const onAdd = i => {
+    const newValue = cloneDeep(value)
+    newValue.splice(i + 1, 0, '')
+    onChange(newValue)
+  }
 
-  const onRemove = (i) => {
-    const newValue = cloneDeep(value);
-    newValue.splice(i, 1);
-    onChange(newValue);
-  };
+  const onRemove = i => {
+    const newValue = cloneDeep(value)
+    newValue.splice(i, 1)
+    onChange(newValue)
+  }
 
   return (
     <div>
@@ -609,17 +609,17 @@ const CustomComponent = (props) => {
           <div key={[i].join()} style={{ marginTop: i === 0 ? 0 : 10, width: 280 }}>
             <Input
               value={v}
-              onChange={(e) => {
-                const newValue = cloneDeep(value);
-                newValue[i] = e.target.value;
-                onChange(newValue);
+              onChange={e => {
+                const newValue = cloneDeep(value)
+                newValue[i] = e.target.value
+                onChange(newValue)
               }}
               style={{ width: 200 }}
             />
             {value.length < max && (
               <PlusCircleOutlined
                 onClick={() => {
-                  onAdd(i);
+                  onAdd(i)
                 }}
                 style={{ marginLeft: 10, fontSize: 20, color: '#1890ff' }}
               />
@@ -627,27 +627,27 @@ const CustomComponent = (props) => {
             {value.length > min && (
               <MinusCircleOutlined
                 onClick={() => {
-                  onRemove(i);
+                  onRemove(i)
                 }}
                 style={{ marginLeft: 10, fontSize: 20, color: '#f5222d' }}
               />
             )}
           </div>
-        );
+        )
       })}
     </div>
-  );
-};
+  )
+}
 
 export default () => {
-  const formRef = useRef();
+  const formRef = useRef()
   const handleSubmit = async () => {
-    const formData = await formRef.current.getFormData();
+    const formData = await formRef.current.getFormData()
     if (!formData) {
-      return;
+      return
     }
-    showMessage('表单数据', formData);
-  };
+    showMessage('表单数据', formData)
+  }
   const columns = [
     {
       label: '自定义组件',
@@ -656,19 +656,19 @@ export default () => {
       rules: [
         {
           validator: (rule, value) => {
-            const label = '自定义组件';
-            const val = value.map((v) => {
-              return v.trim();
-            });
+            const label = '自定义组件'
+            const val = value.map(v => {
+              return v.trim()
+            })
             // 空项
-            if (val.some((v) => v === '')) {
-              return Promise.reject([label, '不能有空项'].join(''));
+            if (val.some(v => v === '')) {
+              return Promise.reject([label, '不能有空项'].join(''))
             }
             // 重复项
             if (!isUniq(val)) {
-              return Promise.reject([label, '不能有重复项'].join(''));
+              return Promise.reject([label, '不能有重复项'].join(''))
             }
-            return Promise.resolve();
+            return Promise.resolve()
           }
         }
       ],
@@ -676,7 +676,7 @@ export default () => {
         tpl: CustomComponent
       }
     }
-  ];
+  ]
   return (
     <Form
       ref={formRef}
@@ -690,8 +690,8 @@ export default () => {
         提交
       </Button>
     </Form>
-  );
-};
+  )
+}
 ```
 
 ## 动态增减表单项
@@ -699,58 +699,58 @@ export default () => {
 配置 _column.formListConfig_ 即可
 
 ```jsx
-import React, { useRef } from 'react';
-import { Button, Input, Space } from 'antd';
-import PlusCircleOutlined from '@ant-design/icons/PlusCircleOutlined';
-import MinusCircleOutlined from '@ant-design/icons/MinusCircleOutlined';
-import { isUniq } from '@nbfe/tools';
-import Form from '@ke/form';
-import { showMessage } from '../mock';
+import React, { useRef } from 'react'
+import { Button, Input, Space } from 'antd'
+import PlusCircleOutlined from '@ant-design/icons/PlusCircleOutlined'
+import MinusCircleOutlined from '@ant-design/icons/MinusCircleOutlined'
+import { isUniq } from '@nbfe/tools'
+import { Form } from '@nbfe/components'
+import { showMessage } from '../mock'
 
-const isUniqCollection = (collection) => {
-  return isUniq(collection.map((v) => Object.entries(v).flat().join('__')));
-};
+const isUniqCollection = collection => {
+  return isUniq(collection.map(v => Object.entries(v).flat().join('__')))
+}
 
-const PersonInfo = (props) => {
-  const { value, onChange } = props;
+const PersonInfo = props => {
+  const { value, onChange } = props
   return (
     <Space>
       <span>姓:</span>
       <Input
         value={value.first}
-        onChange={(e) => {
+        onChange={e => {
           onChange({
             ...value,
             first: e.target.value
-          });
+          })
         }}
         placeholder="请输入姓"
       />
       <span>名:</span>
       <Input
         value={value.last}
-        onChange={(e) => {
+        onChange={e => {
           onChange({
             ...value,
             last: e.target.value
-          });
+          })
         }}
         placeholder="请输入名"
       />
     </Space>
-  );
-};
+  )
+}
 
 export default () => {
-  const formRef = useRef();
+  const formRef = useRef()
 
   const handleSubmit = async () => {
-    const formData = await formRef.current.getFormData();
+    const formData = await formRef.current.getFormData()
     if (!formData) {
-      return;
+      return
     }
-    showMessage('表单数据', formData);
-  };
+    showMessage('表单数据', formData)
+  }
 
   const columns = [
     {
@@ -770,13 +770,13 @@ export default () => {
         rules: [
           {
             validator: (rule, value) => {
-              console.log(222);
-              console.log(value);
-              console.log(rule);
+              console.log(222)
+              console.log(value)
+              console.log(rule)
               if (!isUniqCollection(value)) {
-                return Promise.reject(new Error('不得重复'));
+                return Promise.reject(new Error('不得重复'))
               }
-              return Promise.resolve();
+              return Promise.resolve()
             }
           }
         ]
@@ -785,7 +785,7 @@ export default () => {
         tpl: PersonInfo
       }
     }
-  ];
+  ]
   return (
     <Form
       ref={formRef}
@@ -799,18 +799,18 @@ export default () => {
         提交
       </Button>
     </Form>
-  );
-};
+  )
+}
 ```
 
 ## API
 
 ```jsx
-import React from 'react';
-import api from './api.json';
-import ComponentApi from '../ComponentApi';
+import React from 'react'
+import api from './api.json'
+import ComponentApi from '../ComponentApi'
 
 export default () => {
-  return <ComponentApi api={api} />;
-};
+  return <ComponentApi api={api} />
+}
 ```

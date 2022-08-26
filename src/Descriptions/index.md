@@ -15,24 +15,24 @@ nav:
 ## 基本使用
 
 ```jsx
-import React, { useState, useEffect } from 'react';
-import { Button } from 'antd';
-import { Descriptions } from '@ke/table';
+import React, { useState, useEffect } from 'react'
+import { Button } from 'antd'
+import { Descriptions } from '@nbfe/components'
 
 const mockData = {
   name: '硕鼠宝',
   age: 18,
   job: 'fe'
-};
+}
 
 export default () => {
-  const [dataSource, setDataSource] = useState();
+  const [dataSource, setDataSource] = useState()
 
   useEffect(() => {
     setTimeout(() => {
-      setDataSource(mockData);
-    }, 1e3);
-  }, [setDataSource]);
+      setDataSource(mockData)
+    }, 1e3)
+  }, [setDataSource])
 
   const columns = [
     {
@@ -47,7 +47,7 @@ export default () => {
       label: '职业',
       name: 'job'
     }
-  ];
+  ]
   return (
     <Descriptions
       title="基本信息"
@@ -60,8 +60,8 @@ export default () => {
       columns={columns}
       data={dataSource}
     />
-  );
-};
+  )
+}
 ```
 
 ## 模板
@@ -69,9 +69,9 @@ export default () => {
 > 参考 [table#内置模板](table#内置模板)
 
 ```jsx
-import React, { useState, useEffect } from 'react';
-import { Descriptions } from '@ke/table';
-import { OptionsData2 } from '../mock';
+import React, { useState, useEffect } from 'react'
+import { Descriptions } from '@nbfe/components'
+import { OptionsData2 } from '../mock'
 
 const mockData = {
   name: '硕鼠宝',
@@ -83,16 +83,16 @@ const mockData = {
     url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
   },
   abc: 123
-};
+}
 
 export default () => {
-  const [dataSource, setDataSource] = useState();
+  const [dataSource, setDataSource] = useState()
 
   useEffect(() => {
     setTimeout(() => {
-      setDataSource(mockData);
-    }, 1e3);
-  }, [setDataSource]);
+      setDataSource(mockData)
+    }, 1e3)
+  }, [setDataSource])
 
   const columns = [
     {
@@ -140,33 +140,33 @@ export default () => {
         render: () => {
           return {
             text: '链接'
-          };
+          }
         }
       }
     },
     {
       label: '自定义',
       name: 'abc',
-      render: (value) => {
+      render: value => {
         if (value === undefined) {
-          return '--';
+          return '--'
         }
-        return `${value} + 1 = ${value + 1}`;
+        return `${value} + 1 = ${value + 1}`
       }
     }
-  ];
-  return <Descriptions columns={columns} data={dataSource} />;
-};
+  ]
+  return <Descriptions columns={columns} data={dataSource} />
+}
 ```
 
 ## API
 
 ```jsx
-import React from 'react';
-import api from './api.json';
-import ComponentApi from '../ComponentApi';
+import React from 'react'
+import api from './api.json'
+import ComponentApi from '../ComponentApi'
 
 export default () => {
-  return <ComponentApi api={api} />;
-};
+  return <ComponentApi api={api} />
+}
 ```

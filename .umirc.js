@@ -1,17 +1,17 @@
-import { readFileSync } from 'fs';
-import { defineConfig } from 'dumi';
+import { readFileSync } from 'fs'
+import { resolve } from 'path'
+import { defineConfig } from 'dumi'
 
 const styles = [
   readFileSync('./src/index.css').toString(),
-  readFileSync('node_modules/@ke/form/dist/index.css').toString(),
-  readFileSync('node_modules/@ke/table/dist/index.css').toString(),
+  readFileSync('dist/index.css').toString(),
   '.dynamic-form .ant-form-error { color: #f5222d }'
-];
+]
 
 export default defineConfig({
   title: '组件文档',
   favicon: 'https://img.alicdn.com/tfs/TB1YHEpwUT1gK0jSZFhXXaAtVXa-28-27.svg',
-  outputPath: 'dist',
+  outputPath: 'dist-docs',
   mode: 'site',
   404: false,
   hash: true,
@@ -39,6 +39,9 @@ export default defineConfig({
     }
   ],
   locales: [['zh-CN', '中文']],
+  alias: {
+    '@nbfe/components': resolve(__dirname, './lib/index.js')
+  },
   links: [
     {
       rel: 'stylesheet',
@@ -49,4 +52,4 @@ export default defineConfig({
   themeConfig: {
     features: false
   }
-});
+})

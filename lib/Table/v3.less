@@ -1,0 +1,310 @@
+@import './table.less';
+@import './Image/index.less';
+
+.dynamic-table {
+  background-color: #fff;
+  .ant-v3-table table,
+  .ant-v3-table-small {
+    border-radius: 0;
+  }
+  .ant-v3-table-footer {
+    padding: 10px;
+    background: #fff;
+    &::before {
+      display: none;
+    }
+    &:empty {
+      display: none;
+    }
+  }
+  &.dynamic-table-bordered {
+    border: 1px solid #e8e8e8;
+    table {
+      border-right: none;
+      border-left: none;
+    }
+    .dynamic-table-header {
+      border-bottom: none;
+    }
+  }
+  &.dynamic-table-small {
+    .dynamic-table-header {
+      border-bottom-width: 0;
+      padding: 5px;
+    }
+    .ant-v3-table-thead > tr > th,
+    .ant-v3-table-tbody > tr > td {
+      padding: 5px;
+    }
+    .ant-pagination.ant-v3-table-pagination {
+      padding: 5px !important;
+    }
+    .ant-v3-table-footer {
+      padding: 5px;
+    }
+  }
+  &:not(.dynamic-table-disable-pagination) {
+    .ant-v3-table-small {
+      border-bottom-width: 0;
+    }
+  }
+  .dynamic-table-header {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e8e8e8;
+    &:empty {
+      display: none;
+    }
+    .dynamic-table-header-left,
+    .dynamic-table-header-right {
+      display: flex;
+      align-items: center;
+      & > *:not(:last-child) {
+        margin-right: 10px;
+      }
+      .dynamic-table-toolbar-icon {
+        &:hover {
+          color: #1890ff;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .dynamic-table-column-title-tooltip {
+    margin-left: 4px;
+    color: #00000073;
+    cursor: help;
+  }
+  .ant-image-mask-info {
+    font-size: 0;
+    .anticon.anticon-eye {
+      font-size: 14px;
+      margin-right: 0;
+    }
+  }
+  .dynamic-table-total {
+    margin: 0 4px;
+    font-style: italic;
+  }
+  .ant-pagination.ant-v3-table-pagination {
+    padding: 10px !important;
+  }
+  .ant-v3-table-thead > tr > th,
+  .ant-v3-table-tbody > tr > td {
+    padding: 10px;
+  }
+  .ant-v3-table-tbody > tr {
+    &.dynamic-table-drop-over-downward td {
+      border-bottom: 2px dashed #1890ff;
+    }
+    &.dynamic-table-drop-over-upward td {
+      border-top: 2px dashed #1890ff;
+    }
+  }
+}
+
+.dynamic-table-filter-dropdown {
+  font-size: 0;
+  user-select: none;
+  &.dynamic-table-filter-dropdown-has-tree-select {
+    .dynamic-table-filter-dropdown-options {
+      padding: 0;
+    }
+  }
+  .dynamic-table-filter-dropdown-options {
+    padding: 4px 0;
+    max-height: 300px;
+    overflow-y: auto;
+    .ant-checkbox-group,
+    .ant-radio-group {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .dynamic-table-filter-dropdown-footer {
+    border-top: 1px solid rgb(240, 240, 240);
+    padding: 7px 8px 7px 3px;
+    display: flex;
+    justify-content: flex-end;
+    &.dynamic-table-filter-dropdown-footer-hide {
+      display: none;
+    }
+    .ant-btn + .ant-btn {
+      margin-left: 5px;
+    }
+  }
+  .ant-checkbox-group-item,
+  .ant-radio-wrapper {
+    padding: 5px 12px;
+    margin-right: 0;
+  }
+}
+
+.ant-dropdown.dynamic-table-render-link-dropdown {
+  .ant-dropdown-menu {
+    min-width: 128px;
+  }
+  a {
+    margin: 0;
+    display: inline-block;
+    height: 24px;
+    padding: 0px 7px;
+  }
+}
+
+.dynamic-table-row-dragging,
+.dynamic-table,
+.dynamic-table-descriptions {
+  .ant-typography {
+    margin-bottom: 0;
+  }
+  .ant-progress-line {
+    width: calc(100% - 25px);
+  }
+  .dynamic-table-render-sort {
+    color: #333;
+    cursor: grab;
+    &.dynamic-table-render-sort-disabled {
+      cursor: not-allowed;
+      color: #d9d9d9;
+    }
+  }
+  .dynamic-table-render-tag {
+    margin: 0;
+  }
+  .dynamic-table-render-enum-circle {
+    display: inline-block;
+    padding: 0 10px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 12px;
+    font-size: 12px;
+    min-width: 40px;
+    white-space: nowrap;
+  }
+  .dynamic-table-render-enum-dot,
+  .dynamic-table-render-enum-square {
+    display: inline-flex;
+    align-items: center;
+    .dynamic-table-render-enum-badge {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      margin-right: 5px;
+    }
+    .dynamic-table-render-enum-text {
+      white-space: nowrap;
+    }
+  }
+  .dynamic-table-render-enum-dot .dynamic-table-render-enum-badge {
+    border-radius: 50%;
+  }
+  .dynamic-table-render-code {
+    width: 100%;
+    margin: 0;
+    padding: 5px;
+    overflow: auto;
+    line-height: 20px;
+    background-color: rgb(246, 248, 250);
+    border-radius: 3px;
+  }
+}
+
+.ant-popover.dynamic-table-columns-setting-popover {
+  user-select: none;
+  .ant-popover-title {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .ant-popover-inner-content {
+    max-height: 320px;
+    overflow-y: auto;
+    padding: 0;
+  }
+  .ant-checkbox-group {
+    display: flex;
+    flex-direction: column;
+    .ant-checkbox-group-item {
+      padding: 5px 10px;
+      margin: 0;
+      &:hover {
+        background: #f7f7f7;
+      }
+      .dynamic-table-column-title-tooltip {
+        margin-left: 4px;
+      }
+    }
+  }
+}
+
+.dynamic-table-descriptions {
+  background-color: #fff;
+  &.ant-descriptions-bordered {
+    .ant-descriptions-item-label,
+    .ant-descriptions-item-content {
+      padding: 10px;
+    }
+  }
+  .ant-descriptions-item-content {
+    overflow: auto;
+  }
+  &:not(.ant-descriptions-bordered) {
+    .ant-descriptions-item-label {
+      vertical-align: top;
+    }
+  }
+  .ant-descriptions-item-container {
+    align-items: flex-start;
+  }
+  .ant-descriptions-item-label {
+    word-break: keep-all;
+  }
+  .ant-descriptions-item .ant-descriptions-item-label {
+    align-items: center;
+    .dynamic-table-descriptions-item-label-tooltip {
+      margin-left: 4px;
+    }
+  }
+  .ant-descriptions-row > th,
+  .ant-descriptions-row > td {
+    padding-bottom: 10px;
+  }
+  .ant-descriptions-row:last-child > td {
+    padding-bottom: 0;
+  }
+  .ant-descriptions-item:not(:last-child) {
+    padding-right: 10px;
+  }
+  &.dynamic-table-antd-v3 {
+    .ant-descriptions-title {
+      display: flex;
+      align-items: center;
+    }
+    .dynamic-table-descriptions-extra {
+      margin-left: auto;
+      color: #000000d9;
+      font-size: 14px;
+    }
+  }
+}
+
+.dynamic-form + .dynamic-table {
+  margin-top: 10px;
+}
+
+.dynamic-table-row-dragging {
+  z-index: 2;
+  background: #fafafa;
+  overflow: hidden;
+  box-shadow: 0 1px 2px -2px #00000029, 0 3px 6px #0000001f, 0 5px 12px 4px #00000017;
+  td {
+    background: #fafafa;
+    padding: 10px;
+  }
+  .dynamic-form-number-range {
+    position: relative;
+    top: -20px;
+  }
+}

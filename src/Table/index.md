@@ -22,12 +22,12 @@ nav:
 当不使用接口请求时, 数据源通过 **dataSource** 属性传入
 
 ```jsx
-import React, { useState, Fragment } from 'react';
-import { Button } from 'antd';
-import Table from '@ke/table';
+import React, { useState, Fragment } from 'react'
+import { Button } from 'antd'
+import { Table } from '@nbfe/components'
 
 export default () => {
-  const [dataSource, setDataSource] = useState([]);
+  const [dataSource, setDataSource] = useState([])
 
   const columns = [
     {
@@ -38,7 +38,7 @@ export default () => {
       title: '姓名',
       dataIndex: 'name'
     }
-  ];
+  ]
 
   const handleSearch = async () => {
     const data = [
@@ -50,9 +50,9 @@ export default () => {
         id: 2,
         name: 'bbb'
       }
-    ];
-    setDataSource(data);
-  };
+    ]
+    setDataSource(data)
+  }
 
   return (
     <Fragment>
@@ -61,8 +61,8 @@ export default () => {
       </Button>
       <Table key={Date.now()} rowKey="id" columns={columns} dataSource={dataSource} pagination={false} size="small" />
     </Fragment>
-  );
-};
+  )
+}
 ```
 
 ### 接口请求
@@ -70,10 +70,10 @@ export default () => {
 当数据不是固定的, 比如 1. 有搜索; 2. 分页时需请求接口, 这时候不配置属性 **dataSource**, 而只需配置属性 **remoteConfig**, 然后在需要的地方调用 tableRef.current.search() 即可
 
 ```jsx
-import React, { useRef, Fragment } from 'react';
-import { Button } from 'antd';
-import { sleep } from '@nbfe/tools';
-import Table from '@ke/table';
+import React, { useRef, Fragment } from 'react'
+import { Button } from 'antd'
+import { sleep } from '@nbfe/tools'
+import { Table } from '@nbfe/components'
 
 const dataSource = [
   {
@@ -84,7 +84,7 @@ const dataSource = [
     id: 2,
     name: 'bbb'
   }
-];
+]
 
 const columns = [
   {
@@ -95,11 +95,11 @@ const columns = [
     title: '姓名',
     dataIndex: 'name'
   }
-];
+]
 
 const remoteConfig = {
   fetch: async () => {
-    await sleep(); // 这里是为了模拟接口
+    await sleep() // 这里是为了模拟接口
     return {
       data: {
         list: dataSource,
@@ -107,18 +107,18 @@ const remoteConfig = {
       },
       code: 0,
       message: '成功'
-    };
+    }
   },
   dataSourceKey: 'data.list',
   totalKey: 'data.total'
-};
+}
 
 export default () => {
-  const tableRef = useRef();
+  const tableRef = useRef()
 
   const handleSearch = () => {
-    tableRef.current.search();
-  };
+    tableRef.current.search()
+  }
 
   return (
     <Fragment>
@@ -127,8 +127,8 @@ export default () => {
       </Button>
       <Table ref={tableRef} rowKey="id" columns={columns} size="small" remoteConfig={remoteConfig} />
     </Fragment>
-  );
-};
+  )
+}
 ```
 
 ## 内置模板
@@ -184,11 +184,11 @@ export default () => {
 ### 展示类
 
 ```jsx
-import React from 'react';
-import { Typography } from 'antd';
-import Table from '@ke/table';
-import 'rc-image/assets/index.css';
-import { OptionsData2 } from '../mock';
+import React from 'react'
+import { Typography } from 'antd'
+import { Table } from '@nbfe/components'
+import 'rc-image/assets/index.css'
+import { OptionsData2 } from '../mock'
 
 export default () => {
   const columns1 = [
@@ -272,7 +272,7 @@ export default () => {
         language: 'json'
       }
     }
-  ];
+  ]
 
   const columns2 = [
     {
@@ -328,7 +328,7 @@ export default () => {
         options: OptionsData2
       }
     }
-  ];
+  ]
 
   const dataSource = [
     {
@@ -363,7 +363,7 @@ export default () => {
       textEmpty2: 'bbb',
       textArray: ['aaa', 'bbb'],
       createAt: '2021-11-11 11:11:11',
-      code1: 'import Table from "@ke/table";',
+      code1: 'import { Table } from "@nbfe/components";',
       code2: {},
       enum: 2
     },
@@ -375,28 +375,28 @@ export default () => {
       textEmpty2: 'bbb',
       textArray: ['aaa', 'bbb'],
       createAt: '2021-11-11 11:11:11',
-      code1: 'import Form from "@ke/form";',
+      code1: 'import { Form } from "@nbfe/components";',
       code2: { a: 1, b: [1, 2] },
       enum: null
     }
-  ];
+  ]
   return (
     <>
       <Table rowKey="id" columns={columns1} dataSource={dataSource} pagination={false} />
       <Typography.Title level={4}>枚举</Typography.Title>
       <Table rowKey="id" columns={columns2} dataSource={dataSource} pagination={false} />
     </>
-  );
-};
+  )
+}
 ```
 
 ### 操作
 
 ```jsx
-import React from 'react';
-import { message } from 'antd';
-import { sleep } from '@nbfe/tools';
-import Table from '@ke/table';
+import React from 'react'
+import { message } from 'antd'
+import { sleep } from '@nbfe/tools'
+import { Table } from '@nbfe/components'
 
 const dataSource = [
   {
@@ -407,7 +407,7 @@ const dataSource = [
     id: 2,
     status: 'offline'
   }
-];
+]
 
 export default () => {
   const columns = [
@@ -424,7 +424,7 @@ export default () => {
       template: {
         tpl: 'link',
         render: (text, record, index) => {
-          const { status } = record;
+          const { status } = record
           return [
             {
               text: '链接1',
@@ -441,7 +441,7 @@ export default () => {
               tooltip: status === 'online' ? '别问, 问就是不能点击' : '',
               disabled: status === 'online'
             }
-          ];
+          ]
         }
       }
     },
@@ -455,10 +455,10 @@ export default () => {
             {
               text: '百度',
               onClick: () => {
-                message.success('可以写任意事件');
+                message.success('可以写任意事件')
               }
             }
-          ];
+          ]
         }
       }
     },
@@ -468,7 +468,7 @@ export default () => {
       template: {
         tpl: 'link',
         render: (text, record, index) => {
-          const { status } = record;
+          const { status } = record
           return [
             {
               text: '上线',
@@ -478,7 +478,7 @@ export default () => {
               text: '下线',
               visible: status === 'online'
             }
-          ];
+          ]
         }
       }
     },
@@ -488,9 +488,9 @@ export default () => {
       template: {
         tpl: 'link',
         render: (text, record, index) => {
-          const { status } = record;
-          const isOnline = status === 'online';
-          const text2 = isOnline ? '下线' : '上线';
+          const { status } = record
+          const isOnline = status === 'online'
+          const text2 = isOnline ? '下线' : '上线'
           return [
             {
               text: text2,
@@ -498,11 +498,11 @@ export default () => {
                 title: `确认要${text2}么?`,
                 onConfirm: async () => {
                   // 这里写异步代码, 异步执行完成之后, 组件将自动触发重新请求数据
-                  await sleep();
+                  await sleep()
                 }
               }
             }
-          ];
+          ]
         }
       }
     },
@@ -512,9 +512,9 @@ export default () => {
       template: {
         tpl: 'link',
         render: (text, record, index) => {
-          const { status } = record;
-          const isOnline = status === 'online';
-          const text2 = isOnline ? '下线' : '上线';
+          const { status } = record
+          const isOnline = status === 'online'
+          const text2 = isOnline ? '下线' : '上线'
           return [
             {
               text: text2,
@@ -524,11 +524,11 @@ export default () => {
                 content: '操作不可逆, 请仔细确认哦~',
                 onOk: async () => {
                   // 这里写异步代码, 异步执行完成之后, 组件将自动触发重新请求数据
-                  await sleep();
+                  await sleep()
                 }
               }
             }
-          ];
+          ]
         }
       }
     },
@@ -556,27 +556,27 @@ export default () => {
               text: '按钮5',
               isMore: true
             }
-          ];
+          ]
         }
       }
     }
-  ];
+  ]
   return (
     <Table rowKey="id" columns={columns} dataSource={dataSource} pagination={false} size="small" scroll={{ x: 1000 }} />
-  );
-};
+  )
+}
 ```
 
 ### 数字类
 
 ```jsx
-import React from 'react';
-import Table from '@ke/table';
+import React from 'react'
+import { Table } from '@nbfe/components'
 
 const dataSource = [
   { id: 1, digit: null, percent: null, rate: null, progress: null },
   { id: 2, digit: 1234, percent: 12.34, rate: 4, progress: 75 }
-];
+]
 
 export default () => {
   const columns = [
@@ -612,11 +612,11 @@ export default () => {
         tpl: 'progress'
       }
     }
-  ];
+  ]
   return (
     <Table rowKey="id" columns={columns} dataSource={dataSource} pagination={false} size="small" scroll={{ x: 1000 }} />
-  );
-};
+  )
+}
 ```
 
 ## 自定义模板
@@ -631,21 +631,21 @@ export default () => {
 - `column.template.tpl = 'input' | 'select' ...` (全部模板参考 [内置表单组件](/components/form))
 
 ```jsx
-import React, { useRef, useEffect } from 'react';
-import Table from '@ke/table';
-import { showMessage, OptionsData3 } from '../mock';
+import React, { useRef, useEffect } from 'react'
+import { Table } from '@nbfe/components'
+import { showMessage, OptionsData3 } from '../mock'
 
 const dataSource = [
   { id: 1, name: 'Tom', sex: 1, age: 3, birth: '2019-01-01', studyStart: '2010-09-01', studyEnd: '2014-07-01' },
   { id: 2, name: 'Jerry', sex: 2, age: 5, birth: '2017-02-23', studyStart: '2017-09-01', studyEnd: '2010-07-01' }
-];
+]
 
 export default () => {
-  const tableRef = useRef();
+  const tableRef = useRef()
 
   useEffect(() => {
-    tableRef.current.search();
-  }, [tableRef]);
+    tableRef.current.search()
+  }, [tableRef])
 
   const columns = [
     {
@@ -701,14 +701,14 @@ export default () => {
             {
               text: '保存',
               onClick: () => {
-                showMessage('当前行的数据', record);
+                showMessage('当前行的数据', record)
               }
             }
-          ];
+          ]
         }
       }
     }
-  ];
+  ]
   return (
     <Table
       ref={tableRef}
@@ -716,13 +716,13 @@ export default () => {
       columns={columns}
       remoteConfig={{
         fetch: async () => {
-          return { list: dataSource };
+          return { list: dataSource }
         }
       }}
       pagination={false}
     />
-  );
-};
+  )
+}
 ```
 
 ## 拖拽排序
@@ -743,15 +743,15 @@ export default () => {
 ### 拖拽整行排序
 
 ```jsx
-import React, { useRef, useEffect } from 'react';
-import Table from '@ke/table';
-import { showMessage, OptionsData3 } from '../mock';
+import React, { useRef, useEffect } from 'react'
+import { Table } from '@nbfe/components'
+import { showMessage, OptionsData3 } from '../mock'
 
 const dataSource = [
   { id: 1, name: 'Tom', sex: 1 },
   { id: 2, name: 'Jerry', sex: 2 },
   { id: 3, name: 'Herry', sex: 1 }
-];
+]
 
 export default () => {
   const columns = [
@@ -777,16 +777,16 @@ export default () => {
             {
               text: '保存',
               onClick: () => {
-                showMessage('当前行的数据', record);
+                showMessage('当前行的数据', record)
               }
             }
-          ];
+          ]
         }
       }
     }
-  ];
-  return <Table rowKey="id" draggable columns={columns} dataSource={dataSource} pagination={false} />;
-};
+  ]
+  return <Table rowKey="id" draggable columns={columns} dataSource={dataSource} pagination={false} />
+}
 ```
 
 ### 拖拽手柄列
@@ -794,15 +794,15 @@ export default () => {
 如果你想换个图标, 配置 **{ tpl: 'sort', icon: ReactNode }** 即可
 
 ```jsx
-import React, { useRef, useEffect } from 'react';
-import Table from '@ke/table';
-import { showMessage, OptionsData3 } from '../mock';
+import React, { useRef, useEffect } from 'react'
+import { Table } from '@nbfe/components'
+import { showMessage, OptionsData3 } from '../mock'
 
 const dataSource = [
   { id: 1, name: 'Tom', sex: 1 },
   { id: 2, name: 'Jerry', sex: 2 },
   { id: 3, name: 'Herry', sex: 1 }
-];
+]
 
 export default () => {
   const columns = [
@@ -835,16 +835,16 @@ export default () => {
             {
               text: '保存',
               onClick: () => {
-                showMessage('当前行的数据', record);
+                showMessage('当前行的数据', record)
               }
             }
-          ];
+          ]
         }
       }
     }
-  ];
-  return <Table rowKey="id" columns={columns} dataSource={dataSource} pagination={false} />;
-};
+  ]
+  return <Table rowKey="id" columns={columns} dataSource={dataSource} pagination={false} />
+}
 ```
 
 ### 拖拽排序+编辑
@@ -852,16 +852,16 @@ export default () => {
 拖拽排序 + 编辑 + 远端数据 + 分页
 
 ```jsx
-import React, { useRef, useEffect } from 'react';
-import Table from '@ke/table';
-import { showMessage, OptionsData3, getRemoteTableData } from '../mock';
+import React, { useRef, useEffect } from 'react'
+import { Table } from '@nbfe/components'
+import { showMessage, OptionsData3, getRemoteTableData } from '../mock'
 
 export default () => {
-  const tableRef = useRef();
+  const tableRef = useRef()
 
   useEffect(() => {
-    tableRef.current.search();
-  }, [tableRef]);
+    tableRef.current.search()
+  }, [tableRef])
 
   const columns = [
     {
@@ -914,14 +914,14 @@ export default () => {
             {
               text: '保存',
               onClick: () => {
-                showMessage('当前行的数据', record);
+                showMessage('当前行的数据', record)
               }
             }
-          ];
+          ]
         }
       }
     }
-  ];
+  ]
 
   return (
     <Table
@@ -929,16 +929,16 @@ export default () => {
       ref={tableRef}
       columns={columns}
       remoteConfig={{
-        fetch: async (params) => {
-          return getRemoteTableData(params);
+        fetch: async params => {
+          return getRemoteTableData(params)
         }
       }}
       pagination={{
         defaultPageSize: 3
       }}
     />
-  );
-};
+  )
+}
 ```
 
 ## 工具栏
@@ -948,13 +948,13 @@ export default () => {
 - `extraConfig.storageKey = 'uniqId'` // 表头配置, 如果一个页面有多个表格需要表头设置功能, 请确保 key 不同, 用以存储各个表格的状态
 
 ```jsx
-import React from 'react';
-import Table from '@ke/table';
+import React from 'react'
+import { Table } from '@nbfe/components'
 
 const dataSource = [
   { id: 1, name: 'Tom', sex: 1, age: 3 },
   { id: 2, name: 'Jerry', sex: 1, age: 5 }
-];
+]
 
 export default () => {
   const columns = [
@@ -970,7 +970,7 @@ export default () => {
       title: '年龄',
       dataIndex: 'age'
     }
-  ];
+  ]
   return (
     <Table
       rowKey="id"
@@ -979,18 +979,18 @@ export default () => {
       pagination={false}
       extraConfig={{ showTotal: true, fullScreen: true, storageKey: 'one' }}
     />
-  );
-};
+  )
+}
 ```
 
 ## API
 
 ```jsx
-import React from 'react';
-import api from './api.json';
-import ComponentApi from '../ComponentApi';
+import React from 'react'
+import api from './api.json'
+import ComponentApi from '../ComponentApi'
 
 export default () => {
-  return <ComponentApi api={api} />;
-};
+  return <ComponentApi api={api} />
+}
 ```
