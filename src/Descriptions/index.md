@@ -58,7 +58,7 @@ export default () => {
       }
       column={2}
       columns={columns}
-      data={dataSource}
+      dataSource={dataSource}
     />
   )
 }
@@ -155,7 +155,7 @@ export default () => {
       }
     }
   ]
-  return <Descriptions columns={columns} data={dataSource} />
+  return <Descriptions columns={columns} dataSource={dataSource} />
 }
 ```
 

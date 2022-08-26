@@ -1,7 +1,16 @@
 {
   "name": "Descriptions",
   "desc": "配置化定义列表",
-  "props": [],
+  "props": [
+    {
+      "name": "dataSource",
+      "desc": "数据源",
+      "type": "object",
+      "optionalValue": "",
+      "default": "",
+      "version": ""
+    }
+  ],
   "events": [],
   "methods": [],
   "columns": [
