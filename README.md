@@ -1,6 +1,6 @@
 # 简介
 
-基于 antd 的通用组件库, 对标 [Ant Design Pro](https://pro.ant.design)，但比它用法更简洁，走的配置化思路。
+基于 antd 的通用组件库, 对标 [Ant Design Pro](https://pro.ant.design)，但用法比它更简洁，走的配置化思路。
 
 # 文档
 
