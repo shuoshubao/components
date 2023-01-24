@@ -6,8 +6,7 @@ import sass from 'sass'
 const { css } = sass.compile('./docs-entry/index.scss')
 
 export default defineConfig({
-  publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
-  runtimePublicPath: {},
+  publicPath: process.env.NODE_ENV === 'production' ? 'https://shuoshubao.github.io/components/' : '/',
   resolve: { docDirs: ['docs-entry'] },
   outputPath: 'docs',
   history: {

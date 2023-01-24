@@ -40,3 +40,9 @@ body .markdown {
     }
   }
 }
+
+.dumi-default-previewer-meta {
+  .dumi-default-previewer-actions > a {
+    display: none;
+  }
+}
