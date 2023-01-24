@@ -6,6 +6,8 @@ import sass from 'sass'
 const { css } = sass.compile('./docs-entry/index.scss')
 
 export default defineConfig({
+  publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
+  runtimePublicPath: {},
   resolve: { docDirs: ['docs-entry'] },
   outputPath: 'docs',
   history: {
