@@ -1,0 +1,42 @@
+body {
+  .dumi-default-hero {
+    margin: 0;
+    padding: 90px 0;
+    user-select: none;
+    max-width: none;
+    height: auto;
+    &::before {
+      display: none;
+    }
+    .dumi-default-hero-title {
+      font-size: 48px;
+      & > span {
+        color: rgba(0, 0, 0, 0.85);
+      }
+    }
+    & > p {
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 20px;
+    }
+    & + main .dumi-default-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+  .dumi-default-search-bar {
+    display: none;
+  }
+}
+
+body .markdown {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    & > a[aria-hidden]:first-child {
+      display: none;
+    }
+  }
+}

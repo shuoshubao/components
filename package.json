@@ -23,9 +23,11 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "@rollup/plugin-babel": "^6.0.3",
-    "antd": "^4.19.2",
-    "dumi": "^1.1.0",
-    "react": "^16.12.0",
-    "rollup": "^3.10.1"
+    "antd": "^4.24.4",
+    "dumi": "^2.1.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup": "^3.10.1",
+    "sass": "^1.57.1"
   }
 }

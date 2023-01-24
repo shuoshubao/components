@@ -1,9 +1,3 @@
----
-nav:
-  title: 组件
-  path: /components
----
-
 ## 简介
 
 **功能点:**
