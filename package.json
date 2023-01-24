@@ -8,24 +8,24 @@
   "scripts": {
     "docs-dev": "dumi dev",
     "docs-build": "dumi build && node deploy-gh",
-    "build": "rm -rf dist && npx rollup -c && lessc lib/index.less dist/index.css",
+    "build": "rm -rf dist && npx rollup -c --bundleConfigAsCjs && lessc lib/index.less dist/index.css",
     "publish-beta": "npm publish --tag beta",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@nbfe/react-color": "^0.1.2",
-    "@nbfe/tools": "^0.2.19",
+    "@nbfe/tools": "^0.4.0",
     "react-dnd": "^15.1.1",
     "react-dnd-html5-backend": "^15.1.2",
     "react-sortable-hoc": "^2.0.0"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.18.10",
+    "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
-    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-babel": "^6.0.3",
     "antd": "^4.19.2",
     "dumi": "^1.1.0",
     "react": "^16.12.0",
-    "rollup": "^2.78.1"
+    "rollup": "^3.10.1"
   }
 }
