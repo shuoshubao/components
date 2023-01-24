@@ -3,10 +3,11 @@ import { resolve } from 'path'
 import { defineConfig } from 'dumi'
 import sass from 'sass'
 
-const { css } = sass.compile('./docs/index.scss')
+const { css } = sass.compile('./docs-entry/index.scss')
 
 export default defineConfig({
-  outputPath: 'dist-docs',
+  resolve: { docDirs: ['docs-entry'] },
+  outputPath: 'docs',
   history: {
     type: 'hash'
   },
