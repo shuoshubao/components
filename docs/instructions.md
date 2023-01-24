@@ -276,7 +276,7 @@ template 的作用是用一段 json 来描述一个 render 函数, 其中使用�
         <div>query: query参数</div>
         <div>tooltip: 提示文案</div>
         <div>isMore: 是否要展示在下拉框里</div>
-        <div>icon: 图标 v3 请传字符串, v4 传 @ant-design/icons 组件</div>
+        <div>icon: 图标</div>
         <div>PopconfirmConfig: 二次确认 弱提醒</div>
         <div>ModalConfirmConfig: 二次确认 强提醒</div>
       </td>

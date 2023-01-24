@@ -17,7 +17,6 @@ nav:
 - 封装了 _value_ 和 _onChange_ 不用再写大量重复的 state 和 events
 - input 输入回车自动触发 _onSubmit_ 事件, checkbox, radio select 等其他组件 onChange 时自动触发 _onSubmit_ 事件
 - 内置 _debounce_ 优化, 防止因代码原因短时间内触发多次 _onSubmit_ 事件
-- 抹平 antd v3 和 v4 两个版本之间的差异, 也就是不管你是用 v3 还是 v4, 你都可以愉快的使用这么好用的组件
 
 **内置表单子组件(16 个):**
 

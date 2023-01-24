@@ -187,7 +187,6 @@ export default () => {
 import React from 'react'
 import { Typography } from 'antd'
 import { Table } from '@nbfe/components'
-import 'rc-image/assets/index.css'
 import { OptionsData2 } from '../mock'
 
 export default () => {
@@ -370,7 +369,7 @@ export default () => {
     {
       id: 4,
       desc: 'ddd',
-      imgUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+      imgUrl: '',
       textEmpty: '',
       textEmpty2: 'bbb',
       textArray: ['aaa', 'bbb'],
