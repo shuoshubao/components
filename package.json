@@ -8,7 +8,7 @@
   "scripts": {
     "docs-dev": "dumi dev",
     "docs-build": "dumi build",
-    "build": "rm -rf dist && npx rollup -c --bundleConfigAsCjs && lessc lib/index.less dist/index.css",
+    "build": "rm -rf dist && npx rollup -c --bundleConfigAsCjs",
     "publish-beta": "npm publish --tag beta",
     "prepublishOnly": "npm run build"
   },
@@ -28,6 +28,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rollup": "^3.10.1",
+    "rollup-plugin-scss": "^4.0.0",
     "sass": "^1.57.1"
   }
 }

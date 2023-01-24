@@ -41,7 +41,6 @@ export default defineConfig({
   },
   styles: [
     css,
-    'https://unpkg.com/antd@4.24.4/dist/antd.min.css',
-    'https://unpkg.com/@nbfe/components@latest/dist/index.css'
+    'https://unpkg.com/antd@4.24.4/dist/antd.min.css'
   ]
 })
