@@ -3,12 +3,7 @@ import { resolve } from 'path'
 import { defineConfig } from 'dumi'
 import sass from 'sass'
 
-console.time('aa')
-const {css} = sass.compile('./docs/index.scss');
-console.timeEnd('aa')
-
-console.log(111)
-console.log(css)
+const { css } = sass.compile('./docs/index.scss')
 
 export default defineConfig({
   outputPath: 'dist-docs',

@@ -6,5 +6,9 @@ export default {
     file: 'dist/index.js',
     format: 'cjs'
   },
-  plugins: [babel()]
+  plugins: [
+    babel({
+      presets: ['@babel/preset-env', '@babel/preset-react']
+    })
+  ]
 }
