@@ -12,7 +12,7 @@
 - input 输入回车自动触发 _onSubmit_ 事件, checkbox, radio select 等其他组件 onChange 时自动触发 _onSubmit_ 事件
 - 内置 _debounce_ 优化, 防止因代码原因短时间内触发多次 _onSubmit_ 事件
 
-**内置表单子组件(16 个):**
+## 内置表单子组件(18 个)
 
 <table class="custom-table-header-left">
     <colgroup>
@@ -21,7 +21,7 @@
     <thead>
         <tr>
             <th>分类</th>
-            <th colspan="10">模板</th>
+            <th colspan="6">模板</th>
         </tr>
     </thead>
     <tbody>
@@ -30,7 +30,8 @@
             <td>input</td>
             <td>number</td>
             <td>number-range</td>
-            <td colspan="3">slider</td>
+            <td>slider</td>
+            <td colspan="2">auto-complete</td>
         </tr>
         <tr>
             <td>枚举</td>
@@ -51,14 +52,15 @@
         <tr>
             <td>其他</td>
             <td>rate</td>
-            <td colspan="5">auto-complete</td>
+            <td>upload</td>
+            <td colspan="4">color-picker</td>
         </tr>
     </tbody>
 </table>
 
 :::info{title=提示}
 
-当然, 除了以上 16 个内置组件, 你还可以开发自定义组件!
+当然, 除了以上内置组件, 你还可以开发自定义组件!
 
 :::
 
@@ -564,6 +566,50 @@ export default () => {
     }
   ]
   return <Form columns={columns} onSubmit={handleSubmit} autoSubmit={false} />
+}
+```
+
+### rate upload color-picker
+
+```jsx
+import React from 'react'
+import { version } from 'antd'
+import { sleep } from '@nbfe/tools'
+import { Form } from '@nbfe/components'
+import { showMessage } from '../mock'
+
+export default () => {
+  const handleSubmit = params => {
+    showMessage('触发了提交事件, 参数为:', params)
+  }
+  const columns = [
+    {
+      label: '评分',
+      name: 'rate',
+      defaultValue: 3.5,
+      template: {
+        tpl: 'rate',
+        allowHalf: true
+      }
+    },
+    {
+      label: '文件',
+      name: 'file',
+      template: {
+        tpl: 'upload',
+        listType: 'picture-card'
+      }
+    },
+    {
+      label: '拾色器',
+      name: 'color',
+      defaultValue: '#fff',
+      template: {
+        tpl: 'color-picker'
+      }
+    }
+  ]
+  return <Form columns={columns} onSubmit={handleSubmit} autoSubmit={false} formProps={{ layout: 'horizontal' }} />
 }
 ```
 
