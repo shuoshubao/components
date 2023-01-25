@@ -31,9 +31,12 @@ body {
       color: rgba(0, 0, 0, 0.85);
       font-size: 20px;
     }
-    & + main .dumi-default-content {
-      max-width: 600px;
-      margin: 0 auto;
+    & + main {
+      background: #fff;
+      .dumi-default-content {
+        max-width: 960px;
+        margin: 0 auto;
+      }
     }
   }
   .dumi-default-search-bar {

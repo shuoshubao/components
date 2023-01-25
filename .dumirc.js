@@ -3,7 +3,7 @@ import { resolve } from 'path'
 import { defineConfig } from 'dumi'
 import sass from 'sass'
 
-const { css } = sass.compile('./src/index.scss')
+const { css } = sass.compile('./src/index.scss', { style: 'compressed' })
 
 const isDevelopment = process.env.NODE_ENV === 'development'
 
@@ -21,8 +21,10 @@ export default defineConfig({
     chrome: 100
   },
   externals: {},
+  favicons: ['https://gw.alipayobjects.com/zos/rmsportal/rlpTLlbMzTNYuZGGCVYM.png'],
   themeConfig: {
     name: '@nbfe/components',
+    logo: 'https://gw.alipayobjects.com/zos/rmsportal/rlpTLlbMzTNYuZGGCVYM.png',
     prefersColor: {
       switch: false,
       default: 'light'
