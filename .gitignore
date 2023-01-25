@@ -10,5 +10,8 @@ package-lock.json
 .dumi
 
 docs/~demos
+docs/components
+docs/instructions
+docs/404.html
 
 dist
