@@ -1,6 +1,9 @@
 @import '../lib/index.scss';
 
 body {
+  .dumi-default-header-left {
+    width: 300px;
+  }
   .dumi-default-hero {
     margin: 0;
     padding: 90px 0;

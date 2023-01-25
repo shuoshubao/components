@@ -3,16 +3,21 @@ import { resolve } from 'path'
 import { defineConfig } from 'dumi'
 import sass from 'sass'
 
-const { css } = sass.compile('./docs-entry/index.scss')
+const { css } = sass.compile('./src/index.scss')
+
+const isDevelopment = process.env.NODE_ENV === 'development'
 
 export default defineConfig({
-  publicPath: process.env.NODE_ENV === 'production' ? 'https://shuoshubao.github.io/components/' : '/',
-  resolve: { docDirs: ['docs-entry'] },
+  publicPath: isDevelopment ? '/' : 'https://shuoshubao.github.io/components/',
+  resolve: {
+    docDirs: ['src/docs']
+  },
   outputPath: 'docs',
   history: {
     type: 'hash'
   },
   themeConfig: {
+    name: '@nbfe/components',
     prefersColor: {
       switch: false,
       default: 'light'
@@ -39,8 +44,5 @@ export default defineConfig({
   alias: {
     '@nbfe/components': resolve(__dirname, './dist/index.js')
   },
-  styles: [
-    css,
-    'https://unpkg.com/antd@4.24.4/dist/antd.min.css'
-  ]
+  styles: ['https://unpkg.com/antd@4.24.4/dist/antd.min.css', css]
 })
