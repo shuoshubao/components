@@ -16,6 +16,11 @@ export default defineConfig({
   history: {
     type: 'hash'
   },
+  polyfill: false,
+  targets: {
+    chrome: 100
+  },
+  externals: {},
   themeConfig: {
     name: '@nbfe/components',
     prefersColor: {
@@ -44,5 +49,6 @@ export default defineConfig({
   alias: {
     '@nbfe/components': resolve(__dirname, './dist/index.js')
   },
-  styles: ['https://unpkg.com/antd@4.24.4/dist/antd.min.css', css]
+  styles: ['https://unpkg.com/antd@4.24.4/dist/antd.min.css', css],
+  headScripts: []
 })

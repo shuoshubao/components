@@ -60,7 +60,7 @@ export default () => {
 
 ## 模板
 
-> 参考 [table#内置模板](table#内置模板)
+> 参考 [table#内置模板](../components/table#内置模板)
 
 ```jsx
 import React, { useState, useEffect } from 'react'

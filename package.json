@@ -26,7 +26,6 @@
     "antd": "^4.24.4",
     "dumi": "^2.1.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "rollup": "^3.10.1",
     "rollup-plugin-scss": "^4.0.0",
     "sass": "^1.57.1"
