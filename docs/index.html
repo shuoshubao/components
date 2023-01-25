@@ -224,6 +224,8 @@
   line-height: 20px;
   background-color: rgb(246, 248, 250);
   border-radius: 3px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .ant-popover.dynamic-table-columns-setting-popover {
@@ -487,6 +489,14 @@
   margin: 0 4px;
 }
 
+body .dumi-default-header-content {
+  max-width: none;
+  height: 64px;
+  padding: 0 12px;
+  margin: 0;
+  background: #fff;
+  box-shadow: 0 8px 24px -2px rgba(0, 0, 0, 0.05);
+}
 body .dumi-default-header-left {
   width: 300px;
 }
@@ -517,6 +527,25 @@ body .dumi-default-hero + main .dumi-default-content {
 body .dumi-default-search-bar {
   display: none;
 }
+body .dumi-default-doc-layout > main {
+  padding: 12px;
+  margin: 0;
+  gap: 12px;
+  max-width: none;
+}
+body .dumi-default-sidebar {
+  display: none;
+}
+body .dumi-default-doc-layout-toc-wrapper {
+  width: 200px !important;
+  top: 76px !important;
+  margin: 0 !important;
+  padding: 12px !important;
+  background: #fff !important;
+}
+body .dumi-default-content {
+  padding: 12px !important;
+}
 
 body .markdown h1 > a[aria-hidden]:first-child,
 body .markdown h2 > a[aria-hidden]:first-child,
@@ -527,13 +556,16 @@ body .markdown h6 > a[aria-hidden]:first-child {
   display: none;
 }
 
-.dumi-default-previewer-meta .dumi-default-previewer-actions > a {
+body .dumi-default-previewer:last-child {
+  margin-bottom: 0;
+}
+body .dumi-default-previewer .dumi-default-previewer-meta .dumi-default-previewer-actions > a {
   display: none;
 }</style>
 <link rel="stylesheet" href="https://shuoshubao.github.io/components/umi.b6fb696f.css">
 </head>
 <body>
 <div id="root"></div>
-<script src="https://shuoshubao.github.io/components/umi.d0ca63de.js"></script>
+<script src="https://shuoshubao.github.io/components/umi.b01f2fcf.js"></script>
 
 </body></html>
