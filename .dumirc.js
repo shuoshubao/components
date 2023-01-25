@@ -27,6 +27,7 @@ export default defineConfig({
       switch: false,
       default: 'light'
     },
+    footer: false,
     nav: [
       {
         title: 'Table',

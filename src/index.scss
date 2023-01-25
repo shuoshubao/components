@@ -1,6 +1,14 @@
 @import '../lib/index.scss';
 
 body {
+  .dumi-default-header-content {
+    max-width: none;
+    height: 64px;
+    padding: 0 12px;
+    margin: 0;
+    background: #fff;
+    box-shadow: 0 8px 24px -2px rgb(0 0 0 / 5%);
+  }
   .dumi-default-header-left {
     width: 300px;
   }
@@ -31,6 +39,25 @@ body {
   .dumi-default-search-bar {
     display: none;
   }
+  .dumi-default-doc-layout > main {
+    padding: 12px;
+    margin: 0;
+    gap: 12px;
+    max-width: none;
+  }
+  .dumi-default-sidebar {
+    display: none;
+  }
+  .dumi-default-doc-layout-toc-wrapper {
+    width: 200px !important;
+    top: 76px !important;
+    margin: 0 !important;
+    padding: 12px !important;
+    background: #fff !important;
+  }
+  .dumi-default-content {
+    padding: 12px !important;
+  }
 }
 
 body .markdown {
@@ -46,8 +73,13 @@ body .markdown {
   }
 }
 
-.dumi-default-previewer-meta {
-  .dumi-default-previewer-actions > a {
-    display: none;
+body .dumi-default-previewer {
+  &:last-child {
+    margin-bottom: 0;
+  }
+  .dumi-default-previewer-meta {
+    .dumi-default-previewer-actions > a {
+      display: none;
+    }
   }
 }

@@ -1,8 +1,12 @@
+---
+toc: content
+---
+
 ## Form
 
-### template 字段详解
+### From template 字段详解
 
-template 的作用是用一段 json 来描述一个基础的 antd 表单元素组件, 其中使用特殊字段 **tpl** 来标识使用的是哪种组件; 内置 16 种在后台系统中常用的表单元素组件.
+template 的作用是用一段 json 来描述一个基础的 antd 表单元素组件, 其中使用特殊字段 **tpl** 来标识使用的是哪种组件; 内置 18 种在后台系统中常用的表单元素组件.
 
 除了少数几个特殊的字段(value, onChange)字段外, 其他字段基本可以透传. 结合 antd 文档即可使用, 这里不再赘述.
 
@@ -165,7 +169,7 @@ template 的作用是用一段 json 来描述一个基础的 antd 表单元素�
 
 ## Table
 
-### template 字段详解
+### Table template 字段详解
 
 template 的作用是用一段 json 来描述一个 render 函数, 其中使用特殊字段 **tpl** 来标识使用的是哪种渲染器.
 

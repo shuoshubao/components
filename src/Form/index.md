@@ -1,3 +1,7 @@
+---
+toc: content
+---
+
 ## 简介
 
 **做了哪些事情**
@@ -256,7 +260,7 @@ export default () => {
 }
 ```
 
-### InputNumber_RangeNumber
+### InputNumber RangeNumber
 
 ```jsx
 import React from 'react'
@@ -299,7 +303,7 @@ export default () => {
 }
 ```
 
-### Select_Radio_Checkbox_Tabs
+### Select Radio Checkbox Tabs
 
 tabs 一般独占一行, 且在第一行
 
@@ -451,7 +455,7 @@ export default () => {
 }
 ```
 
-### Cascader_AutoComplete_TreeSelect
+### Cascader AutoComplete TreeSelect
 
 Select Cascader TreeSelect AutoComplete 这四个组件其实本质上都属于下拉框, 用法也比较类似, 当数据源是写死时, 用法和 antd 的用法一样, 数据源通过 **options** 或 **treeData** 字段来传入.
 
@@ -534,7 +538,7 @@ export default () => {
 }
 ```
 
-### Slider_Switch
+### Slider Switch
 
 ```jsx
 import React from 'react'
@@ -569,7 +573,7 @@ export default () => {
 }
 ```
 
-### rate upload color-picker
+### Rate Upload ColorPicker
 
 ```jsx
 import React from 'react'
