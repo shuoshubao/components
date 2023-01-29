@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import { Typography, Table } from 'antd'
-// import Table from '../lib/Table'
 import { isObject } from 'lodash'
 
 const { Title } = Typography
