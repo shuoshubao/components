@@ -1,10 +1,6 @@
-# dependencies
-/node_modules
-npm-debug.log*
-package-lock.json
-
-# misc
 .DS_Store
+node_modules
+package-lock.json
 
 # dumi
 .dumi

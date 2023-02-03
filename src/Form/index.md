@@ -16,7 +16,7 @@ toc: content
 - input 输入回车自动触发 _onSubmit_ 事件, checkbox, radio select 等其他组件 onChange 时自动触发 _onSubmit_ 事件
 - 内置 _debounce_ 优化, 防止因代码原因短时间内触发多次 _onSubmit_ 事件
 
-## 内置表单子组件(18 个)
+## 内置表单子组件
 
 <table class="custom-table-header-left">
     <colgroup>
@@ -746,8 +746,6 @@ export default () => {
 ```jsx
 import React, { useRef } from 'react'
 import { Button, Input, Space } from 'antd'
-import PlusCircleOutlined from '@ant-design/icons/PlusCircleOutlined'
-import MinusCircleOutlined from '@ant-design/icons/MinusCircleOutlined'
 import { isUniq } from '@nbfe/tools'
 import { Form } from '@nbfe/components'
 import { showMessage } from '../mock'

@@ -1,5 +1,4 @@
 ---
-toc: content
 title: 通用组件库
 hero:
   title: '@nbfe/components'

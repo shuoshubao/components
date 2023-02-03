@@ -10,7 +10,7 @@ const isDevelopment = process.env.NODE_ENV === 'development'
 export default defineConfig({
   publicPath: isDevelopment ? '/' : 'https://shuoshubao.github.io/components/',
   resolve: {
-    docDirs: ['src/docs']
+    docDirs: ['docs-md']
   },
   outputPath: 'docs',
   history: {
@@ -23,7 +23,7 @@ export default defineConfig({
   externals: {},
   favicons: ['https://gw.alipayobjects.com/zos/rmsportal/rlpTLlbMzTNYuZGGCVYM.png'],
   themeConfig: {
-    name: '@nbfe/components',
+    name: '组件库',
     logo: 'https://gw.alipayobjects.com/zos/rmsportal/rlpTLlbMzTNYuZGGCVYM.png',
     prefersColor: {
       switch: false,
@@ -32,16 +32,8 @@ export default defineConfig({
     footer: false,
     nav: [
       {
-        title: 'Table',
-        link: '/components/table'
-      },
-      {
-        title: 'Form',
-        link: '/components/form'
-      },
-      {
-        title: 'Descriptions',
-        link: '/components/descriptions'
+        title: '组件',
+        link: '/components/Descriptions'
       },
       {
         title: '介绍',
