@@ -26,3 +26,7 @@ import { Form, Table, Descriptions } from '@nbfe/components'
 ## 文档
 
 [https://shuoshubao.github.io/components](https://shuoshubao.github.io/components)
+
+## Github
+
+[https://github.com/shuoshubao/components](https://github.com/shuoshubao/components)
