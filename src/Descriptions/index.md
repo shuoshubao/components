@@ -4,8 +4,6 @@ toc: content
 
 ## 简介
 
-**做了哪些事情**
-
 - 配置化, 配置同 Form 组件
 - 属性都透传 antd - Descriptions
 - 使用于表单对应的详情页, 只需写一份配置
