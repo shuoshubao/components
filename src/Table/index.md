@@ -20,45 +20,46 @@ toc: content
 当不使用接口请求时, 数据源通过 **dataSource** 属性传入
 
 ```jsx
-import React, { useState, Fragment } from 'react'
+import React, { useState } from 'react'
 import { Button } from 'antd'
 import { Table } from '@nbfe/components'
+
+const data = [
+  {
+    id: 1,
+    name: 'aaa'
+  },
+  {
+    id: 2,
+    name: 'bbb'
+  }
+]
+
+const columns = [
+  {
+    title: 'ID',
+    dataIndex: 'id'
+  },
+  {
+    title: '姓名',
+    dataIndex: 'name'
+  }
+]
 
 export default () => {
   const [dataSource, setDataSource] = useState([])
 
-  const columns = [
-    {
-      title: 'ID',
-      dataIndex: 'id'
-    },
-    {
-      title: '姓名',
-      dataIndex: 'name'
-    }
-  ]
-
   const handleSearch = async () => {
-    const data = [
-      {
-        id: 1,
-        name: 'aaa'
-      },
-      {
-        id: 2,
-        name: 'bbb'
-      }
-    ]
     setDataSource(data)
   }
 
   return (
-    <Fragment>
+    <>
       <Button type="primary" onClick={handleSearch}>
         请求数据
       </Button>
       <Table key={Date.now()} rowKey="id" columns={columns} dataSource={dataSource} pagination={false} size="small" />
-    </Fragment>
+    </>
   )
 }
 ```
@@ -68,7 +69,7 @@ export default () => {
 当数据不是固定的, 比如 1. 有搜索; 2. 分页时需请求接口, 这时候不配置属性 **dataSource**, 而只需配置属性 **remoteConfig**, 然后在需要的地方调用 tableRef.current.search() 即可
 
 ```jsx
-import React, { useRef, Fragment } from 'react'
+import React, { useRef } from 'react'
 import { Button } from 'antd'
 import { sleep } from '@nbfe/tools'
 import { Table } from '@nbfe/components'
@@ -119,12 +120,12 @@ export default () => {
   }
 
   return (
-    <Fragment>
+    <>
       <Button type="primary" onClick={handleSearch}>
         请求数据
       </Button>
       <Table ref={tableRef} rowKey="id" columns={columns} size="small" remoteConfig={remoteConfig} />
-    </Fragment>
+    </>
   )
 }
 ```
@@ -187,196 +188,197 @@ import { Typography } from 'antd'
 import { Table } from '@nbfe/components'
 import { OptionsData2 } from '../mock'
 
+const columns1 = [
+  {
+    title: '序号',
+    template: {
+      tpl: 'numbering'
+    }
+  },
+  {
+    title: '缩略图',
+    dataIndex: 'imgUrl',
+    template: {
+      tpl: 'image'
+    }
+  },
+  {
+    title: '文本',
+    dataIndex: 'desc',
+    tooltip: '当值是空值时, 默认展示 --'
+  },
+  {
+    title: '文本-空值',
+    dataIndex: 'textEmpty',
+    tooltip: '当值是空值时, 默认展示 --'
+  },
+  {
+    title: '文本-空值2',
+    dataIndex: 'textEmpty2',
+    tooltip: '可自定义空值时的展示',
+    template: {
+      emptyText: '无'
+    }
+  },
+  {
+    title: '文本-数组',
+    dataIndex: 'textArray',
+    tooltip: 'separator 配置 分割符',
+    template: {
+      separator: '、'
+    }
+  },
+  {
+    title: '文本-数组',
+    dataIndex: 'textArray',
+    tooltip: '当 separator: "div" 时, 换行',
+    template: {
+      separator: 'div'
+    }
+  },
+  {
+    title: '日期',
+    dataIndex: 'createAt',
+    tooltip: '不管后端返回的是字符串还是时间戳, 都进行日期格式化操作',
+    template: {
+      tpl: 'date'
+    }
+  },
+  {
+    title: '日期2',
+    dataIndex: 'createAt',
+    tooltip: 'format: YYYY-MM-DD hh:mm:ss',
+    template: {
+      tpl: 'date',
+      format: 'YYYY-MM-DD hh:mm:ss'
+    }
+  },
+  {
+    title: '代码',
+    dataIndex: 'code1',
+    template: {
+      tpl: 'code'
+    }
+  },
+  {
+    title: '代码2',
+    dataIndex: 'code2',
+    tooltip: 'language: "json"',
+    template: {
+      tpl: 'code',
+      language: 'json'
+    }
+  }
+]
+
+const columns2 = [
+  {
+    title: '枚举1',
+    dataIndex: 'enum',
+    width: 100,
+    template: {
+      tpl: 'enum',
+      options: OptionsData2
+    }
+  },
+  {
+    title: '枚举2',
+    dataIndex: 'enum',
+    width: 100,
+    tooltip: 'shape: "dot" // 小圆点',
+    template: {
+      tpl: 'enum',
+      shape: 'dot',
+      options: OptionsData2
+    }
+  },
+  {
+    title: '枚举3',
+    dataIndex: 'enum',
+    width: 100,
+    tooltip: 'shape: "square" // 小方块',
+    template: {
+      tpl: 'enum',
+      shape: 'square',
+      options: OptionsData2
+    }
+  },
+  {
+    title: '枚举4',
+    dataIndex: 'enum',
+    width: 100,
+    tooltip: 'shape: "tag" // antd tag',
+    template: {
+      tpl: 'enum',
+      shape: 'tag',
+      options: OptionsData2
+    }
+  },
+  {
+    title: '枚举5',
+    dataIndex: 'enum',
+    width: 100,
+    tooltip: 'shape: "circle" // 圆圈',
+    template: {
+      tpl: 'enum',
+      shape: 'circle',
+      options: OptionsData2
+    }
+  }
+]
+
+const dataSource = [
+  {
+    id: 1,
+    desc: 'aaa',
+    imgUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+    textEmpty: 'aaa',
+    textEmpty2: '',
+    textArray: ['aaa', 'bbb'],
+    createAt: '2021-12-01 13:02:13',
+    code1: '',
+    code2: null,
+    enum: 3
+  },
+  {
+    id: 2,
+    desc: 'bbb',
+    imgUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+    textEmpty: '',
+    textEmpty2: 'bbb',
+    textArray: ['aaa', 'bbb'],
+    createAt: '2021-11-20 13:02:13',
+    code1: null,
+    code2: { a: 1 },
+    enum: 1
+  },
+  {
+    id: 3,
+    desc: 'ccc',
+    imgUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+    textEmpty: '',
+    textEmpty2: 'bbb',
+    textArray: ['aaa', 'bbb'],
+    createAt: '2021-11-11 11:11:11',
+    code1: 'import { Table } from "@nbfe/components";',
+    code2: {},
+    enum: 2
+  },
+  {
+    id: 4,
+    desc: 'ddd',
+    imgUrl: '',
+    textEmpty: '',
+    textEmpty2: 'bbb',
+    textArray: ['aaa', 'bbb'],
+    createAt: '2021-11-11 11:11:11',
+    code1: 'import { Form } from "@nbfe/components";',
+    code2: { a: 1, b: [1, 2] },
+    enum: null
+  }
+]
+
 export default () => {
-  const columns1 = [
-    {
-      title: '序号',
-      template: {
-        tpl: 'numbering'
-      }
-    },
-    {
-      title: '缩略图',
-      dataIndex: 'imgUrl',
-      template: {
-        tpl: 'image'
-      }
-    },
-    {
-      title: '文本',
-      dataIndex: 'desc',
-      tooltip: '当值是空值时, 默认展示 --'
-    },
-    {
-      title: '文本-空值',
-      dataIndex: 'textEmpty',
-      tooltip: '当值是空值时, 默认展示 --'
-    },
-    {
-      title: '文本-空值2',
-      dataIndex: 'textEmpty2',
-      tooltip: '可自定义空值时的展示',
-      template: {
-        emptyText: '无'
-      }
-    },
-    {
-      title: '文本-数组',
-      dataIndex: 'textArray',
-      tooltip: 'separator 配置 分割符',
-      template: {
-        separator: '、'
-      }
-    },
-    {
-      title: '文本-数组',
-      dataIndex: 'textArray',
-      tooltip: '当 separator: "div" 时, 换行',
-      template: {
-        separator: 'div'
-      }
-    },
-    {
-      title: '日期',
-      dataIndex: 'createAt',
-      tooltip: '不管后端返回的是字符串还是时间戳, 都进行日期格式化操作',
-      template: {
-        tpl: 'date'
-      }
-    },
-    {
-      title: '日期2',
-      dataIndex: 'createAt',
-      tooltip: 'format: YYYY-MM-DD hh:mm:ss',
-      template: {
-        tpl: 'date',
-        format: 'YYYY-MM-DD hh:mm:ss'
-      }
-    },
-    {
-      title: '代码',
-      dataIndex: 'code1',
-      template: {
-        tpl: 'code'
-      }
-    },
-    {
-      title: '代码2',
-      dataIndex: 'code2',
-      tooltip: 'language: "json"',
-      template: {
-        tpl: 'code',
-        language: 'json'
-      }
-    }
-  ]
-
-  const columns2 = [
-    {
-      title: '枚举1',
-      dataIndex: 'enum',
-      width: 100,
-      template: {
-        tpl: 'enum',
-        options: OptionsData2
-      }
-    },
-    {
-      title: '枚举2',
-      dataIndex: 'enum',
-      width: 100,
-      tooltip: 'shape: "dot" // 小圆点',
-      template: {
-        tpl: 'enum',
-        shape: 'dot',
-        options: OptionsData2
-      }
-    },
-    {
-      title: '枚举3',
-      dataIndex: 'enum',
-      width: 100,
-      tooltip: 'shape: "square" // 小方块',
-      template: {
-        tpl: 'enum',
-        shape: 'square',
-        options: OptionsData2
-      }
-    },
-    {
-      title: '枚举4',
-      dataIndex: 'enum',
-      width: 100,
-      tooltip: 'shape: "tag" // antd tag',
-      template: {
-        tpl: 'enum',
-        shape: 'tag',
-        options: OptionsData2
-      }
-    },
-    {
-      title: '枚举5',
-      dataIndex: 'enum',
-      width: 100,
-      tooltip: 'shape: "circle" // 圆圈',
-      template: {
-        tpl: 'enum',
-        shape: 'circle',
-        options: OptionsData2
-      }
-    }
-  ]
-
-  const dataSource = [
-    {
-      id: 1,
-      desc: 'aaa',
-      imgUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-      textEmpty: 'aaa',
-      textEmpty2: '',
-      textArray: ['aaa', 'bbb'],
-      createAt: '2021-12-01 13:02:13',
-      code1: '',
-      code2: null,
-      enum: 3
-    },
-    {
-      id: 2,
-      desc: 'bbb',
-      imgUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-      textEmpty: '',
-      textEmpty2: 'bbb',
-      textArray: ['aaa', 'bbb'],
-      createAt: '2021-11-20 13:02:13',
-      code1: null,
-      code2: { a: 1 },
-      enum: 1
-    },
-    {
-      id: 3,
-      desc: 'ccc',
-      imgUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-      textEmpty: '',
-      textEmpty2: 'bbb',
-      textArray: ['aaa', 'bbb'],
-      createAt: '2021-11-11 11:11:11',
-      code1: 'import { Table } from "@nbfe/components";',
-      code2: {},
-      enum: 2
-    },
-    {
-      id: 4,
-      desc: 'ddd',
-      imgUrl: '',
-      textEmpty: '',
-      textEmpty2: 'bbb',
-      textArray: ['aaa', 'bbb'],
-      createAt: '2021-11-11 11:11:11',
-      code1: 'import { Form } from "@nbfe/components";',
-      code2: { a: 1, b: [1, 2] },
-      enum: null
-    }
-  ]
   return (
     <>
       <Table rowKey="id" columns={columns1} dataSource={dataSource} pagination={false} />
@@ -406,158 +408,159 @@ const dataSource = [
   }
 ]
 
-export default () => {
-  const columns = [
-    {
-      title: '排序',
-      width: 50,
-      template: {
-        tpl: 'sort'
-      }
-    },
-    {
-      title: '链接',
-      tooltip: 'href: 路径; query: 额外参数; 其他Button的属性透传',
-      template: {
-        tpl: 'link',
-        render: (text, record, index) => {
-          const { status } = record
-          return [
-            {
-              text: '链接1',
-              href: 'https://www.baidu.com',
-              query: {
-                a: 1,
-                b: 2
-              },
-              target: '_blank'
+const columns = [
+  {
+    title: '排序',
+    width: 50,
+    template: {
+      tpl: 'sort'
+    }
+  },
+  {
+    title: '链接',
+    tooltip: 'href: 路径; query: 额外参数; 其他Button的属性透传',
+    template: {
+      tpl: 'link',
+      render: (text, record, index) => {
+        const { status } = record
+        return [
+          {
+            text: '链接1',
+            href: 'https://www.baidu.com',
+            query: {
+              a: 1,
+              b: 2
             },
-            {
-              text: '链接2',
-              href: 'https://www.baidu.com',
-              tooltip: status === 'online' ? '别问, 问就是不能点击' : '',
-              disabled: status === 'online'
-            }
-          ]
-        }
-      }
-    },
-    {
-      title: '加事件',
-      tooltip: 'onClick',
-      template: {
-        tpl: 'link',
-        render: (text, record, index) => {
-          return [
-            {
-              text: '百度',
-              onClick: () => {
-                message.success('可以写任意事件')
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      title: '可见性',
-      tooltip: 'visible: true|false',
-      template: {
-        tpl: 'link',
-        render: (text, record, index) => {
-          const { status } = record
-          return [
-            {
-              text: '上线',
-              visible: status === 'offline'
-            },
-            {
-              text: '下线',
-              visible: status === 'online'
-            }
-          ]
-        }
-      }
-    },
-    {
-      title: '弱提醒',
-      tooltip: 'Popconfirm',
-      template: {
-        tpl: 'link',
-        render: (text, record, index) => {
-          const { status } = record
-          const isOnline = status === 'online'
-          const text2 = isOnline ? '下线' : '上线'
-          return [
-            {
-              text: text2,
-              PopconfirmConfig: {
-                title: `确认要${text2}么?`,
-                onConfirm: async () => {
-                  // 这里写异步代码, 异步执行完成之后, 组件将自动触发重新请求数据
-                  await sleep()
-                }
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      title: '强提醒',
-      tooltip: 'Modal.confirm',
-      template: {
-        tpl: 'link',
-        render: (text, record, index) => {
-          const { status } = record
-          const isOnline = status === 'online'
-          const text2 = isOnline ? '下线' : '上线'
-          return [
-            {
-              text: text2,
-              danger: true,
-              ModalConfirmConfig: {
-                title: `确认要${text2}么?`,
-                content: '操作不可逆, 请仔细确认哦~',
-                onOk: async () => {
-                  // 这里写异步代码, 异步执行完成之后, 组件将自动触发重新请求数据
-                  await sleep()
-                }
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      title: '更多',
-      tooltip: 'isMore: true 展示在下拉框里',
-      template: {
-        tpl: 'link',
-        render: (text, record, index) => {
-          return [
-            {
-              text: '按钮1'
-            },
-            {
-              text: '按钮2'
-            },
-            {
-              text: '按钮3'
-            },
-            {
-              text: '按钮4',
-              isMore: true
-            },
-            {
-              text: '按钮5',
-              isMore: true
-            }
-          ]
-        }
+            target: '_blank'
+          },
+          {
+            text: '链接2',
+            href: 'https://www.baidu.com',
+            tooltip: status === 'online' ? '别问, 问就是不能点击' : '',
+            disabled: status === 'online'
+          }
+        ]
       }
     }
-  ]
+  },
+  {
+    title: '加事件',
+    tooltip: 'onClick',
+    template: {
+      tpl: 'link',
+      render: (text, record, index) => {
+        return [
+          {
+            text: '百度',
+            onClick: () => {
+              message.success('可以写任意事件')
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    title: '可见性',
+    tooltip: 'visible: true|false',
+    template: {
+      tpl: 'link',
+      render: (text, record, index) => {
+        const { status } = record
+        return [
+          {
+            text: '上线',
+            visible: status === 'offline'
+          },
+          {
+            text: '下线',
+            visible: status === 'online'
+          }
+        ]
+      }
+    }
+  },
+  {
+    title: '弱提醒',
+    tooltip: 'Popconfirm',
+    template: {
+      tpl: 'link',
+      render: (text, record, index) => {
+        const { status } = record
+        const isOnline = status === 'online'
+        const text2 = isOnline ? '下线' : '上线'
+        return [
+          {
+            text: text2,
+            PopconfirmConfig: {
+              title: `确认要${text2}么?`,
+              onConfirm: async () => {
+                // 这里写异步代码, 异步执行完成之后, 组件将自动触发重新请求数据
+                await sleep()
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    title: '强提醒',
+    tooltip: 'Modal.confirm',
+    template: {
+      tpl: 'link',
+      render: (text, record, index) => {
+        const { status } = record
+        const isOnline = status === 'online'
+        const text2 = isOnline ? '下线' : '上线'
+        return [
+          {
+            text: text2,
+            danger: true,
+            ModalConfirmConfig: {
+              title: `确认要${text2}么?`,
+              content: '操作不可逆, 请仔细确认哦~',
+              onOk: async () => {
+                // 这里写异步代码, 异步执行完成之后, 组件将自动触发重新请求数据
+                await sleep()
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    title: '更多',
+    tooltip: 'isMore: true 展示在下拉框里',
+    template: {
+      tpl: 'link',
+      render: (text, record, index) => {
+        return [
+          {
+            text: '按钮1'
+          },
+          {
+            text: '按钮2'
+          },
+          {
+            text: '按钮3'
+          },
+          {
+            text: '按钮4',
+            isMore: true
+          },
+          {
+            text: '按钮5',
+            isMore: true
+          }
+        ]
+      }
+    }
+  }
+]
+
+export default () => {
   return (
     <Table rowKey="id" columns={columns} dataSource={dataSource} pagination={false} size="small" scroll={{ x: 1000 }} />
   )
@@ -575,41 +578,42 @@ const dataSource = [
   { id: 2, digit: 1234, percent: 12.34, rate: 4, progress: 75 }
 ]
 
-export default () => {
-  const columns = [
-    {
-      title: '千分位',
-      dataIndex: 'digit',
-      tooltip: 'tpl: "digit"',
-      template: {
-        tpl: 'digit'
-      }
-    },
-    {
-      title: '百分比',
-      dataIndex: 'percent',
-      tooltip: 'tpl: "percent"',
-      template: {
-        tpl: 'percent'
-      }
-    },
-    {
-      title: '评分',
-      dataIndex: 'rate',
-      tooltip: 'tpl: "rate"',
-      template: {
-        tpl: 'rate'
-      }
-    },
-    {
-      title: '进度条',
-      dataIndex: 'progress',
-      tooltip: 'tpl: "progress"',
-      template: {
-        tpl: 'progress'
-      }
+const columns = [
+  {
+    title: '千分位',
+    dataIndex: 'digit',
+    tooltip: 'tpl: "digit"',
+    template: {
+      tpl: 'digit'
     }
-  ]
+  },
+  {
+    title: '百分比',
+    dataIndex: 'percent',
+    tooltip: 'tpl: "percent"',
+    template: {
+      tpl: 'percent'
+    }
+  },
+  {
+    title: '评分',
+    dataIndex: 'rate',
+    tooltip: 'tpl: "rate"',
+    template: {
+      tpl: 'rate'
+    }
+  },
+  {
+    title: '进度条',
+    dataIndex: 'progress',
+    tooltip: 'tpl: "progress"',
+    template: {
+      tpl: 'progress'
+    }
+  }
+]
+
+export default () => {
   return (
     <Table rowKey="id" columns={columns} dataSource={dataSource} pagination={false} size="small" scroll={{ x: 1000 }} />
   )
@@ -637,6 +641,69 @@ const dataSource = [
   { id: 2, name: 'Jerry', sex: 2, age: 5, birth: '2017-02-23', studyStart: '2017-09-01', studyEnd: '2010-07-01' }
 ]
 
+const columns = [
+  {
+    title: '姓名',
+    dataIndex: 'name',
+    editable: true,
+    width: 200,
+    template: {
+      tpl: 'input'
+    }
+  },
+  {
+    title: '性别',
+    dataIndex: 'sex',
+    editable: true,
+    template: {
+      tpl: 'select',
+      options: OptionsData3
+    }
+  },
+  {
+    title: '年龄',
+    dataIndex: 'age',
+    editable: true,
+    template: {
+      tpl: 'number'
+    }
+  },
+  {
+    title: '生日',
+    dataIndex: 'birth',
+    editable: true,
+    width: 150,
+    template: {
+      tpl: 'date-picker'
+    }
+  },
+  {
+    title: '就读时间',
+    dataIndex: 'studyStart,studyEnd',
+    editable: true,
+    width: 260,
+    template: {
+      tpl: 'date-range-picker'
+    }
+  },
+  {
+    title: '操作',
+    template: {
+      tpl: 'link',
+      render: (text, record, index) => {
+        return [
+          {
+            text: '保存',
+            onClick: () => {
+              showMessage('当前行的数据', record)
+            }
+          }
+        ]
+      }
+    }
+  }
+]
+
 export default () => {
   const tableRef = useRef()
 
@@ -644,68 +711,6 @@ export default () => {
     tableRef.current.search()
   }, [tableRef])
 
-  const columns = [
-    {
-      title: '姓名',
-      dataIndex: 'name',
-      editable: true,
-      width: 200,
-      template: {
-        tpl: 'input'
-      }
-    },
-    {
-      title: '性别',
-      dataIndex: 'sex',
-      editable: true,
-      template: {
-        tpl: 'select',
-        options: OptionsData3
-      }
-    },
-    {
-      title: '年龄',
-      dataIndex: 'age',
-      editable: true,
-      template: {
-        tpl: 'number'
-      }
-    },
-    {
-      title: '生日',
-      dataIndex: 'birth',
-      editable: true,
-      width: 150,
-      template: {
-        tpl: 'date-picker'
-      }
-    },
-    {
-      title: '就读时间',
-      dataIndex: 'studyStart,studyEnd',
-      editable: true,
-      width: 260,
-      template: {
-        tpl: 'date-range-picker'
-      }
-    },
-    {
-      title: '操作',
-      template: {
-        tpl: 'link',
-        render: (text, record, index) => {
-          return [
-            {
-              text: '保存',
-              onClick: () => {
-                showMessage('当前行的数据', record)
-              }
-            }
-          ]
-        }
-      }
-    }
-  ]
   return (
     <Table
       ref={tableRef}
@@ -739,8 +744,82 @@ export default () => {
 
 ### 拖拽整行排序
 
+#### 同步数据
+
+需配置 `onDragSortEnd` 来同步更新数据源
+
+```jsx
+import React, { useState, useEffect } from 'react'
+import { Table } from '@nbfe/components'
+import { showMessage, OptionsData3 } from '../mock'
+
+const initData = [
+  { id: 1, name: 'Tom', sex: 1 },
+  { id: 2, name: 'Jerry', sex: 2 },
+  { id: 3, name: 'Herry', sex: 1 }
+]
+
+const columns = [
+  {
+    title: '姓名',
+    dataIndex: 'name'
+  },
+  {
+    title: '性别',
+    dataIndex: 'sex',
+    template: {
+      tpl: 'enum',
+      options: OptionsData3,
+      shape: 'dot'
+    }
+  },
+  {
+    title: '操作',
+    template: {
+      tpl: 'link',
+      render: (text, record, index) => {
+        return [
+          {
+            text: '保存',
+            onClick: () => {
+              showMessage('当前行的数据', record)
+            }
+          }
+        ]
+      }
+    }
+  }
+]
+
+export default () => {
+  const [dataSource, setDataSource] = useState([])
+
+  useEffect(() => {
+    setDataSource(initData)
+  }, [setDataSource])
+
+  return (
+    <Table
+      rowKey="id"
+      draggable
+      columns={columns}
+      dataSource={dataSource}
+      onDragSortEnd={data => {
+        console.log('拖拽更新后的数据')
+        console.log(data)
+        setDataSource(data)
+      }}
+      pagination={false}
+    />
+  )
+}
+```
+
+#### 异步数据
+
 ```jsx
 import React, { useRef, useEffect } from 'react'
+import { Button } from 'antd'
 import { Table } from '@nbfe/components'
 import { showMessage, OptionsData3 } from '../mock'
 
@@ -750,39 +829,66 @@ const dataSource = [
   { id: 3, name: 'Herry', sex: 1 }
 ]
 
-export default () => {
-  const columns = [
-    {
-      title: '姓名',
-      dataIndex: 'name'
-    },
-    {
-      title: '性别',
-      dataIndex: 'sex',
-      template: {
-        tpl: 'enum',
-        options: OptionsData3,
-        shape: 'dot'
-      }
-    },
-    {
-      title: '操作',
-      template: {
-        tpl: 'link',
-        render: (text, record, index) => {
-          return [
-            {
-              text: '保存',
-              onClick: () => {
-                showMessage('当前行的数据', record)
-              }
+const columns = [
+  {
+    title: '姓名',
+    dataIndex: 'name'
+  },
+  {
+    title: '性别',
+    dataIndex: 'sex',
+    template: {
+      tpl: 'enum',
+      options: OptionsData3,
+      shape: 'dot'
+    }
+  },
+  {
+    title: '操作',
+    template: {
+      tpl: 'link',
+      render: (text, record, index) => {
+        return [
+          {
+            text: '保存',
+            onClick: () => {
+              showMessage('当前行的数据', record)
             }
-          ]
-        }
+          }
+        ]
       }
     }
-  ]
-  return <Table rowKey="id" draggable columns={columns} dataSource={dataSource} pagination={false} />
+  }
+]
+
+export default () => {
+  const tableRef = useRef()
+
+  const handleSearch = () => {
+    tableRef.current.search()
+  }
+
+  return (
+    <>
+      <Button type="primary" onClick={handleSearch}>
+        请求数据
+      </Button>
+      <Table
+        ref={tableRef}
+        rowKey="id"
+        draggable
+        columns={columns}
+        remoteConfig={{
+          fetch: async () => {
+            return {
+              list: dataSource
+            }
+          }
+        }}
+        pagination={false}
+      />
+    </>
+  )
 }
 ```
 
@@ -791,56 +897,75 @@ export default () => {
 如果你想换个图标, 配置 **{ tpl: 'sort', icon: ReactNode }** 即可
 
 ```jsx
-import React, { useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Table } from '@nbfe/components'
 import { showMessage, OptionsData3 } from '../mock'
 
-const dataSource = [
+const initData = [
   { id: 1, name: 'Tom', sex: 1 },
   { id: 2, name: 'Jerry', sex: 2 },
   { id: 3, name: 'Herry', sex: 1 }
 ]
 
-export default () => {
-  const columns = [
-    {
-      title: '排序',
-      width: 50,
-      template: {
-        tpl: 'sort'
-      }
-    },
-    {
-      title: '姓名',
-      dataIndex: 'name'
-    },
-    {
-      title: '性别',
-      dataIndex: 'sex',
-      template: {
-        tpl: 'enum',
-        options: OptionsData3,
-        shape: 'dot'
-      }
-    },
-    {
-      title: '操作',
-      template: {
-        tpl: 'link',
-        render: (text, record, index) => {
-          return [
-            {
-              text: '保存',
-              onClick: () => {
-                showMessage('当前行的数据', record)
-              }
+const columns = [
+  {
+    title: '排序',
+    width: 50,
+    template: {
+      tpl: 'sort'
+    }
+  },
+  {
+    title: '姓名',
+    dataIndex: 'name'
+  },
+  {
+    title: '性别',
+    dataIndex: 'sex',
+    template: {
+      tpl: 'enum',
+      options: OptionsData3,
+      shape: 'dot'
+    }
+  },
+  {
+    title: '操作',
+    template: {
+      tpl: 'link',
+      render: (text, record, index) => {
+        return [
+          {
+            text: '保存',
+            onClick: () => {
+              showMessage('当前行的数据', record)
             }
-          ]
-        }
+          }
+        ]
       }
     }
-  ]
-  return <Table rowKey="id" columns={columns} dataSource={dataSource} pagination={false} />
+  }
+]
+
+export default () => {
+  const [dataSource, setDataSource] = useState([])
+
+  useEffect(() => {
+    setDataSource(initData)
+  }, setDataSource)
+
+  return (
+    <Table
+      rowKey="id"
+      columns={columns}
+      dataSource={dataSource}
+      onDragSortEnd={data => {
+        console.log('拖拽更新后的数据')
+        console.log(data)
+        setDataSource(data)
+      }}
+      pagination={false}
+    />
+  )
 }
 ```
 
@@ -853,72 +978,72 @@ import React, { useRef, useEffect } from 'react'
 import { Table } from '@nbfe/components'
 import { showMessage, OptionsData3, getRemoteTableData } from '../mock'
 
+const columns = [
+  {
+    title: '排序',
+    width: 50,
+    template: {
+      tpl: 'sort'
+    }
+  },
+  {
+    title: '姓名',
+    dataIndex: 'name',
+    editable: true,
+    template: {
+      tpl: 'input'
+    }
+  },
+  {
+    title: '性别',
+    dataIndex: 'sex',
+    editable: true,
+    template: {
+      tpl: 'select',
+      options: OptionsData3
+    }
+  },
+  {
+    title: '生日',
+    dataIndex: 'birth',
+    editable: true,
+    template: {
+      tpl: 'date-picker'
+    }
+  },
+  {
+    title: '就读时间',
+    dataIndex: 'studyStart,studyEnd',
+    editable: true,
+    width: 260,
+    template: {
+      tpl: 'date-range-picker'
+    }
+  },
+  {
+    title: '操作',
+    template: {
+      tpl: 'link',
+      render: (text, record, index) => {
+        return [
+          {
+            text: '保存',
+            onClick: () => {
+              showMessage('当前行的数据', record)
+            }
+          }
+        ]
+      }
+    }
+  }
+]
+
 export default () => {
   const tableRef = useRef()
 
   useEffect(() => {
     tableRef.current.search()
   }, [tableRef])
-
-  const columns = [
-    {
-      title: '排序',
-      width: 50,
-      template: {
-        tpl: 'sort'
-      }
-    },
-    {
-      title: '姓名',
-      dataIndex: 'name',
-      editable: true,
-      template: {
-        tpl: 'input'
-      }
-    },
-    {
-      title: '性别',
-      dataIndex: 'sex',
-      editable: true,
-      template: {
-        tpl: 'select',
-        options: OptionsData3
-      }
-    },
-    {
-      title: '生日',
-      dataIndex: 'birth',
-      editable: true,
-      template: {
-        tpl: 'date-picker'
-      }
-    },
-    {
-      title: '就读时间',
-      dataIndex: 'studyStart,studyEnd',
-      editable: true,
-      width: 260,
-      template: {
-        tpl: 'date-range-picker'
-      }
-    },
-    {
-      title: '操作',
-      template: {
-        tpl: 'link',
-        render: (text, record, index) => {
-          return [
-            {
-              text: '保存',
-              onClick: () => {
-                showMessage('当前行的数据', record)
-              }
-            }
-          ]
-        }
-      }
-    }
-  ]
 
   return (
     <Table
@@ -953,21 +1078,22 @@ const dataSource = [
   { id: 2, name: 'Jerry', sex: 1, age: 5 }
 ]
 
+const columns = [
+  {
+    title: '姓名',
+    dataIndex: 'name'
+  },
+  {
+    title: '性别',
+    dataIndex: 'sex'
+  },
+  {
+    title: '年龄',
+    dataIndex: 'age'
+  }
+]
+
 export default () => {
-  const columns = [
-    {
-      title: '姓名',
-      dataIndex: 'name'
-    },
-    {
-      title: '性别',
-      dataIndex: 'sex'
-    },
-    {
-      title: '年龄',
-      dataIndex: 'age'
-    }
-  ]
   return (
     <Table
       rowKey="id"
