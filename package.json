@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@nbfe/react-color": "^0.1.2",
-    "@nbfe/tools": "^0.4.0",
+    "@nbfe/tools": "^0.4.1",
     "react-dnd": "^15.1.1",
     "react-dnd-html5-backend": "^15.1.2",
     "react-sortable-hoc": "^2.0.0"

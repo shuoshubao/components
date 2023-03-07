@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Typography, Table } from 'antd'
 import { isObject } from 'lodash'
 
@@ -64,7 +64,7 @@ export default ({ api }) => {
     pagination: false
   }
   return (
-    <Fragment>
+    <>
       {!!props.length && (
         <Table
           title={() => <Title level={4}>属性</Title>}
@@ -97,6 +97,6 @@ export default ({ api }) => {
           {...commonTableProps}
         />
       )}
-    </Fragment>
+    </>
   )
 }

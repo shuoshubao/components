@@ -631,9 +631,12 @@ export default () => {
 - `column.editable = true`
 - `column.template.tpl = 'input' | 'select' ...` (全部模板参考 [内置表单组件](/components/form))
 
+### 异步数据
+
 ```jsx
 import React, { useRef, useEffect } from 'react'
 import { Table } from '@nbfe/components'
+import { sleep } from '@nbfe/tools'
 import { showMessage, OptionsData3 } from '../mock'
 
 const dataSource = [
@@ -718,8 +721,114 @@ export default () => {
       columns={columns}
       remoteConfig={{
         fetch: async () => {
-          return { list: dataSource }
+          return {
+            list: dataSource
+          }
         }
+      }}
+      pagination={false}
+    />
+  )
+}
+```
+
+### 同步数据
+
+需配置 `onEditableCellSave` 来同步更新数据源
+
+```jsx
+import React, { useRef, useState, useEffect } from 'react'
+import { Table } from '@nbfe/components'
+import { sleep } from '@nbfe/tools'
+import { showMessage, OptionsData3 } from '../mock'
+
+const initDataSource = [
+  { id: 1, name: 'Tom', sex: 1, age: 3, birth: '2019-01-01', studyStart: '2010-09-01', studyEnd: '2014-07-01' },
+  { id: 2, name: 'Jerry', sex: 2, age: 5, birth: '2017-02-23', studyStart: '2017-09-01', studyEnd: '2010-07-01' }
+]
+
+const columns = [
+  {
+    title: '姓名',
+    dataIndex: 'name',
+    editable: true,
+    width: 200,
+    template: {
+      tpl: 'input'
+    }
+  },
+  {
+    title: '性别',
+    dataIndex: 'sex',
+    editable: true,
+    template: {
+      tpl: 'select',
+      options: OptionsData3
+    }
+  },
+  {
+    title: '年龄',
+    dataIndex: 'age',
+    editable: true,
+    template: {
+      tpl: 'number'
+    }
+  },
+  {
+    title: '生日',
+    dataIndex: 'birth',
+    editable: true,
+    width: 150,
+    template: {
+      tpl: 'date-picker'
+    }
+  },
+  {
+    title: '就读时间',
+    dataIndex: 'studyStart,studyEnd',
+    editable: true,
+    width: 260,
+    template: {
+      tpl: 'date-range-picker'
+    }
+  },
+  {
+    title: '操作',
+    template: {
+      tpl: 'link',
+      render: (text, record, index) => {
+        return [
+          {
+            text: '保存',
+            onClick: () => {
+              showMessage('当前行的数据', record)
+            }
+          }
+        ]
+      }
+    }
+  }
+]
+
+export default () => {
+  const tableRef = useRef()
+
+  const [dataSource, setDataSource] = useState([])
+
+  useEffect(() => {
+    setDataSource(initDataSource)
+  }, [setDataSource])
+
+  return (
+    <Table
+      ref={tableRef}
+      rowKey="id"
+      columns={columns}
+      dataSource={dataSource}
+      onEditableCellSave={async ({ index, dataIndex, value, dataSource }) => {
+        console.log(index, dataIndex, value)
+        await sleep()
+        setDataSource(dataSource)
       }}
       pagination={false}
     />
