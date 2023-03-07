@@ -58,7 +58,7 @@ export default () => {
       <Button type="primary" onClick={handleSearch}>
         请求数据
       </Button>
-      <Table key={Date.now()} rowKey="id" columns={columns} dataSource={dataSource} pagination={false} size="small" />
+      <Table rowKey="id" columns={columns} dataSource={dataSource} pagination={false} size="small" />
     </>
   )
 }
@@ -733,11 +733,11 @@ export default () => {
 
 - 拖拽整行
   - draggable: true
-  - extraConfig?.disabledSort: (record, index)=> boolean
+  - extraConfig?.disabledSort: (record, index) => boolean
 - 拖拽句柄
   - template.tpl: 'sort'
   - template.handler: ReactNode
-  - template?.disabledSort: (record, index)=> boolean
+  - template?.disabledSort: (record, index) => boolean
 - onDragSortEnd 拖拽排序完成回调
 
 **disabledSort** 默认为 null, 当为函数时, 返回布尔值, 决定该行是否禁用拖拽排序
@@ -804,10 +804,11 @@ export default () => {
       draggable
       columns={columns}
       dataSource={dataSource}
-      onDragSortEnd={data => {
+      onDragSortEnd={({ dataSource, fromIndex, toIndex }) => {
         console.log('拖拽更新后的数据')
-        console.log(data)
-        setDataSource(data)
+        console.log('fromIndex:', fromIndex, ', toIndex:', toIndex)
+        console.log(dataSource)
+        setDataSource(dataSource)
       }}
       pagination={false}
     />

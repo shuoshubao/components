@@ -81,7 +81,7 @@
       "name": "onDragSortEnd",
       "desc": "拖拽排序完成回调",
       "signature": "",
-      "args": "dataSource",
+      "args": "{ dataSource, fromIndex, toIndex }",
       "version": ""
     }
   ],
