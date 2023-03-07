@@ -28,6 +28,14 @@ export default () => {
     setTimeout(() => {
       setDataSource(mockData)
     }, 1e3)
+
+    setTimeout(() => {
+      setDataSource({
+        name: '硕鼠宝',
+        age: 28,
+        job: 'fe'
+      })
+    }, 3e3)
   }, [setDataSource])
 
   const columns = [
@@ -87,7 +95,7 @@ export default () => {
   useEffect(() => {
     setTimeout(() => {
       setDataSource(mockData)
-    }, 1e3)
+    }, 2e3)
   }, [setDataSource])
 
   const columns = [
