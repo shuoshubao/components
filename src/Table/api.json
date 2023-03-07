@@ -74,7 +74,7 @@
       "name": "onEditableCellSave",
       "desc": "编辑单元格时的回调",
       "signature": "",
-      "args": "({ index, dataIndex, value }): Promise<void>",
+      "args": "({ index, dataIndex, value, dataSource }): Promise<void>",
       "version": ""
     },
     {
