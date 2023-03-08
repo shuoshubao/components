@@ -1,8 +1,10 @@
 ```jsx
-import React from 'react'
+import React, { useRef } from 'react'
 import { List } from '@nbfe/components'
+import { Button } from 'antd'
+import { getRemoteTableData } from '../mock'
 
-const dataSource = [
+const itemDataSource = [
   {
     name: '语雀的天空',
     image: 'https://mdn.alipayobjects.com/huamei_0prmtq/afts/img/A*sRUdR543RjcAAAAAAAAAAAAADvuFAQ/original',
@@ -29,33 +31,55 @@ const dataSource = [
   }
 ]
 
+const dataSource = [itemDataSource, itemDataSource, itemDataSource, itemDataSource].flat().map((v, i) => {
+  return { ...v, id: i }
+})
+
 export default () => {
+  const listRef = useRef()
+
+  const handleSearch = () => {
+    listRef.current.search()
+  }
+
   return (
-    <List
-      rowKey="name"
-      dataSource={dataSource}
-      renderItem={item => {
-        const { name, image, homepage, desc } = item
-        return {
-          actions: [
-            {
-              text: '主页',
-              href: homepage
-            },
-            <a href="https://baidu.com" target="_blank" rel="noopener noreferrer" key="link">
-              百度
-            </a>
-          ],
-          // extra: '111',
-          // content: desc,
-          meta: {
-            avatar: image,
-            title: name,
-            description: desc
+    <>
+      <Button type="primary" onClick={handleSearch}>
+        请求数据
+      </Button>
+      <List
+        ref={listRef}
+        rowKey="id"
+        // dataSource={dataSource}
+        remoteConfig={{
+          fetch: async params => {
+            return getRemoteTableData(params)
           }
-        }
-      }}
-    />
+        }}
+        pagination={{
+          defaultPageSize: 3
+        }}
+        renderItem={item => {
+          const { name, image, homepage, desc } = item
+          return {
+            actions: [
+              {
+                text: '主页',
+                href: homepage
+              },
+              <a href="https://baidu.com" target="_blank" rel="noopener noreferrer" key="link">
+                百度
+              </a>
+            ],
+            meta: {
+              avatar: image,
+              title: name,
+              description: desc
+            }
+          }
+        }}
+      />
+    </>
   )
 }
 ```
