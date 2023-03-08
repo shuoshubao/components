@@ -2,6 +2,7 @@ import React from 'react'
 import { message, notification } from 'antd'
 import { isString } from 'lodash'
 import { blue, red } from '@ant-design/colors'
+import { sleep } from '@nbfe/tools'
 
 export const OptionsData = [
   {
@@ -168,21 +169,94 @@ export const showMessage = (title, json) => {
 }
 
 export const dataSource = [
-  { id: 1, name: 'Tom', sex: 1, birth: '2019-01-01', studyStart: '2010-09-01', studyEnd: '2014-07-01' },
-  { id: 2, name: 'Jerry', sex: 2, birth: '2017-02-23', studyStart: '2017-09-01', studyEnd: '2010-07-01' },
-  { id: 3, name: 'Herry', sex: 1, birth: '2019-07-01', studyStart: '2005-09-01', studyEnd: '2008-07-01' },
-  { id: 4, name: 'Tuffy', sex: 1, birth: '2010-07-01', studyStart: '2005-09-01', studyEnd: '2008-07-01' },
-  { id: 5, name: 'Hi', sex: 1, birth: '2010-07-01', studyStart: '2005-09-01', studyEnd: '2008-07-01' },
-  { id: 6, name: 'Hello', sex: 1, birth: '2010-07-01', studyStart: '2005-09-01', studyEnd: '2008-07-01' },
-  { id: 7, name: 'Bye', sex: 1, birth: '2010-07-01', studyStart: '2005-09-01', studyEnd: '2008-07-01' }
-]
+  {
+    name: '语雀的天空',
+    image: 'https://mdn.alipayobjects.com/huamei_0prmtq/afts/img/A*sRUdR543RjcAAAAAAAAAAAAADvuFAQ/original',
+    homepage: 'https://yuque.com',
+    desc: '用语雀，构建你的数字花园'
+  },
+  {
+    name: 'Ant Design',
+    image: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+    homepage: 'https://ant.design',
+    desc: '助力设计开发者「更灵活」地搭建出「更美」的产品，让用户「快乐工作」～'
+  },
+  {
+    name: '蚂蚁金服体验科技',
+    image: 'https://gw.alipayobjects.com/zos/rmsportal/bhvWYkprkSwZohvBCayP.png',
+    homepage: 'https://xcloud.alipay.com',
+    desc: '让用户体验美好'
+  },
+  {
+    name: 'Kitchen',
+    image: 'https://gw.alipayobjects.com/zos/bmw-prod/51a51720-8a30-4430-b6c9-be5712364f04.svg',
+    homepage: 'https://kitchen.alipay.com',
+    desc: '让你的设计秀色可餐, 一款为设计者提升工作效率的 Sketch 工具集'
+  },
+  {
+    name: '蓝湖',
+    image: 'https://s3-alpha.figma.com/profile/1a6a6481-773b-4ab6-9e82-004230b713fd',
+    homepage: 'https://lanhuapp.com/',
+    desc: '高效的产品设计协作平台'
+  },
+  {
+    name: 'WPS',
+    image: 'https://static.epy.wpscdn.cn/favicon.ico',
+    homepage: 'https://www.wps.cn/',
+    desc: '支持多人在线协作编辑Word、Excel和PPT文档'
+  },
+  {
+    name: 'VSCode',
+    image: 'https://code.visualstudio.com/favicon.ico',
+    homepage: 'https://code.visualstudio.com/',
+    desc: '宇宙最强编辑器'
+  },
+  {
+    name: 'Google Chrome',
+    image: 'https://www.google.com/chrome/static/images/chrome-logo-m100.svg',
+    homepage: 'https://www.google.com/intl/zh-CN/chrome/',
+    desc: '强大、快速的网页浏览器'
+  },
+  {
+    name: 'Postman',
+    image: 'https://user-images.githubusercontent.com/7853266/44114706-9c72dd08-9fd1-11e8-8d9d-6d9d651c75ad.png',
+    homepage: 'https://www.postman.com',
+    desc: 'Api 管理平台'
+  },
+  {
+    name: 'Sketch',
+    image: 'https://pbs.twimg.com/media/EvGFRqVUcAA3BRd?format=jpg&name=4096x4096',
+    homepage: 'https://www.sketch.com',
+    desc: '原型图'
+  },
+  {
+    name: 'XMind',
+    image: 'https://xmind.app/favicon.ico',
+    homepage: 'https://xmind.app',
+    desc: '思维导图'
+  },
+  {
+    name: 'Sourcetree',
+    image: 'https://wac-cdn.atlassian.com/assets/img/favicons/sourcetree/favicon-32x32.png',
+    homepage: 'https://www.sourcetreeapp.com',
+    desc: 'Git 图形化客户端'
+  }
+].map((v, i) => {
+  return { ...v, id: i + 1 }
+})
 
-export const getRemoteTableData = params => {
+export const getRemoteTableData = async params => {
   const { currentPage, pageSize } = params
   const pivot = (currentPage - 1) * pageSize
   const list = dataSource.slice(pivot, currentPage * pageSize)
-  return {
+  const data = {
     list,
     total: dataSource.length
   }
+  console.log('----- getRemoteTableData -----', 'start')
+  console.log(params)
+  console.log(data)
+  console.log('----- getRemoteTableData -----', 'end')
+  await sleep()
+  return data
 }
