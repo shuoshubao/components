@@ -101,3 +101,17 @@ export default () => {
   )
 }
 ```
+
+## API
+
+属性完全透传 [Antd - List](https://4x.ant.design/components/list-cn/#API)
+
+```jsx
+import React from 'react'
+import api from './api.json'
+import ComponentApi from '../ComponentApi'
+
+export default () => {
+  return <ComponentApi api={api} />
+}
+```

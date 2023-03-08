@@ -1,0 +1,33 @@
+{
+  "name": "List",
+  "desc": "配置化列表",
+  "props": [
+    {
+      "name": "dataSource",
+      "desc": "数据源",
+      "type": "object[]",
+      "optionalValue": "",
+      "default": "[]",
+      "version": ""
+    },
+    {
+      "name": "remoteConfig",
+      "desc": "接口配置",
+      "type": "IRemoteConfig",
+      "optionalValue": "",
+      "default": "null",
+      "version": ""
+    }
+  ],
+  "events": [],
+  "methods": [
+    {
+      "name": "search",
+      "desc": "触发列表的远端数据请求, 即调用 remoteConfig.fetch",
+      "args": "params: 接口所需参数",
+      "version": ""
+    }
+  ],
+  "columns": [],
+  "maintainer": "fangt11"
+}
