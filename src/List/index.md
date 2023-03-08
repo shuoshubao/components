@@ -52,9 +52,7 @@ export default () => {
         rowKey="id"
         // dataSource={dataSource}
         remoteConfig={{
-          fetch: async params => {
-            return getRemoteTableData(params)
-          }
+          fetch: getRemoteTableData
         }}
         pagination={{
           defaultPageSize: 3
