@@ -67,6 +67,22 @@
       "optionalValue": "",
       "default": "null",
       "version": ""
+    },
+    {
+      "name": "renderItem",
+      "desc": "List 组件所需的 renderItem",
+      "type": "(item, index) => ReactNode || {}",
+      "optionalValue": "",
+      "default": "null",
+      "version": ""
+    },
+    {
+      "name": "listProps",
+      "desc": "List 组件的其他属性(不包含 'dataSource', 'renderItem', 'pagination', 'loading', 'rowKey', 'size', 'loadMore')",
+      "type": "object",
+      "optionalValue": "",
+      "default": "null",
+      "version": ""
     }
   ],
   "events": [

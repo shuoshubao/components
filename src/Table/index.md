@@ -1347,3 +1347,15 @@ export default () => {
   )
 }
 ```
+
+## API
+
+```jsx
+import React from 'react'
+import api from './api.json'
+import ComponentApi from '../ComponentApi'
+
+export default () => {
+  return <ComponentApi api={api} />
+}
+```
