@@ -15,7 +15,7 @@ toc: content
 
 ## 基本使用
 
-### 本地数据源
+### 同步据源
 
 当不使用接口请求时, 数据源通过 **dataSource** 属性传入
 
@@ -56,7 +56,7 @@ export default () => {
   return (
     <>
       <Button type="primary" onClick={handleSearch}>
-        请求数据
+        同步数据
       </Button>
       <Table rowKey="id" columns={columns} dataSource={dataSource} pagination={false} size="small" />
     </>
@@ -64,7 +64,7 @@ export default () => {
 }
 ```
 
-### 接口请求
+### 异步数据
 
 当数据不是固定的, 比如 1. 有搜索; 2. 分页时需请求接口, 这时候不配置属性 **dataSource**, 而只需配置属性 **remoteConfig**, 然后在需要的地方调用 tableRef.current.search() 即可
 
@@ -135,49 +135,47 @@ export default () => {
 除了以下列举的模板外, 还支持 Form 组件所有的模板, 这里就不赘述, 详见: [编辑](#编辑)
 
 <table class="custom-table-header-left">
-    <colgroup>
-        <col width="80px" />
-    </colgroup>
-    <thead>
-        <tr>
-            <th></th>
-            <th colspan="6">展示类</th>
-            <th colspan="2">操作</th>
-            <th colspan="4">数字类</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>tpl</td>
-            <td>numbering</td>
-            <td>text</td>
-            <td>image</td>
-            <td>enum</td>
-            <td>date</td>
-            <td>code</td>
-            <td>sort</td>
-            <td>link</td>
-            <td>digit</td>
-            <td>percent</td>
-            <td>rate</td>
-            <td>progress</td>
-        </tr>
-        <tr>
-            <td>含义</td>
-            <td>序号</td>
-            <td>文本</td>
-            <td>缩略图</td>
-            <td>枚举</td>
-            <td>日期</td>
-            <td>代码</td>
-            <td>排序</td>
-            <td>按钮组</td>
-            <td>数字</td>
-            <td>百分比</td>
-            <td>评分</td>
-            <td>进度条</td>
-        </tr>
-    </tbody>
+  <colgroup><col width="80px" /></colgroup>
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="6">展示类</th>
+      <th colspan="2">操作</th>
+      <th colspan="4">数字类</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>tpl</td>
+      <td>numbering</td>
+      <td>text</td>
+      <td>image</td>
+      <td>enum</td>
+      <td>date</td>
+      <td>code</td>
+      <td>sort</td>
+      <td>link</td>
+      <td>digit</td>
+      <td>percent</td>
+      <td>rate</td>
+      <td>progress</td>
+    </tr>
+    <tr>
+      <td>含义</td>
+      <td>序号</td>
+      <td>文本</td>
+      <td>缩略图</td>
+      <td>枚举</td>
+      <td>日期</td>
+      <td>代码</td>
+      <td>排序</td>
+      <td>按钮组</td>
+      <td>数字</td>
+      <td>百分比</td>
+      <td>评分</td>
+      <td>进度条</td>
+    </tr>
+  </tbody>
 </table>
 
 ### 展示类
@@ -1181,36 +1179,13 @@ export default () => {
 - `extraConfig.showViewMode = true` // 展示按钮: 切换视图
 - `extraConfig.storageKey = 'uniqId'` // 表头配置, 如果一个页面有多个表格需要表头设置功能, 请确保 key 不同, 用以存储各个表格的状态
 
-```jsx
-import React from 'react'
-import { Table } from '@nbfe/components'
+### 同步数据
 
-const dataSource = [
-  {
-    name: '语雀的天空',
-    image: 'https://mdn.alipayobjects.com/huamei_0prmtq/afts/img/A*sRUdR543RjcAAAAAAAAAAAAADvuFAQ/original',
-    homepage: 'https://yuque.com',
-    desc: '用语雀，构建你的数字花园'
-  },
-  {
-    name: 'Ant Design',
-    image: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
-    homepage: 'https://ant.design',
-    desc: '助力设计开发者「更灵活」地搭建出「更美」的产品，让用户「快乐工作」～'
-  },
-  {
-    name: '蚂蚁金服体验科技',
-    image: 'https://gw.alipayobjects.com/zos/rmsportal/bhvWYkprkSwZohvBCayP.png',
-    homepage: 'https://xcloud.alipay.com',
-    desc: '让用户体验美好'
-  },
-  {
-    name: 'Kitchen',
-    image: 'https://gw.alipayobjects.com/zos/bmw-prod/51a51720-8a30-4430-b6c9-be5712364f04.svg',
-    homepage: 'https://kitchen.alipay.com',
-    desc: '让你的设计秀色可餐, 一款为设计者提升工作效率的 Sketch 工具集'
-  }
-]
+```jsx
+import React, { useState } from 'react'
+import { Table } from '@nbfe/components'
+import { Button } from 'antd'
+import { dataSource as data } from '../mock'
 
 const columns = [
   {
@@ -1235,21 +1210,32 @@ const columns = [
 ]
 
 export default () => {
+  const [dataSource, setDataSource] = useState([])
+
+  const handleSearch = async () => {
+    setDataSource(data)
+  }
+
   return (
-    <Table
-      rowKey="name"
-      columns={columns}
-      dataSource={dataSource}
-      pagination={false}
-      extraConfig={{
-        showTotal: true,
-        showFullScreen: true,
-        showColumnsSetting: true,
-        showViewMode: true,
-        storageKey: 'one'
-      }}
-      listProps={{
-        renderItem: (item, index) => {
+    <>
+      <Button type="primary" onClick={handleSearch}>
+        更新数据
+      </Button>
+      <Table
+        rowKey="id"
+        columns={columns}
+        dataSource={dataSource}
+        pagination={{
+          defaultPageSize: 3
+        }}
+        extraConfig={{
+          showTotal: true,
+          showFullScreen: true,
+          showColumnsSetting: true,
+          showViewMode: true,
+          storageKey: 'one'
+        }}
+        renderItem={(item, index) => {
           const { name, image, homepage, desc } = item
           return {
             actions: [
@@ -1269,9 +1255,95 @@ export default () => {
               description: desc
             }
           }
-        }
-      }}
-    />
+        }}
+      />
+    </>
+  )
+}
+```
+
+### 异步数据
+
+```jsx
+import React, { useRef } from 'react'
+import { Table } from '@nbfe/components'
+import { Button } from 'antd'
+import { getRemoteTableData } from '../mock'
+
+const columns = [
+  {
+    title: 'Icon',
+    dataIndex: 'image',
+    template: {
+      tpl: 'image'
+    }
+  },
+  {
+    title: '名称',
+    dataIndex: 'name'
+  },
+  {
+    title: '主页',
+    dataIndex: 'homepage'
+  },
+  {
+    title: '简介',
+    dataIndex: 'desc'
+  }
+]
+
+export default () => {
+  const tableRef = useRef()
+
+  const handleSearch = () => {
+    tableRef.current.search()
+  }
+
+  return (
+    <>
+      <Button type="primary" onClick={handleSearch}>
+        请求数据
+      </Button>
+      <Table
+        ref={tableRef}
+        rowKey="id"
+        columns={columns}
+        remoteConfig={{
+          fetch: getRemoteTableData
+        }}
+        pagination={{
+          defaultPageSize: 3
+        }}
+        extraConfig={{
+          showTotal: true,
+          showFullScreen: true,
+          showColumnsSetting: true,
+          showViewMode: true,
+          storageKey: 'one'
+        }}
+        renderItem={(item, index) => {
+          const { name, image, homepage, desc } = item
+          return {
+            actions: [
+              {
+                text: '主页',
+                href: homepage
+              },
+              <a href="https://baidu.com" target="_blank" rel="noopener noreferrer" key="link">
+                百度
+              </a>
+            ],
+            // extra: '111',
+            // content: desc,
+            meta: {
+              avatar: image,
+              title: name,
+              description: desc
+            }
+          }
+        }}
+      />
+    </>
   )
 }
 ```
