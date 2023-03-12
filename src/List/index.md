@@ -12,10 +12,20 @@ toc: content
 
 ### 本地数据源
 
+`renderItem(item, index, Item)`
+
 `renderItem` 既可以像原生的一样直接返回 `ReactNode`, 也可以返回 `json`
 
-```md
-{ // 和 Table 组件的 tpl: 'link' 配置一样 actions: []{ 'text', 'visible', 'href', 'query', 'tooltip', 'isMore', 'icon', 'PopconfirmConfig', 'ModalConfirmConfig' }, extra: ReactNode, content: ReactNode, meta: { avatar: String } }
+```json
+{
+  // 和 Table 组件的 tpl: 'link' 配置一样
+  actions: ITableColumnTemplateLinkRender | ITableColumnTemplateLinkRender[],
+  extra: ReactNode,
+  content: ReactNode,
+  meta: {
+    avatar: String
+  }
+}
 ```
 
 ```jsx
@@ -167,7 +177,7 @@ export default () => {
       pagination={{
         defaultPageSize: 6
       }}
-      grid={{ gutter: 16, column: 3 }}
+      grid={{ gutter: 12, column: 3 }}
       renderItem={item => {
         const { name, image, homepage, desc } = item
         return (

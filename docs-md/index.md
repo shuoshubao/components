@@ -20,7 +20,7 @@ npm i @nbfe/components
 ## 使用
 
 ```js | pure
-import { Form, Table, Descriptions } from '@nbfe/components'
+import { Form, Table, Descriptions, List } from '@nbfe/components'
 ```
 
 ## 文档

@@ -1229,7 +1229,6 @@ export default () => {
           defaultPageSize: 3
         }}
         extraConfig={{
-          showTotal: true,
           showFullScreen: true,
           showColumnsSetting: true,
           showViewMode: true,
@@ -1247,8 +1246,6 @@ export default () => {
                 百度
               </a>
             ],
-            // extra: '111',
-            // content: desc,
             meta: {
               avatar: image,
               title: name,
@@ -1292,6 +1289,26 @@ const columns = [
   }
 ]
 
+const renderItem = (item, index) => {
+  const { name, image, homepage, desc } = item
+  return {
+    actions: [
+      {
+        text: '主页',
+        href: homepage
+      },
+      <a href="https://baidu.com" target="_blank" rel="noopener noreferrer" key="link">
+        百度
+      </a>
+    ],
+    meta: {
+      avatar: image,
+      title: name,
+      description: desc
+    }
+  }
+}
+
 export default () => {
   const tableRef = useRef()
 
@@ -1312,36 +1329,16 @@ export default () => {
           fetch: getRemoteTableData
         }}
         pagination={{
-          defaultPageSize: 3
+          defaultPageSize: 8
         }}
         extraConfig={{
-          showTotal: true,
           showFullScreen: true,
           showColumnsSetting: true,
           showViewMode: true,
           storageKey: 'one'
         }}
-        renderItem={(item, index) => {
-          const { name, image, homepage, desc } = item
-          return {
-            actions: [
-              {
-                text: '主页',
-                href: homepage
-              },
-              <a href="https://baidu.com" target="_blank" rel="noopener noreferrer" key="link">
-                百度
-              </a>
-            ],
-            // extra: '111',
-            // content: desc,
-            meta: {
-              avatar: image,
-              title: name,
-              description: desc
-            }
-          }
-        }}
+        renderItem={renderItem}
+        listProps={{ grid: { gutter: 16, column: 4 } }}
       />
     </>
   )
