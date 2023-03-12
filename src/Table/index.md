@@ -1212,7 +1212,7 @@ const columns = [
 export default () => {
   const [dataSource, setDataSource] = useState([])
 
-  const handleSearch = async () => {
+  const handleSearch = () => {
     setDataSource(data)
   }
 
@@ -1253,6 +1253,86 @@ export default () => {
             }
           }
         }}
+      />
+    </>
+  )
+}
+```
+
+卡片视图
+
+```jsx
+import React, { useState } from 'react'
+import { Table } from '@nbfe/components'
+import { Typography, Avatar, Button, Card } from 'antd'
+import { dataSource as data } from '../mock'
+
+const { Link } = Typography
+
+const columns = [
+  {
+    title: 'Icon',
+    dataIndex: 'image',
+    template: {
+      tpl: 'image'
+    }
+  },
+  {
+    title: '名称',
+    dataIndex: 'name'
+  },
+  {
+    title: '主页',
+    dataIndex: 'homepage'
+  },
+  {
+    title: '简介',
+    dataIndex: 'desc'
+  }
+]
+
+const renderItem = (item, index) => {
+  const { name, image, homepage, desc } = item
+  return (
+    <Card
+      title={<Link src={homepage}>{name}</Link>}
+      extra={<Avatar src={image} />}
+      size="small"
+      bodyStyle={{ height: 100, maxHeight: 100, overflowY: 'auto' }}
+    >
+      {desc}
+    </Card>
+  )
+}
+
+export default () => {
+  const [dataSource, setDataSource] = useState([])
+
+  const handleSearch = () => {
+    setDataSource(data)
+  }
+
+  return (
+    <>
+      <Button type="primary" onClick={handleSearch}>
+        请求数据
+      </Button>
+      <Table
+        rowKey="id"
+        columns={columns}
+        dataSource={dataSource}
+        pagination={{
+          defaultPageSize: 8
+        }}
+        extraConfig={{
+          showFullScreen: true,
+          showColumnsSetting: true,
+          showViewMode: true,
+          storageKey: 'one',
+          listViewText: '卡片'
+        }}
+        renderItem={renderItem}
+        listProps={{ grid: { gutter: 16, column: 4 } }}
       />
     </>
   )
@@ -1338,7 +1418,6 @@ export default () => {
           storageKey: 'one'
         }}
         renderItem={renderItem}
-        listProps={{ grid: { gutter: 16, column: 4 } }}
       />
     </>
   )

@@ -30,17 +30,32 @@
       "name": "extraConfig",
       "desc": [
         "其他配置都放在这里",
-        "showTotal: 在左上角展示总条数",
+        "disabledSort: 禁用排序",
         "storageKey: 展示表头配置,存储展示状态的localStorage的唯一标识",
-        "fullScreen: 全屏"
+        "showTotal: 在左上角展示总条数",
+        "showFullScreen: 展示按钮: 全屏",
+        "showColumnsSetting: 展示按钮: 列设置",
+        "showViewMode: 展示按钮: 切换视图",
+        "listViewText: 列表视图的文案"
       ],
-      "type": "<pre class='dynamic-table-render-code'><code>{\n  showTotal: boolean,\n  storageKey: string,\n  fullScreen: boolean,\n  disabledSort: (record, index) => boolean\n}</code></pre>",
+      "type": {
+        "disabledSort": "(record, index) => boolean",
+        "storageKey": "string",
+        "showTotal": "boolean",
+        "showFullScreen": "boolean",
+        "showColumnsSetting": "boolean",
+        "showViewMode": "boolean",
+        "listViewText": "string"
+      },
       "optionalValue": "",
       "default": {
+        "disabledSort": null,
+        "storageKey": "",
         "showTotal": false,
-        "storageKey": "''",
-        "fullScreen": false,
-        "disabledSort": null
+        "showFullScreen": false,
+        "showColumnsSetting": false,
+        "showViewMode": false,
+        "listViewText": "列表"
       },
       "version": ""
     },

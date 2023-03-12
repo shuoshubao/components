@@ -98,6 +98,12 @@
       border-top: 2px dashed #1890ff;
     }
   }
+  .dynamic-table-list {
+    padding-top: 12px;
+    .ant-list-pagination {
+      margin-top: 0;
+    }
+  }
 }
 
 .dynamic-table-filter-dropdown {
