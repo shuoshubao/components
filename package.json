@@ -1,9 +1,14 @@
 {
   "name": "@nbfe/components",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "dist/index.js",
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "components",
+    "antd",
+    "react"
   ],
   "scripts": {
     "docs:dev": "npx rollup -c --bundleConfigAsCjs -w & dumi dev",
