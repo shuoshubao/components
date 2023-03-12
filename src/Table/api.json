@@ -36,6 +36,7 @@
         "showFullScreen: 展示按钮: 全屏",
         "showColumnsSetting: 展示按钮: 列设置",
         "showViewMode: 展示按钮: 切换视图",
+        "defaultViewMode: 默认视图",
         "listViewText: 列表视图的文案"
       ],
       "type": {
@@ -45,6 +46,7 @@
         "showFullScreen": "boolean",
         "showColumnsSetting": "boolean",
         "showViewMode": "boolean",
+        "defaultViewMode": "table | list",
         "listViewText": "string"
       },
       "optionalValue": "",
@@ -55,6 +57,7 @@
         "showFullScreen": false,
         "showColumnsSetting": false,
         "showViewMode": false,
+        "defaultViewMode": "table",
         "listViewText": "列表"
       },
       "version": ""

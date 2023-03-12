@@ -1163,7 +1163,7 @@ export default () => {
 - `extraConfig.showFullScreen = true` // 展示按钮: 全屏
 - `extraConfig.showColumnsSetting = true` // 展示按钮: 表头设置
 - `extraConfig.showViewMode = true` // 展示按钮: 切换视图
-- `extraConfig.storageKey = 'uniqId'` // 表头配置, 如果一个页面有多个表格需要表头设置功能, 请确保 key 不同, 用以存储各个表格的状态
+- `extraConfig.storageKey = 'uniqId'` // 如果一个页面有多个表格需要[表头设置、切换视图]功能, 请确保 key 不同, 用以存储各个表格的状态
 
 ### 同步数据
 
