@@ -20,11 +20,10 @@ toc: content
 当不使用接口请求时, 数据源通过 **dataSource** 属性传入
 
 ```jsx
-import React, { useState } from 'react'
-import { Button } from 'antd'
+import React from 'react'
 import { Table } from '@nbfe/components'
 
-const data = [
+const dataSource = [
   {
     id: 1,
     name: 'aaa'
@@ -47,20 +46,7 @@ const columns = [
 ]
 
 export default () => {
-  const [dataSource, setDataSource] = useState([])
-
-  const handleSearch = async () => {
-    setDataSource(data)
-  }
-
-  return (
-    <>
-      <Button type="primary" onClick={handleSearch}>
-        同步数据
-      </Button>
-      <Table rowKey="id" columns={columns} dataSource={dataSource} pagination={false} size="small" />
-    </>
-  )
+  return <Table rowKey="id" columns={columns} dataSource={dataSource} pagination={false} size="small" />
 }
 ```
 
@@ -1182,10 +1168,9 @@ export default () => {
 ### 同步数据
 
 ```jsx
-import React, { useState } from 'react'
+import React from 'react'
 import { Table } from '@nbfe/components'
-import { Button } from 'antd'
-import { dataSource as data } from '../mock'
+import { dataSource } from '../mock'
 
 const columns = [
   {
@@ -1210,51 +1195,37 @@ const columns = [
 ]
 
 export default () => {
-  const [dataSource, setDataSource] = useState([])
-
-  const handleSearch = () => {
-    setDataSource(data)
-  }
-
   return (
-    <>
-      <Button type="primary" onClick={handleSearch}>
-        更新数据
-      </Button>
-      <Table
-        rowKey="id"
-        columns={columns}
-        dataSource={dataSource}
-        pagination={{
-          defaultPageSize: 3
-        }}
-        extraConfig={{
-          showFullScreen: true,
-          showColumnsSetting: true,
-          showViewMode: true,
-          storageKey: 'one'
-        }}
-        renderItem={(item, index) => {
-          const { name, image, homepage, desc } = item
-          return {
-            actions: [
-              {
-                text: '主页',
-                href: homepage
-              },
-              <a href="https://baidu.com" target="_blank" rel="noopener noreferrer" key="link">
-                百度
-              </a>
-            ],
-            meta: {
-              avatar: image,
-              title: name,
-              description: desc
-            }
+    <Table
+      rowKey="id"
+      columns={columns}
+      dataSource={dataSource}
+      extraConfig={{
+        showFullScreen: true,
+        showColumnsSetting: true,
+        showViewMode: true,
+        storageKey: 'one'
+      }}
+      renderItem={(item, index) => {
+        const { name, image, homepage, desc } = item
+        return {
+          actions: [
+            {
+              text: '主页',
+              href: homepage
+            },
+            <a href="https://baidu.com" target="_blank" rel="noopener noreferrer" key="link">
+              百度
+            </a>
+          ],
+          meta: {
+            avatar: image,
+            title: name,
+            description: desc
           }
-        }}
-      />
-    </>
+        }
+      }}
+    />
   )
 }
 ```
@@ -1262,10 +1233,10 @@ export default () => {
 卡片视图
 
 ```jsx
-import React, { useState } from 'react'
+import React from 'react'
 import { Table } from '@nbfe/components'
-import { Typography, Avatar, Button, Card } from 'antd'
-import { dataSource as data } from '../mock'
+import { Typography, Avatar, Card } from 'antd'
+import { dataSource } from '../mock'
 
 const { Link } = Typography
 
@@ -1306,35 +1277,24 @@ const renderItem = (item, index) => {
 }
 
 export default () => {
-  const [dataSource, setDataSource] = useState([])
-
-  const handleSearch = () => {
-    setDataSource(data)
-  }
-
   return (
-    <>
-      <Button type="primary" onClick={handleSearch}>
-        请求数据
-      </Button>
-      <Table
-        rowKey="id"
-        columns={columns}
-        dataSource={dataSource}
-        pagination={{
-          defaultPageSize: 8
-        }}
-        extraConfig={{
-          showFullScreen: true,
-          showColumnsSetting: true,
-          showViewMode: true,
-          storageKey: 'one',
-          listViewText: '卡片'
-        }}
-        renderItem={renderItem}
-        listProps={{ grid: { gutter: 16, column: 4 } }}
-      />
-    </>
+    <Table
+      rowKey="id"
+      columns={columns}
+      dataSource={dataSource}
+      pagination={{
+        defaultPageSize: 8
+      }}
+      extraConfig={{
+        showFullScreen: true,
+        showColumnsSetting: true,
+        showViewMode: true,
+        storageKey: 'one',
+        listViewText: '卡片'
+      }}
+      renderItem={renderItem}
+      listProps={{ grid: { gutter: 16, column: 4 } }}
+    />
   )
 }
 ```
