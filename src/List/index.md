@@ -38,9 +38,6 @@ export default () => {
     <List
       rowKey="id"
       dataSource={dataSource}
-      pagination={{
-        defaultPageSize: 3
-      }}
       renderItem={item => {
         const { name, image, homepage, desc } = item
         return {
