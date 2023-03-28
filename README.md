@@ -13,7 +13,7 @@ npm i @nbfe/components
 # 使用
 
 ```js
-import { Form, Table, Descriptions, List } from '@nbfe/components'
+import { Table, Form, Descriptions, List } from '@nbfe/components'
 ```
 
 # 文档
