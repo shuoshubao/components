@@ -33,7 +33,7 @@ export default defineConfig({
     nav: [
       {
         title: '组件',
-        link: '/components/Descriptions'
+        link: '/components/Table'
       },
       {
         title: '介绍',
