@@ -1053,10 +1053,10 @@ export default () => {
       rowKey="id"
       columns={columns}
       dataSource={dataSource}
-      onDragSortEnd={data => {
+      onDragSortEnd={({ dataSource }) => {
         console.log('拖拽更新后的数据')
-        console.log(data)
-        setDataSource(data)
+        console.log(dataSource)
+        setDataSource(dataSource)
       }}
       pagination={false}
     />
