@@ -14,7 +14,7 @@ template 的作用是用一段 json 来描述一个基础的 antd 表单元素�
 
 <table>
   <colgroup>
-    <col width="160px" />
+    <col width="150px" />
     <col width="100px" />
     <col width="" />
     <col width="" />
@@ -68,14 +68,8 @@ template 的作用是用一段 json 来描述一个基础的 antd 表单元素�
       <td rowspan="2">number-range</td>
       <td>separator</td>
       <td>分割符</td>
-      <td>string</td>
+      <td>ReactNode</td>
       <td>~</td>
-    </tr>
-    <tr>
-      <td>separatorWidth</td>
-      <td>分割符宽度</td>
-      <td>number</td>
-      <td>30</td>
     </tr>
   </tbody>
   <tbody>
@@ -213,7 +207,7 @@ template 的作用是用一段 json 来描述一个 render 函数, 其中使用�
     </tr>
     <tr>
       <td>
-        <a href="https://ant.design/components/typography-cn/#Typography.Paragraph">Typography.Paragraph</a>
+        <a href="https://ant.design/components/typography-cn/#Typography.Text">Typography.Text</a>
       </td>
       <td>
         <div>透传, 例如:</div>
@@ -223,6 +217,7 @@ template 的作用是用一段 json 来描述一个 render 函数, 其中使用�
           <li>mark</li>
           <li>strong</li>
           <li>type</li>
+          <li>copyable</li>
         <ul>
       </td>
       <td></td>

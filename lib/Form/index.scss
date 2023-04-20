@@ -168,11 +168,12 @@
 }
 
 .dynamic-form-number-range {
+  display: flex !important;
   .dynamic-form-number-range-min,
   .dynamic-form-number-range-max {
+    flex: 1;
     margin-right: 0;
     position: relative;
-    z-index: 2;
     &:hover,
     &:focus {
       border-left-color: #40a9ff;
@@ -190,8 +191,10 @@
     border-left-color: transparent;
   }
   .dynamic-form-number-range-separator {
-    border-left: 0;
-    border-right: 0;
+    min-width: 30px;
+    text-align: center;
+    padding: 4px 8px;
+    border: 1px solid #d9d9d9;
     pointer-events: none;
     background-color: transparent;
   }
