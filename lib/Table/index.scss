@@ -31,9 +31,6 @@
     .ant-table-tbody > tr > td {
       padding: 5px;
     }
-    .ant-pagination.ant-table-pagination {
-      padding: 5px !important;
-    }
     .ant-table-footer {
       padding: 5px;
     }
@@ -78,13 +75,6 @@
       font-size: 14px;
       margin-right: 0;
     }
-  }
-  .dynamic-table-total {
-    margin: 0 4px;
-    font-style: italic;
-  }
-  .ant-pagination.ant-table-pagination {
-    padding: 10px !important;
   }
   .ant-table-thead > tr > th,
   .ant-table-tbody > tr > td {
@@ -158,9 +148,6 @@
 .dynamic-table-row-dragging,
 .dynamic-table,
 .dynamic-table-descriptions {
-  .ant-typography {
-    margin-bottom: 0;
-  }
   .ant-progress-line {
     width: calc(100% - 25px);
   }
