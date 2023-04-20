@@ -80,6 +80,17 @@ body .markdown {
       display: none;
     }
   }
+
+  table {
+    th,
+    td {
+      padding-block-start: 0;
+      padding-block-end: 0;
+      padding-inline-start: 0;
+      padding-inline-end: 0;
+      padding: 4px 8px;
+    }
+  }
 }
 
 body .dumi-default-previewer {

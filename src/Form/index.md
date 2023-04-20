@@ -222,22 +222,6 @@ export default () => {
       }
     },
     {
-      name: 'input2___selectKey2',
-      label: '下拉框+输入框',
-      template: {
-        inputType: 'select-input',
-        options: OptionsData
-      }
-    },
-    {
-      name: 'input3___selectKey3',
-      label: '下拉框+搜索框',
-      template: {
-        inputType: 'select-search',
-        options: OptionsData
-      }
-    },
-    {
       name: 'input4',
       label: '文本域',
       tooltip:
@@ -253,6 +237,24 @@ export default () => {
       template: {
         inputType: 'password'
       }
+    },
+    {
+      name: 'input2___selectKey2',
+      label: '下拉框+输入框',
+      inline: false,
+      template: {
+        inputType: 'select-input',
+        options: OptionsData
+      }
+    },
+    {
+      name: 'input3___selectKey3',
+      label: '下拉框+搜索框',
+      inline: false,
+      template: {
+        inputType: 'select-search',
+        options: OptionsData
+      }
     }
   ]
   return <Form columns={columns} onSubmit={handleSubmit} showSearchBtn autoSubmit={false} />
@@ -264,6 +266,7 @@ export default () => {
 ```jsx
 import React from 'react'
 import { Form } from '@nbfe/components'
+import { showMessage } from '../mock'
 
 export default () => {
   const handleSubmit = params => {
