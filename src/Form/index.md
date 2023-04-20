@@ -24,7 +24,7 @@ order: 2
   <thead>
     <tr>
       <th>分类</th>
-      <th colspan="6">模板</th>
+      <th colspan="7">模板</th>
     </tr>
   </thead>
   <tbody>
@@ -34,7 +34,7 @@ order: 2
       <td>number</td>
       <td>number-range</td>
       <td>slider</td>
-      <td colspan="2">auto-complete</td>
+      <td colspan="3">auto-complete</td>
     </tr>
     <tr>
       <td>枚举</td>
@@ -44,19 +44,20 @@ order: 2
       <td>cascader</td>
       <td>tree-select</td>
       <td>tabs</td>
+      <td>segmented</td>
     </tr>
     <tr>
       <td>日期/时间</td>
       <td>date-picker</td>
       <td>date-range-picker</td>
       <td>time-picker</td>
-      <td colspan="3">time-range-picker</td>
+      <td colspan="4">time-range-picker</td>
     </tr>
     <tr>
       <td>其他</td>
       <td>rate</td>
       <td>upload</td>
-      <td colspan="4">color-picker</td>
+      <td colspan="5">color-picker</td>
     </tr>
   </tbody>
 </table>
@@ -305,14 +306,14 @@ export default () => {
 }
 ```
 
-### Select Radio Checkbox Tabs
+### Select Radio Checkbox Tabs Segmented
 
-tabs 一般独占一行, 且在第一行
+Tabs, Segmented 一般独占一行
 
 ```jsx
 import React from 'react'
 import { Form } from '@nbfe/components'
-import { TabsOptionsData, OptionsData, MoreOptionsData } from '../mock'
+import { showMessage, TabsOptionsData, SegmentedOptionsData, OptionsData, MoreOptionsData } from '../mock'
 
 export default () => {
   const handleSubmit = params => {
@@ -337,6 +338,16 @@ export default () => {
         tpl: 'tabs',
         emitReset: true, // 触发其他子组件的重置
         options: TabsOptionsData
+      }
+    },
+    {
+      label: '分段控制器',
+      name: 'segmented',
+      defaultValue: 'weekly',
+      inline: false,
+      template: {
+        tpl: 'segmented',
+        options: SegmentedOptionsData
       }
     },
     {
