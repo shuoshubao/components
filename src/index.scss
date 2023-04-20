@@ -67,6 +67,9 @@ body {
     padding: 12px !important;
     border-radius: 0 !important;
   }
+  .dumi-default-previewer-demo {
+    padding: 12px;
+  }
 }
 
 body .markdown {
@@ -89,6 +92,10 @@ body .markdown {
       padding-inline-start: 0;
       padding-inline-end: 0;
       padding: 4px 8px;
+    }
+    pre {
+      margin: 0;
+      padding: 5px;
     }
   }
 }

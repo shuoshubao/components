@@ -18,47 +18,47 @@ order: 2
 ## 内置表单子组件
 
 <table class="custom-table-header-left">
-    <colgroup>
-        <col width="120px" />
-    </colgroup>
-    <thead>
-        <tr>
-            <th>分类</th>
-            <th colspan="6">模板</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>输入</td>
-            <td>input</td>
-            <td>number</td>
-            <td>number-range</td>
-            <td>slider</td>
-            <td colspan="2">auto-complete</td>
-        </tr>
-        <tr>
-            <td>枚举</td>
-            <td>select</td>
-            <td>checkbox</td>
-            <td>radio</td>
-            <td>cascader</td>
-            <td>tree-select</td>
-            <td>tabs</td>
-        </tr>
-        <tr>
-            <td>日期/时间</td>
-            <td>date-picker</td>
-            <td>date-range-picker</td>
-            <td>time-picker</td>
-            <td colspan="3">time-range-picker</td>
-        </tr>
-        <tr>
-            <td>其他</td>
-            <td>rate</td>
-            <td>upload</td>
-            <td colspan="4">color-picker</td>
-        </tr>
-    </tbody>
+  <colgroup>
+    <col width="120px" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>分类</th>
+      <th colspan="6">模板</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>输入</td>
+      <td>input</td>
+      <td>number</td>
+      <td>number-range</td>
+      <td>slider</td>
+      <td colspan="2">auto-complete</td>
+    </tr>
+    <tr>
+      <td>枚举</td>
+      <td>select</td>
+      <td>checkbox</td>
+      <td>radio</td>
+      <td>cascader</td>
+      <td>tree-select</td>
+      <td>tabs</td>
+    </tr>
+    <tr>
+      <td>日期/时间</td>
+      <td>date-picker</td>
+      <td>date-range-picker</td>
+      <td>time-picker</td>
+      <td colspan="3">time-range-picker</td>
+    </tr>
+    <tr>
+      <td>其他</td>
+      <td>rate</td>
+      <td>upload</td>
+      <td colspan="4">color-picker</td>
+    </tr>
+  </tbody>
 </table>
 
 :::info{title=提示}

@@ -122,44 +122,44 @@ export default () => {
 <table class="custom-table-header-left">
   <colgroup><col width="80px" /></colgroup>
   <thead>
-    <tr>
-      <th></th>
-      <th colspan="6">展示类</th>
-      <th colspan="2">操作</th>
-      <th colspan="4">数字类</th>
-    </tr>
+  <tr>
+    <th></th>
+    <th colspan="6">展示类</th>
+    <th colspan="2">操作</th>
+    <th colspan="4">数字类</th>
+  </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>tpl</td>
-      <td>numbering</td>
-      <td>text</td>
-      <td>image</td>
-      <td>enum</td>
-      <td>date</td>
-      <td>code</td>
-      <td>sort</td>
-      <td>link</td>
-      <td>digit</td>
-      <td>percent</td>
-      <td>rate</td>
-      <td>progress</td>
-    </tr>
-    <tr>
-      <td>含义</td>
-      <td>序号</td>
-      <td>文本</td>
-      <td>缩略图</td>
-      <td>枚举</td>
-      <td>日期</td>
-      <td>代码</td>
-      <td>排序</td>
-      <td>按钮组</td>
-      <td>数字</td>
-      <td>百分比</td>
-      <td>评分</td>
-      <td>进度条</td>
-    </tr>
+  <tr>
+    <td>tpl</td>
+    <td>numbering</td>
+    <td>text</td>
+    <td>image</td>
+    <td>enum</td>
+    <td>date</td>
+    <td>code</td>
+    <td>sort</td>
+    <td>link</td>
+    <td>digit</td>
+    <td>percent</td>
+    <td>rate</td>
+    <td>progress</td>
+  </tr>
+  <tr>
+    <td>含义</td>
+    <td>序号</td>
+    <td>文本</td>
+    <td>缩略图</td>
+    <td>枚举</td>
+    <td>日期</td>
+    <td>代码</td>
+    <td>排序</td>
+    <td>按钮组</td>
+    <td>数字</td>
+    <td>百分比</td>
+    <td>评分</td>
+    <td>进度条</td>
+  </tr>
   </tbody>
 </table>
 
