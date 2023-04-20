@@ -293,6 +293,17 @@ template 的作用是用一段 json 来描述一个 render 函数, 其中使用�
   </tbody>
   <tbody>
     <tr>
+      <td>avatar</td>
+      <td>
+        <a href="https://ant.design/components/avatar-cn/#API">Avatar Props</a>
+      </td>
+      <td>透传</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
       <td rowspan="2">digit</td>
       <td>prefix</td>
       <td>前缀</td>

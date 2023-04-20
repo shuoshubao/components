@@ -124,7 +124,7 @@ export default () => {
   <thead>
   <tr>
     <th></th>
-    <th colspan="6">展示类</th>
+    <th colspan="7">展示类</th>
     <th colspan="2">操作</th>
     <th colspan="4">数字类</th>
   </tr>
@@ -138,6 +138,7 @@ export default () => {
     <td>enum</td>
     <td>date</td>
     <td>code</td>
+    <td>avatar</td>
     <td>sort</td>
     <td>link</td>
     <td>digit</td>
@@ -153,6 +154,7 @@ export default () => {
     <td>枚举</td>
     <td>日期</td>
     <td>代码</td>
+    <td>头像</td>
     <td>排序</td>
     <td>按钮组</td>
     <td>数字</td>
@@ -235,6 +237,24 @@ const columns1 = [
       tpl: 'date',
       format: 'YYYY-MM-DD hh:mm:ss'
     }
+  }
+]
+
+const columns2 = [
+  {
+    title: '头像',
+    dataIndex: 'avatar1',
+    template: {
+      tpl: 'avatar'
+    }
+  },
+  {
+    title: '头像组',
+    dataIndex: 'avatar2',
+    template: {
+      tpl: 'avatar',
+      maxCount: 2
+    }
   },
   {
     title: '代码',
@@ -254,7 +274,7 @@ const columns1 = [
   }
 ]
 
-const columns2 = [
+const columns3 = [
   {
     title: '枚举1',
     dataIndex: 'enum',
@@ -315,6 +335,8 @@ const dataSource = [
     id: 1,
     desc: 'aaa',
     imgUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+    avatar1: 'https://api.multiavatar.com/1.svg',
+    avatar2: ['https://api.multiavatar.com/12.svg', 'https://api.multiavatar.com/13.svg'],
     textEmpty: 'aaa',
     textEmpty2: '',
     textArray: ['aaa', 'bbb'],
@@ -327,6 +349,8 @@ const dataSource = [
     id: 2,
     desc: 'bbb',
     imgUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+    avatar1: 'https://api.multiavatar.com/2.svg',
+    avatar2: ['https://api.multiavatar.com/22.svg', 'https://api.multiavatar.com/23.svg'],
     textEmpty: '',
     textEmpty2: 'bbb',
     textArray: ['aaa', 'bbb'],
@@ -339,6 +363,8 @@ const dataSource = [
     id: 3,
     desc: 'ccc',
     imgUrl: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+    avatar1: 'https://api.multiavatar.com/3.svg',
+    avatar2: [],
     textEmpty: '',
     textEmpty2: 'bbb',
     textArray: ['aaa', 'bbb'],
@@ -351,6 +377,12 @@ const dataSource = [
     id: 4,
     desc: 'ddd',
     imgUrl: '',
+    avatar1: '',
+    avatar2: [
+      'https://api.multiavatar.com/42.svg',
+      'https://api.multiavatar.com/43.svg',
+      'https://api.multiavatar.com/45.svg'
+    ],
     textEmpty: '',
     textEmpty2: 'bbb',
     textArray: ['aaa', 'bbb'],
@@ -365,8 +397,9 @@ export default () => {
   return (
     <>
       <Table rowKey="id" columns={columns1} dataSource={dataSource} pagination={false} />
-      <Typography.Title level={4}>枚举</Typography.Title>
       <Table rowKey="id" columns={columns2} dataSource={dataSource} pagination={false} />
+      <Typography.Title level={4}>枚举</Typography.Title>
+      <Table rowKey="id" columns={columns3} dataSource={dataSource} pagination={false} />
     </>
   )
 }
