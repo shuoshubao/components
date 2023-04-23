@@ -1,14 +1,591 @@
-<!DOCTYPE html><html><head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="shortcut icon" href="https://gw.alipayobjects.com/zos/rmsportal/rlpTLlbMzTNYuZGGCVYM.png">
-<link rel="stylesheet" href="https://unpkg.com/antd@4.24.4/dist/antd.min.css">
-<style>.dynamic-table .ant-table table,.dynamic-table .ant-table-small{border-radius:0}.dynamic-table .ant-table-footer{padding:10px}.dynamic-table .ant-table-footer::before{display:none}.dynamic-table .ant-table-footer:empty{display:none}.dynamic-table.dynamic-table-bordered{border:1px solid #e8e8e8}.dynamic-table.dynamic-table-bordered table{border-right:none;border-left:none}.dynamic-table.dynamic-table-bordered .dynamic-table-header{border-bottom:none}.dynamic-table.dynamic-table-small .dynamic-table-header{border-bottom-width:0;padding:5px}.dynamic-table.dynamic-table-small .ant-table-thead>tr>th,.dynamic-table.dynamic-table-small .ant-table-tbody>tr>td{padding:5px}.dynamic-table.dynamic-table-small .ant-pagination.ant-table-pagination{padding:5px !important}.dynamic-table.dynamic-table-small .ant-table-footer{padding:5px}.dynamic-table:not(.dynamic-table-disable-pagination) .ant-table-small{border-bottom-width:0}.dynamic-table .dynamic-table-header{padding:10px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e8e8e8}.dynamic-table .dynamic-table-header:empty{display:none}.dynamic-table .dynamic-table-header .dynamic-table-header-left,.dynamic-table .dynamic-table-header .dynamic-table-header-right{display:flex;align-items:center}.dynamic-table .dynamic-table-header .dynamic-table-header-left>*:not(:last-child),.dynamic-table .dynamic-table-header .dynamic-table-header-right>*:not(:last-child){margin-right:10px}.dynamic-table .dynamic-table-header .dynamic-table-header-left .dynamic-table-toolbar-icon:hover,.dynamic-table .dynamic-table-header .dynamic-table-header-right .dynamic-table-toolbar-icon:hover{color:#1890ff;cursor:pointer}.dynamic-table .dynamic-table-column-title-tooltip{margin-left:4px;color:rgba(0,0,0,.4509803922);cursor:help}.dynamic-table .ant-image-mask-info{font-size:0}.dynamic-table .ant-image-mask-info .anticon.anticon-eye{font-size:14px;margin-right:0}.dynamic-table .dynamic-table-total{margin:0 4px;font-style:italic}.dynamic-table .ant-pagination.ant-table-pagination{padding:10px !important}.dynamic-table .ant-table-thead>tr>th,.dynamic-table .ant-table-tbody>tr>td{padding:10px}.dynamic-table .ant-table-tbody>tr.dynamic-table-drop-over-downward td{border-bottom:2px dashed #1890ff}.dynamic-table .ant-table-tbody>tr.dynamic-table-drop-over-upward td{border-top:2px dashed #1890ff}.dynamic-table .dynamic-table-list{padding-top:12px}.dynamic-table .dynamic-table-list .ant-list-pagination{margin-top:0}.dynamic-table-filter-dropdown{font-size:0;user-select:none}.dynamic-table-filter-dropdown.dynamic-table-filter-dropdown-has-tree-select .dynamic-table-filter-dropdown-options{padding:0}.dynamic-table-filter-dropdown .dynamic-table-filter-dropdown-options{padding:4px 0;max-height:300px;overflow-y:auto}.dynamic-table-filter-dropdown .dynamic-table-filter-dropdown-options .ant-checkbox-group,.dynamic-table-filter-dropdown .dynamic-table-filter-dropdown-options .ant-radio-group{display:flex;flex-direction:column}.dynamic-table-filter-dropdown .dynamic-table-filter-dropdown-footer{border-top:1px solid #f0f0f0;padding:7px 8px 7px 3px;display:flex;justify-content:flex-end}.dynamic-table-filter-dropdown .dynamic-table-filter-dropdown-footer.dynamic-table-filter-dropdown-footer-hide{display:none}.dynamic-table-filter-dropdown .dynamic-table-filter-dropdown-footer .ant-btn+.ant-btn{margin-left:5px}.dynamic-table-filter-dropdown .ant-checkbox-group-item,.dynamic-table-filter-dropdown .ant-radio-wrapper{padding:5px 12px;margin-right:0}.ant-dropdown.dynamic-table-render-link-dropdown .ant-dropdown-menu{min-width:128px}.ant-dropdown.dynamic-table-render-link-dropdown a{margin:0;display:inline-block;height:24px;padding:0px 7px}.dynamic-table-row-dragging .ant-typography,.dynamic-table .ant-typography,.dynamic-table-descriptions .ant-typography{margin-bottom:0}.dynamic-table-row-dragging .ant-progress-line,.dynamic-table .ant-progress-line,.dynamic-table-descriptions .ant-progress-line{width:calc(100% - 25px)}.dynamic-table-row-dragging .dynamic-table-render-sort,.dynamic-table .dynamic-table-render-sort,.dynamic-table-descriptions .dynamic-table-render-sort{color:#333;cursor:grab}.dynamic-table-row-dragging .dynamic-table-render-sort.dynamic-table-render-sort-disabled,.dynamic-table .dynamic-table-render-sort.dynamic-table-render-sort-disabled,.dynamic-table-descriptions .dynamic-table-render-sort.dynamic-table-render-sort-disabled{cursor:not-allowed;color:#d9d9d9}.dynamic-table-row-dragging .dynamic-table-render-tag,.dynamic-table .dynamic-table-render-tag,.dynamic-table-descriptions .dynamic-table-render-tag{margin:0}.dynamic-table-row-dragging .dynamic-table-render-enum-circle,.dynamic-table .dynamic-table-render-enum-circle,.dynamic-table-descriptions .dynamic-table-render-enum-circle{display:inline-block;padding:0 10px;line-height:20px;text-align:center;border-radius:12px;font-size:12px;min-width:40px;white-space:nowrap}.dynamic-table-row-dragging .dynamic-table-render-enum-dot,.dynamic-table-row-dragging .dynamic-table-render-enum-square,.dynamic-table .dynamic-table-render-enum-dot,.dynamic-table .dynamic-table-render-enum-square,.dynamic-table-descriptions .dynamic-table-render-enum-dot,.dynamic-table-descriptions .dynamic-table-render-enum-square{display:inline-flex;align-items:center}.dynamic-table-row-dragging .dynamic-table-render-enum-dot .dynamic-table-render-enum-badge,.dynamic-table-row-dragging .dynamic-table-render-enum-square .dynamic-table-render-enum-badge,.dynamic-table .dynamic-table-render-enum-dot .dynamic-table-render-enum-badge,.dynamic-table .dynamic-table-render-enum-square .dynamic-table-render-enum-badge,.dynamic-table-descriptions .dynamic-table-render-enum-dot .dynamic-table-render-enum-badge,.dynamic-table-descriptions .dynamic-table-render-enum-square .dynamic-table-render-enum-badge{display:inline-block;width:6px;height:6px;margin-right:5px}.dynamic-table-row-dragging .dynamic-table-render-enum-dot .dynamic-table-render-enum-text,.dynamic-table-row-dragging .dynamic-table-render-enum-square .dynamic-table-render-enum-text,.dynamic-table .dynamic-table-render-enum-dot .dynamic-table-render-enum-text,.dynamic-table .dynamic-table-render-enum-square .dynamic-table-render-enum-text,.dynamic-table-descriptions .dynamic-table-render-enum-dot .dynamic-table-render-enum-text,.dynamic-table-descriptions .dynamic-table-render-enum-square .dynamic-table-render-enum-text{white-space:nowrap}.dynamic-table-row-dragging .dynamic-table-render-enum-dot .dynamic-table-render-enum-badge,.dynamic-table .dynamic-table-render-enum-dot .dynamic-table-render-enum-badge,.dynamic-table-descriptions .dynamic-table-render-enum-dot .dynamic-table-render-enum-badge{border-radius:50%}.dynamic-table-row-dragging .dynamic-table-render-code,.dynamic-table .dynamic-table-render-code,.dynamic-table-descriptions .dynamic-table-render-code{width:100%;margin:0;padding:5px;overflow:auto;line-height:20px;background-color:#f6f8fa;border-radius:3px;white-space:pre-wrap;word-wrap:break-word}.ant-popover.dynamic-table-columns-setting-popover{user-select:none}.ant-popover.dynamic-table-columns-setting-popover .ant-popover-title{padding-left:10px;padding-right:10px}.ant-popover.dynamic-table-columns-setting-popover .ant-popover-inner-content{max-height:320px;overflow-y:auto;padding:0}.ant-popover.dynamic-table-columns-setting-popover .ant-checkbox-group{display:flex;flex-direction:column}.ant-popover.dynamic-table-columns-setting-popover .ant-checkbox-group .ant-checkbox-group-item{padding:5px 10px;margin:0}.ant-popover.dynamic-table-columns-setting-popover .ant-checkbox-group .ant-checkbox-group-item:hover{background:#f7f7f7}.ant-popover.dynamic-table-columns-setting-popover .ant-checkbox-group .ant-checkbox-group-item .dynamic-table-column-title-tooltip{margin-left:4px}.dynamic-table-descriptions.ant-descriptions-bordered .ant-descriptions-item-label,.dynamic-table-descriptions.ant-descriptions-bordered .ant-descriptions-item-content{padding:10px}.dynamic-table-descriptions .ant-descriptions-item-content{overflow:auto}.dynamic-table-descriptions:not(.ant-descriptions-bordered) .ant-descriptions-item-label{vertical-align:top}.dynamic-table-descriptions .ant-descriptions-item-container{align-items:flex-start}.dynamic-table-descriptions .ant-descriptions-item-label{word-break:keep-all}.dynamic-table-descriptions .ant-descriptions-item .ant-descriptions-item-label{align-items:center}.dynamic-table-descriptions .ant-descriptions-item .ant-descriptions-item-label .dynamic-table-descriptions-item-label-tooltip{margin-left:4px}.dynamic-table-descriptions .ant-descriptions-row>th,.dynamic-table-descriptions .ant-descriptions-row>td{padding-bottom:10px}.dynamic-table-descriptions .ant-descriptions-row:last-child>td{padding-bottom:0}.dynamic-table-descriptions .ant-descriptions-item:not(:last-child){padding-right:10px}.dynamic-form+.dynamic-table{margin-top:10px}.dynamic-table-row-dragging{z-index:2;background:#fafafa;overflow:hidden;box-shadow:0 1px 2px -2px rgba(0,0,0,.1607843137),0 3px 6px rgba(0,0,0,.1215686275),0 5px 12px 4px rgba(0,0,0,.0901960784)}.dynamic-table-row-dragging td{background:#fafafa;padding:10px}.dynamic-table-row-dragging .dynamic-form-number-range{position:relative;top:-20px}.dynamic-form.dynamic-form-disabled input::placeholder,.dynamic-form.dynamic-form-disabled select::placeholder,.dynamic-form.dynamic-form-disabled textarea::placeholder{color:rgba(0,0,0,0)}.dynamic-form.dynamic-form-disabled .dynamic-form-form-item-label::before{display:none !important}.dynamic-form.dynamic-form-disabled .ant-form-item{margin-bottom:10px}.dynamic-form.dynamic-form-disabled .ant-picker-suffix,.dynamic-form.dynamic-form-disabled .ant-input-group-addon{visibility:hidden}.dynamic-form.dynamic-form-disabled .ant-input,.dynamic-form.dynamic-form-disabled .ant-input-number,.dynamic-form.dynamic-form-disabled .ant-select-selector,.dynamic-form.dynamic-form-disabled .ant-cascader-picker,.dynamic-form.dynamic-form-disabled .ant-checkbox-wrapper,.dynamic-form.dynamic-form-disabled .ant-select-selection-item,.dynamic-form.dynamic-form-disabled .ant-picker{cursor:default !important;color:rgba(0,0,0,.85) !important;background-color:rgba(0,0,0,0) !important;border-color:rgba(0,0,0,0) !important}.dynamic-form.dynamic-form-disabled .ant-input .ant-select-selection-placeholder,.dynamic-form.dynamic-form-disabled .ant-input-number .ant-select-selection-placeholder,.dynamic-form.dynamic-form-disabled .ant-select-selector .ant-select-selection-placeholder,.dynamic-form.dynamic-form-disabled .ant-cascader-picker .ant-select-selection-placeholder,.dynamic-form.dynamic-form-disabled .ant-checkbox-wrapper .ant-select-selection-placeholder,.dynamic-form.dynamic-form-disabled .ant-select-selection-item .ant-select-selection-placeholder,.dynamic-form.dynamic-form-disabled .ant-picker .ant-select-selection-placeholder{display:none}.dynamic-form.dynamic-form-disabled .ant-select input,.dynamic-form.dynamic-form-disabled .ant-input-number-input,.dynamic-form.dynamic-form-disabled .ant-picker-separator,.dynamic-form.dynamic-form-disabled .ant-picker-input>input[disabled]{cursor:default !important}.dynamic-form.dynamic-form-disabled .ant-select:hover .ant-select-selector{border-color:rgba(0,0,0,0) !important;border-left-color:rgba(0,0,0,0) !important;border-right-color:rgba(0,0,0,0) !important}.dynamic-form.dynamic-form-disabled .ant-radio-inner,.dynamic-form.dynamic-form-disabled .ant-checkbox,.dynamic-form.dynamic-form-disabled .ant-select-arrow,.dynamic-form.dynamic-form-disabled .ant-cascader-picker-arrow{display:none !important}.dynamic-form.dynamic-form-disabled .ant-input-number:hover{border-color:rgba(0,0,0,0) !important;border-left-color:rgba(0,0,0,0) !important;border-right-color:rgba(0,0,0,0) !important}.dynamic-form.dynamic-form-disabled .ant-input-textarea-show-count:after{display:none}.dynamic-form.dynamic-form-disabled .ant-cascader-picker-label{z-index:1;text-overflow:initial;overflow:initial;white-space:initial}.dynamic-form.dynamic-form-disabled .ant-radio-disabled+span,.dynamic-form.dynamic-form-disabled .ant-checkbox-disabled+span{cursor:default !important;color:rgba(0,0,0,.85) !important}.dynamic-form.dynamic-form-disabled .ant-radio-wrapper-disabled:not(.ant-radio-wrapper-checked),.dynamic-form.dynamic-form-disabled .ant-checkbox-wrapper-disabled:not(.ant-checkbox-wrapper-checked){display:none}.dynamic-form .ant-card-body{padding:10px}.dynamic-form .ant-card-body>.ant-form{margin-top:-10px}.dynamic-form .ant-form.ant-form-inline .ant-form-item{margin-right:10px}.dynamic-form .ant-form.ant-form-inline .ant-form-item:last-child{margin-right:0}.dynamic-form .ant-form.ant-form-horizontal .ant-col.ant-form-item-label{padding-right:10px}.dynamic-form .ant-form-item{margin-top:10px}.dynamic-form .ant-form-item.dynamic-form-form-item .ant-btn:not(:first-child){margin-left:10px}.dynamic-form .ant-form-item-label>label::before{display:none !important}.dynamic-form .ant-form-item-label>label::after{width:4px}.dynamic-form .ant-form-item-label>label.ant-form-item-required .dynamic-form-form-item-label::before{display:inline-block;margin-right:4px;color:#ff4d4f;font-size:14px;font-family:SimSun,sans-serif;line-height:1;content:"*"}.dynamic-form .dynamic-form-form-item-label-tooltip{margin-left:4px;color:rgba(0,0,0,.4509803922);cursor:help}.dynamic-form .dynamic-form-list-operation>*{margin-left:10px}.dynamic-form .dynamic-form-filter-panel .dynamic-form-filter-panel-tags{margin-top:-8px}.dynamic-form .dynamic-form-filter-panel .dynamic-form-filter-panel-tags .ant-tag{padding:5px 6px;margin-top:8px}.dynamic-form .dynamic-form-filter-panel .dynamic-form-filter-panel-tags .ant-tag:last-child{margin-right:0}.dynamic-form .ant-upload.ant-upload-select-picture-card .ant-upload-disabled .dynamic-form-upload-button{cursor:not-allowed;color:rgba(0,0,0,.2509803922);background:#f5f5f5}.dynamic-form .ant-upload.ant-upload-select-picture-card .dynamic-form-upload-button{display:flex;flex-direction:column;justify-content:center;align-items:center;width:100%;height:100%}.dynamic-form-number-range .dynamic-form-number-range-min,.dynamic-form-number-range .dynamic-form-number-range-max{margin-right:0;position:relative;z-index:2}.dynamic-form-number-range .dynamic-form-number-range-min:hover,.dynamic-form-number-range .dynamic-form-number-range-min:focus,.dynamic-form-number-range .dynamic-form-number-range-max:hover,.dynamic-form-number-range .dynamic-form-number-range-max:focus{border-left-color:#40a9ff;border-right-color:#40a9ff}.dynamic-form-number-range .dynamic-form-number-range-min .ant-input-number-input,.dynamic-form-number-range .dynamic-form-number-range-max .ant-input-number-input{text-align:center;padding:0 24px 0 4px}.dynamic-form-number-range .dynamic-form-number-range-min{border-right-color:rgba(0,0,0,0)}.dynamic-form-number-range .dynamic-form-number-range-max{border-left-color:rgba(0,0,0,0)}.dynamic-form-number-range .dynamic-form-number-range-separator{border-left:0;border-right:0;pointer-events:none;background-color:rgba(0,0,0,0)}.dynamic-form-color-picker .ant-btn:not(.ant-dropdown-trigger){padding:0}.ant-tooltip.dynamic-form-tooltip .ant-tooltip-inner a{margin:0 4px}body .dumi-default-header-content{max-width:none;height:64px;margin:0;background:#fff;box-shadow:0 8px 24px -2px rgba(0,0,0,.05)}body .dumi-default-header-left{width:200px}body .dumi-default-hero{margin:0;padding:90px 0;user-select:none;max-width:none;height:auto}body .dumi-default-hero::before{display:none}body .dumi-default-hero .dumi-default-hero-title{font-size:48px}body .dumi-default-hero .dumi-default-hero-title>span{color:rgba(0,0,0,.85)}body .dumi-default-hero>p{color:rgba(0,0,0,.85);font-size:20px}body .dumi-default-hero+main{background:#fff}body .dumi-default-hero+main .dumi-default-content{max-width:960px;margin:0 auto}body .dumi-default-search-bar{display:none}body .dumi-default-doc-layout>main{padding:12px;margin:0;gap:12px;max-width:none}body .dumi-default-sidebar{width:200px !important;height:calc(100vh - 64px - 24px);max-height:none !important;padding:12px;background:#fff}body .dumi-default-doc-layout-toc-wrapper{width:200px !important;top:76px !important;margin:0 !important;padding:12px !important;background:#fff !important;height:calc(100vh - 64px - 24px);max-height:none !important}body .dumi-default-content{padding:12px !important;border-radius:0 !important}body .markdown h1>a[aria-hidden]:first-child,body .markdown h2>a[aria-hidden]:first-child,body .markdown h3>a[aria-hidden]:first-child,body .markdown h4>a[aria-hidden]:first-child,body .markdown h5>a[aria-hidden]:first-child,body .markdown h6>a[aria-hidden]:first-child{display:none}body .dumi-default-previewer:last-child{margin-bottom:0}body .dumi-default-previewer .dumi-default-previewer-meta .dumi-default-previewer-actions>a{display:none}</style>
-<link rel="stylesheet" href="https://shuoshubao.github.io/components/umi.b6fb696f.css">
-</head>
-<body>
-<div id="root"></div>
-<script src="https://shuoshubao.github.io/components/umi.75c59083.js"></script>
-
-</body></html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="https://gw.alipayobjects.com/zos/rmsportal/rlpTLlbMzTNYuZGGCVYM.png" />
+    <link rel="stylesheet" href="https://unpkg.com/antd@4.24.4/dist/antd.min.css" />
+    <style>
+      .dynamic-table .ant-table table,
+      .dynamic-table .ant-table-small {
+        border-radius: 0;
+      }
+      .dynamic-table .ant-table-footer {
+        padding: 10px;
+      }
+      .dynamic-table .ant-table-footer::before {
+        display: none;
+      }
+      .dynamic-table .ant-table-footer:empty {
+        display: none;
+      }
+      .dynamic-table.dynamic-table-bordered {
+        border: 1px solid #e8e8e8;
+      }
+      .dynamic-table.dynamic-table-bordered table {
+        border-right: none;
+        border-left: none;
+      }
+      .dynamic-table.dynamic-table-bordered .dynamic-table-header {
+        border-bottom: none;
+      }
+      .dynamic-table.dynamic-table-small .dynamic-table-header {
+        border-bottom-width: 0;
+        padding: 5px;
+      }
+      .dynamic-table.dynamic-table-small .ant-table-thead > tr > th,
+      .dynamic-table.dynamic-table-small .ant-table-tbody > tr > td {
+        padding: 5px;
+      }
+      .dynamic-table.dynamic-table-small .ant-table-footer {
+        padding: 5px;
+      }
+      .dynamic-table:not(.dynamic-table-disable-pagination) .ant-table-small {
+        border-bottom-width: 0;
+      }
+      .dynamic-table .dynamic-table-header {
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #e8e8e8;
+      }
+      .dynamic-table .dynamic-table-header:empty {
+        display: none;
+      }
+      .dynamic-table .dynamic-table-header .dynamic-table-header-left,
+      .dynamic-table .dynamic-table-header .dynamic-table-header-right {
+        display: flex;
+        align-items: center;
+      }
+      .dynamic-table .dynamic-table-header .dynamic-table-header-left > *:not(:last-child),
+      .dynamic-table .dynamic-table-header .dynamic-table-header-right > *:not(:last-child) {
+        margin-right: 10px;
+      }
+      .dynamic-table .dynamic-table-header .dynamic-table-header-left .dynamic-table-toolbar-icon:hover,
+      .dynamic-table .dynamic-table-header .dynamic-table-header-right .dynamic-table-toolbar-icon:hover {
+        color: #1890ff;
+        cursor: pointer;
+      }
+      .dynamic-table .dynamic-table-column-title-tooltip {
+        margin-left: 4px;
+        color: rgba(0, 0, 0, 0.4509803922);
+        cursor: help;
+      }
+      .dynamic-table .ant-image-mask-info {
+        font-size: 0;
+      }
+      .dynamic-table .ant-image-mask-info .anticon.anticon-eye {
+        font-size: 14px;
+        margin-right: 0;
+      }
+      .dynamic-table .ant-table-thead > tr > th,
+      .dynamic-table .ant-table-tbody > tr > td {
+        padding: 10px;
+      }
+      .dynamic-table .ant-table-tbody > tr.dynamic-table-drop-over-downward td {
+        border-bottom: 2px dashed #1890ff;
+      }
+      .dynamic-table .ant-table-tbody > tr.dynamic-table-drop-over-upward td {
+        border-top: 2px dashed #1890ff;
+      }
+      .dynamic-table .dynamic-table-list {
+        padding-top: 12px;
+      }
+      .dynamic-table .dynamic-table-list .ant-list-pagination {
+        margin-top: 0;
+      }
+      .dynamic-table-filter-dropdown {
+        font-size: 0;
+        user-select: none;
+      }
+      .dynamic-table-filter-dropdown.dynamic-table-filter-dropdown-has-tree-select
+        .dynamic-table-filter-dropdown-options {
+        padding: 0;
+      }
+      .dynamic-table-filter-dropdown .dynamic-table-filter-dropdown-options {
+        padding: 4px 0;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+      .dynamic-table-filter-dropdown .dynamic-table-filter-dropdown-options .ant-checkbox-group,
+      .dynamic-table-filter-dropdown .dynamic-table-filter-dropdown-options .ant-radio-group {
+        display: flex;
+        flex-direction: column;
+      }
+      .dynamic-table-filter-dropdown .dynamic-table-filter-dropdown-footer {
+        border-top: 1px solid #f0f0f0;
+        padding: 7px 8px 7px 3px;
+        display: flex;
+        justify-content: flex-end;
+      }
+      .dynamic-table-filter-dropdown .dynamic-table-filter-dropdown-footer.dynamic-table-filter-dropdown-footer-hide {
+        display: none;
+      }
+      .dynamic-table-filter-dropdown .dynamic-table-filter-dropdown-footer .ant-btn + .ant-btn {
+        margin-left: 5px;
+      }
+      .dynamic-table-filter-dropdown .ant-checkbox-group-item,
+      .dynamic-table-filter-dropdown .ant-radio-wrapper {
+        padding: 5px 12px;
+        margin-right: 0;
+      }
+      .ant-dropdown.dynamic-table-render-link-dropdown .ant-dropdown-menu {
+        min-width: 128px;
+      }
+      .ant-dropdown.dynamic-table-render-link-dropdown a {
+        margin: 0;
+        display: inline-block;
+        height: 24px;
+        padding: 0px 7px;
+      }
+      .dynamic-table-row-dragging .ant-progress-line,
+      .dynamic-table .ant-progress-line,
+      .dynamic-table-descriptions .ant-progress-line {
+        width: calc(100% - 25px);
+      }
+      .dynamic-table-row-dragging .dynamic-table-render-sort,
+      .dynamic-table .dynamic-table-render-sort,
+      .dynamic-table-descriptions .dynamic-table-render-sort {
+        color: #333;
+        cursor: grab;
+      }
+      .dynamic-table-row-dragging .dynamic-table-render-sort.dynamic-table-render-sort-disabled,
+      .dynamic-table .dynamic-table-render-sort.dynamic-table-render-sort-disabled,
+      .dynamic-table-descriptions .dynamic-table-render-sort.dynamic-table-render-sort-disabled {
+        cursor: not-allowed;
+        color: #d9d9d9;
+      }
+      .dynamic-table-row-dragging .dynamic-table-render-tag,
+      .dynamic-table .dynamic-table-render-tag,
+      .dynamic-table-descriptions .dynamic-table-render-tag {
+        margin: 0;
+      }
+      .dynamic-table-row-dragging .dynamic-table-render-enum-circle,
+      .dynamic-table .dynamic-table-render-enum-circle,
+      .dynamic-table-descriptions .dynamic-table-render-enum-circle {
+        display: inline-block;
+        padding: 0 10px;
+        line-height: 20px;
+        text-align: center;
+        border-radius: 12px;
+        font-size: 12px;
+        min-width: 40px;
+        white-space: nowrap;
+      }
+      .dynamic-table-row-dragging .dynamic-table-render-enum-dot,
+      .dynamic-table-row-dragging .dynamic-table-render-enum-square,
+      .dynamic-table .dynamic-table-render-enum-dot,
+      .dynamic-table .dynamic-table-render-enum-square,
+      .dynamic-table-descriptions .dynamic-table-render-enum-dot,
+      .dynamic-table-descriptions .dynamic-table-render-enum-square {
+        display: inline-flex;
+        align-items: center;
+      }
+      .dynamic-table-row-dragging .dynamic-table-render-enum-dot .dynamic-table-render-enum-badge,
+      .dynamic-table-row-dragging .dynamic-table-render-enum-square .dynamic-table-render-enum-badge,
+      .dynamic-table .dynamic-table-render-enum-dot .dynamic-table-render-enum-badge,
+      .dynamic-table .dynamic-table-render-enum-square .dynamic-table-render-enum-badge,
+      .dynamic-table-descriptions .dynamic-table-render-enum-dot .dynamic-table-render-enum-badge,
+      .dynamic-table-descriptions .dynamic-table-render-enum-square .dynamic-table-render-enum-badge {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        margin-right: 5px;
+      }
+      .dynamic-table-row-dragging .dynamic-table-render-enum-dot .dynamic-table-render-enum-text,
+      .dynamic-table-row-dragging .dynamic-table-render-enum-square .dynamic-table-render-enum-text,
+      .dynamic-table .dynamic-table-render-enum-dot .dynamic-table-render-enum-text,
+      .dynamic-table .dynamic-table-render-enum-square .dynamic-table-render-enum-text,
+      .dynamic-table-descriptions .dynamic-table-render-enum-dot .dynamic-table-render-enum-text,
+      .dynamic-table-descriptions .dynamic-table-render-enum-square .dynamic-table-render-enum-text {
+        white-space: nowrap;
+      }
+      .dynamic-table-row-dragging .dynamic-table-render-enum-dot .dynamic-table-render-enum-badge,
+      .dynamic-table .dynamic-table-render-enum-dot .dynamic-table-render-enum-badge,
+      .dynamic-table-descriptions .dynamic-table-render-enum-dot .dynamic-table-render-enum-badge {
+        border-radius: 50%;
+      }
+      .dynamic-table-row-dragging .dynamic-table-render-code,
+      .dynamic-table .dynamic-table-render-code,
+      .dynamic-table-descriptions .dynamic-table-render-code {
+        width: 100%;
+        margin: 0;
+        padding: 5px;
+        overflow: auto;
+        line-height: 20px;
+        background-color: #f6f8fa;
+        border-radius: 3px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      .ant-popover.dynamic-table-columns-setting-popover {
+        user-select: none;
+      }
+      .ant-popover.dynamic-table-columns-setting-popover .ant-popover-title {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .ant-popover.dynamic-table-columns-setting-popover .ant-popover-inner-content {
+        max-height: 320px;
+        overflow-y: auto;
+        padding: 0;
+      }
+      .ant-popover.dynamic-table-columns-setting-popover .ant-checkbox-group {
+        display: flex;
+        flex-direction: column;
+      }
+      .ant-popover.dynamic-table-columns-setting-popover .ant-checkbox-group .ant-checkbox-group-item {
+        padding: 5px 10px;
+        margin: 0;
+      }
+      .ant-popover.dynamic-table-columns-setting-popover .ant-checkbox-group .ant-checkbox-group-item:hover {
+        background: #f7f7f7;
+      }
+      .ant-popover.dynamic-table-columns-setting-popover
+        .ant-checkbox-group
+        .ant-checkbox-group-item
+        .dynamic-table-column-title-tooltip {
+        margin-left: 4px;
+      }
+      .dynamic-table-descriptions.ant-descriptions-bordered .ant-descriptions-item-label,
+      .dynamic-table-descriptions.ant-descriptions-bordered .ant-descriptions-item-content {
+        padding: 10px;
+      }
+      .dynamic-table-descriptions .ant-descriptions-item-content {
+        overflow: auto;
+      }
+      .dynamic-table-descriptions:not(.ant-descriptions-bordered) .ant-descriptions-item-label {
+        vertical-align: top;
+      }
+      .dynamic-table-descriptions .ant-descriptions-item-container {
+        align-items: flex-start;
+      }
+      .dynamic-table-descriptions .ant-descriptions-item-label {
+        word-break: keep-all;
+      }
+      .dynamic-table-descriptions .ant-descriptions-item .ant-descriptions-item-label {
+        align-items: center;
+      }
+      .dynamic-table-descriptions
+        .ant-descriptions-item
+        .ant-descriptions-item-label
+        .dynamic-table-descriptions-item-label-tooltip {
+        margin-left: 4px;
+      }
+      .dynamic-table-descriptions .ant-descriptions-row > th,
+      .dynamic-table-descriptions .ant-descriptions-row > td {
+        padding-bottom: 10px;
+      }
+      .dynamic-table-descriptions .ant-descriptions-row:last-child > td {
+        padding-bottom: 0;
+      }
+      .dynamic-table-descriptions .ant-descriptions-item:not(:last-child) {
+        padding-right: 10px;
+      }
+      .dynamic-form + .dynamic-table {
+        margin-top: 10px;
+      }
+      .dynamic-table-row-dragging {
+        z-index: 2;
+        background: #fafafa;
+        overflow: hidden;
+        box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.1607843137), 0 3px 6px rgba(0, 0, 0, 0.1215686275),
+          0 5px 12px 4px rgba(0, 0, 0, 0.0901960784);
+      }
+      .dynamic-table-row-dragging td {
+        background: #fafafa;
+        padding: 10px;
+      }
+      .dynamic-table-row-dragging .dynamic-form-number-range {
+        position: relative;
+        top: -20px;
+      }
+      .dynamic-form.dynamic-form-disabled input::placeholder,
+      .dynamic-form.dynamic-form-disabled select::placeholder,
+      .dynamic-form.dynamic-form-disabled textarea::placeholder {
+        color: rgba(0, 0, 0, 0);
+      }
+      .dynamic-form.dynamic-form-disabled .dynamic-form-form-item-label::before {
+        display: none !important;
+      }
+      .dynamic-form.dynamic-form-disabled .ant-form-item {
+        margin-bottom: 10px;
+      }
+      .dynamic-form.dynamic-form-disabled .ant-picker-suffix,
+      .dynamic-form.dynamic-form-disabled .ant-input-group-addon {
+        visibility: hidden;
+      }
+      .dynamic-form.dynamic-form-disabled .ant-input,
+      .dynamic-form.dynamic-form-disabled .ant-input-number,
+      .dynamic-form.dynamic-form-disabled .ant-select-selector,
+      .dynamic-form.dynamic-form-disabled .ant-cascader-picker,
+      .dynamic-form.dynamic-form-disabled .ant-checkbox-wrapper,
+      .dynamic-form.dynamic-form-disabled .ant-select-selection-item,
+      .dynamic-form.dynamic-form-disabled .ant-picker {
+        cursor: default !important;
+        color: rgba(0, 0, 0, 0.85) !important;
+        background-color: rgba(0, 0, 0, 0) !important;
+        border-color: rgba(0, 0, 0, 0) !important;
+      }
+      .dynamic-form.dynamic-form-disabled .ant-input .ant-select-selection-placeholder,
+      .dynamic-form.dynamic-form-disabled .ant-input-number .ant-select-selection-placeholder,
+      .dynamic-form.dynamic-form-disabled .ant-select-selector .ant-select-selection-placeholder,
+      .dynamic-form.dynamic-form-disabled .ant-cascader-picker .ant-select-selection-placeholder,
+      .dynamic-form.dynamic-form-disabled .ant-checkbox-wrapper .ant-select-selection-placeholder,
+      .dynamic-form.dynamic-form-disabled .ant-select-selection-item .ant-select-selection-placeholder,
+      .dynamic-form.dynamic-form-disabled .ant-picker .ant-select-selection-placeholder {
+        display: none;
+      }
+      .dynamic-form.dynamic-form-disabled .ant-select input,
+      .dynamic-form.dynamic-form-disabled .ant-input-number-input,
+      .dynamic-form.dynamic-form-disabled .ant-picker-separator,
+      .dynamic-form.dynamic-form-disabled .ant-picker-input > input[disabled] {
+        cursor: default !important;
+      }
+      .dynamic-form.dynamic-form-disabled .ant-select:hover .ant-select-selector {
+        border-color: rgba(0, 0, 0, 0) !important;
+        border-left-color: rgba(0, 0, 0, 0) !important;
+        border-right-color: rgba(0, 0, 0, 0) !important;
+      }
+      .dynamic-form.dynamic-form-disabled .ant-radio-inner,
+      .dynamic-form.dynamic-form-disabled .ant-checkbox,
+      .dynamic-form.dynamic-form-disabled .ant-select-arrow,
+      .dynamic-form.dynamic-form-disabled .ant-cascader-picker-arrow {
+        display: none !important;
+      }
+      .dynamic-form.dynamic-form-disabled .ant-input-number:hover {
+        border-color: rgba(0, 0, 0, 0) !important;
+        border-left-color: rgba(0, 0, 0, 0) !important;
+        border-right-color: rgba(0, 0, 0, 0) !important;
+      }
+      .dynamic-form.dynamic-form-disabled .ant-input-textarea-show-count:after {
+        display: none;
+      }
+      .dynamic-form.dynamic-form-disabled .ant-cascader-picker-label {
+        z-index: 1;
+        text-overflow: initial;
+        overflow: initial;
+        white-space: initial;
+      }
+      .dynamic-form.dynamic-form-disabled .ant-radio-disabled + span,
+      .dynamic-form.dynamic-form-disabled .ant-checkbox-disabled + span {
+        cursor: default !important;
+        color: rgba(0, 0, 0, 0.85) !important;
+      }
+      .dynamic-form.dynamic-form-disabled .ant-radio-wrapper-disabled:not(.ant-radio-wrapper-checked),
+      .dynamic-form.dynamic-form-disabled .ant-checkbox-wrapper-disabled:not(.ant-checkbox-wrapper-checked) {
+        display: none;
+      }
+      .dynamic-form .ant-card-body {
+        padding: 10px;
+      }
+      .dynamic-form .ant-card-body > .ant-form {
+        margin-top: -10px;
+      }
+      .dynamic-form .ant-form.ant-form-inline .ant-form-item {
+        margin-right: 10px;
+      }
+      .dynamic-form .ant-form.ant-form-inline .ant-form-item:last-child {
+        margin-right: 0;
+      }
+      .dynamic-form .ant-form.ant-form-horizontal .ant-col.ant-form-item-label {
+        padding-right: 10px;
+      }
+      .dynamic-form .ant-form-item {
+        margin-top: 10px;
+      }
+      .dynamic-form .ant-form-item.dynamic-form-form-item .ant-btn:not(:first-child) {
+        margin-left: 10px;
+      }
+      .dynamic-form .ant-form-item-label > label::before {
+        display: none !important;
+      }
+      .dynamic-form .ant-form-item-label > label::after {
+        width: 4px;
+      }
+      .dynamic-form .ant-form-item-label > label.ant-form-item-required .dynamic-form-form-item-label::before {
+        display: inline-block;
+        margin-right: 4px;
+        color: #ff4d4f;
+        font-size: 14px;
+        font-family: SimSun, sans-serif;
+        line-height: 1;
+        content: '*';
+      }
+      .dynamic-form .dynamic-form-form-item-label-tooltip {
+        margin-left: 4px;
+        color: rgba(0, 0, 0, 0.4509803922);
+        cursor: help;
+      }
+      .dynamic-form .dynamic-form-filter-panel .dynamic-form-filter-panel-tags {
+        margin-top: -8px;
+      }
+      .dynamic-form .dynamic-form-filter-panel .dynamic-form-filter-panel-tags .ant-tag {
+        padding: 5px 6px;
+        margin-top: 8px;
+      }
+      .dynamic-form .dynamic-form-filter-panel .dynamic-form-filter-panel-tags .ant-tag:last-child {
+        margin-right: 0;
+      }
+      .dynamic-form .ant-upload.ant-upload-select-picture-card .ant-upload-disabled .dynamic-form-upload-button {
+        cursor: not-allowed;
+        color: rgba(0, 0, 0, 0.2509803922);
+        background: #f5f5f5;
+      }
+      .dynamic-form .ant-upload.ant-upload-select-picture-card .dynamic-form-upload-button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+      }
+      .dynamic-form-number-range {
+        display: flex !important;
+      }
+      .dynamic-form-number-range .dynamic-form-number-range-min,
+      .dynamic-form-number-range .dynamic-form-number-range-max {
+        flex: 1;
+        margin-right: 0;
+        position: relative;
+      }
+      .dynamic-form-number-range .dynamic-form-number-range-min:hover,
+      .dynamic-form-number-range .dynamic-form-number-range-min:focus,
+      .dynamic-form-number-range .dynamic-form-number-range-max:hover,
+      .dynamic-form-number-range .dynamic-form-number-range-max:focus {
+        border-left-color: #40a9ff;
+        border-right-color: #40a9ff;
+      }
+      .dynamic-form-number-range .dynamic-form-number-range-min .ant-input-number-input,
+      .dynamic-form-number-range .dynamic-form-number-range-max .ant-input-number-input {
+        text-align: center;
+        padding: 0 24px 0 4px;
+      }
+      .dynamic-form-number-range .dynamic-form-number-range-min {
+        border-right-color: rgba(0, 0, 0, 0);
+      }
+      .dynamic-form-number-range .dynamic-form-number-range-max {
+        border-left-color: rgba(0, 0, 0, 0);
+      }
+      .dynamic-form-number-range .dynamic-form-number-range-separator {
+        min-width: 30px;
+        text-align: center;
+        padding: 4px 8px;
+        border: 1px solid #d9d9d9;
+        pointer-events: none;
+        background-color: rgba(0, 0, 0, 0);
+      }
+      .dynamic-form-color-picker .ant-btn:not(.ant-dropdown-trigger) {
+        padding: 0;
+      }
+      .ant-tooltip.dynamic-form-tooltip .ant-tooltip-inner a {
+        margin: 0 4px;
+      }
+      body .dumi-default-header-content {
+        max-width: none;
+        height: 64px;
+        margin: 0;
+        background: #fff;
+        box-shadow: 0 8px 24px -2px rgba(0, 0, 0, 0.05);
+      }
+      body .dumi-default-header-left {
+        width: 200px;
+      }
+      body .dumi-default-hero {
+        margin: 0;
+        padding: 90px 0;
+        user-select: none;
+        max-width: none;
+        height: auto;
+      }
+      body .dumi-default-hero::before {
+        display: none;
+      }
+      body .dumi-default-hero .dumi-default-hero-title {
+        font-size: 48px;
+      }
+      body .dumi-default-hero .dumi-default-hero-title > span {
+        color: rgba(0, 0, 0, 0.85);
+      }
+      body .dumi-default-hero > p {
+        color: rgba(0, 0, 0, 0.85);
+        font-size: 20px;
+      }
+      body .dumi-default-hero + main {
+        background: #fff;
+      }
+      body .dumi-default-hero + main .dumi-default-content {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      body .dumi-default-search-bar {
+        display: none;
+      }
+      body .dumi-default-doc-layout > main {
+        padding: 12px;
+        margin: 0;
+        gap: 12px;
+        max-width: none;
+      }
+      body .dumi-default-sidebar {
+        width: 200px !important;
+        height: calc(100vh - 64px - 24px);
+        max-height: none !important;
+        padding: 12px;
+        background: #fff;
+      }
+      body .dumi-default-doc-layout-toc-wrapper {
+        width: 200px !important;
+        top: 76px !important;
+        margin: 0 !important;
+        padding: 12px !important;
+        background: #fff !important;
+        height: calc(100vh - 64px - 24px);
+        max-height: none !important;
+      }
+      body .dumi-default-content {
+        padding: 12px !important;
+        border-radius: 0 !important;
+      }
+      body .dumi-default-previewer-demo {
+        padding: 12px;
+      }
+      body .markdown h1 > a[aria-hidden]:first-child,
+      body .markdown h2 > a[aria-hidden]:first-child,
+      body .markdown h3 > a[aria-hidden]:first-child,
+      body .markdown h4 > a[aria-hidden]:first-child,
+      body .markdown h5 > a[aria-hidden]:first-child,
+      body .markdown h6 > a[aria-hidden]:first-child {
+        display: none;
+      }
+      body .markdown table th,
+      body .markdown table td {
+        padding-block-start: 0;
+        padding-block-end: 0;
+        padding-inline-start: 0;
+        padding-inline-end: 0;
+        padding: 4px 8px;
+      }
+      body .markdown table pre {
+        margin: 0;
+        padding: 5px;
+      }
+      body .dumi-default-previewer:last-child {
+        margin-bottom: 0;
+      }
+      body .dumi-default-previewer .dumi-default-previewer-meta .dumi-default-previewer-actions > a {
+        display: none;
+      }
+    </style>
+    <link rel="stylesheet" href="https://shuoshubao.github.io/components/umi.b6fb696f.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://shuoshubao.github.io/components/umi.86ca7ae9.js"></script>
+  </body>
+</html>
