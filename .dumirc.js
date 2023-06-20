@@ -42,7 +42,7 @@ export default defineConfig({
     ]
   },
   alias: {
-    '@nbfe/components': resolve(__dirname, './dist/index.js')
+    '@nbfe/components': resolve(__dirname, './dist/index.esm.js')
   },
   styles: ['https://unpkg.com/antd@4.24.4/dist/antd.min.css', css],
   headScripts: []
