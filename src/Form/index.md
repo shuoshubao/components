@@ -6,8 +6,8 @@ order: 2
 ## 简介
 
 - 既可以用来做 **搜索** 组件; 也可以用做 **表单** 组件, 就是这么叼!
-  - 默认是 **搜索** 组件
-  - 通过配置 **formProps={{ layout: 'horizontal' }}** 即可变成表单组件
+  - 默认是 **表单** 组件
+  - 通过配置 **layout="inline"** 即可变成搜索组件
 - 配置化, 一个表单子组件即一段 json 配置, 通过 _template.tpl_ 来配置哪种组件, 组件其他属性直接透传
 - label 宽度的统一, 默认是内部通过文字长度取最大值, 也可直接配置; 解决对不齐的 UI 头疼问题
 - 可直接配置 label 的提示 tooltip, 并且可以以字符串的形式来写跳转链接
@@ -32,9 +32,8 @@ order: 2
       <td>输入</td>
       <td>input</td>
       <td>number</td>
-      <td>number-range</td>
       <td>slider</td>
-      <td colspan="3">auto-complete</td>
+      <td colspan="4">auto-complete</td>
     </tr>
     <tr>
       <td>枚举</td>
@@ -49,9 +48,13 @@ order: 2
     <tr>
       <td>日期/时间</td>
       <td>date-picker</td>
+      <td colspan="6">time-picker</td>
+    </tr>
+    <tr>
+      <td>范围</td>
+      <td>number-range</td>
       <td>date-range-picker</td>
-      <td>time-picker</td>
-      <td colspan="4">time-range-picker</td>
+      <td colspan="5">time-range-picker</td>
     </tr>
     <tr>
       <td>其他</td>
@@ -72,10 +75,12 @@ order: 2
 
 ### 搜索组件
 
+需要配置 `layout="inline" showSearchBtn showResetBtn`
+
 ```jsx
 import React from 'react'
 import { Form } from '@nbfe/components'
-import { OptionsData } from '../mock'
+import { showMessage, OptionsData } from '../mock'
 
 export default () => {
   const columns = [
@@ -93,13 +98,16 @@ export default () => {
       }
     }
   ]
-  return <Form columns={columns} autoSubmit={false} showSearchBtn />
+
+  const handleSubmit = params => {
+    showMessage('触发了提交事件, 参数为:', params)
+  }
+
+  return <Form columns={columns} onSubmit={handleSubmit} layout="inline" showSearchBtn showResetBtn />
 }
 ```
 
 ### 表单组件
-
-当作为表单组件时, 需要手动把查询和重置按钮隐藏; Form 元素的子元素将被放到表单项的最底部
 
 ```jsx
 import React, { useRef, useState } from 'react'
@@ -117,11 +125,11 @@ export default () => {
   const [submitLoading, setSubmitLoading] = useState(false)
 
   // 详情数据
-  const detailData = {
+  const initialValues = {
     id: 'scafdfea',
     name: '硕鼠宝',
-    school: '',
-    city: 1
+    city: 1,
+    school: '北京大学'
   }
 
   // 表单提交
@@ -174,21 +182,10 @@ export default () => {
         allowClear: true
       }
     }
-  ].map(v => {
-    return {
-      ...v,
-      defaultValue: detailData[v.name]
-    }
-  })
+  ]
+
   return (
-    <Form
-      ref={formRef}
-      formProps={{ layout: 'horizontal' }}
-      columns={columns}
-      autoSubmit={false}
-      showSearchBtn={false}
-      showResetBtn={false}
-    >
+    <Form ref={formRef} columns={columns} showSearchBtn={false} showResetBtn={false} initialValues={initialValues}>
       <Button type="primary" loading={submitLoading} onClick={handleSubmit}>
         提交
       </Button>
@@ -258,11 +255,11 @@ export default () => {
       }
     }
   ]
-  return <Form columns={columns} onSubmit={handleSubmit} showSearchBtn autoSubmit={false} />
+  return <Form columns={columns} onSubmit={handleSubmit} showSearchBtn />
 }
 ```
 
-### InputNumber RangeNumber
+### Number
 
 ```jsx
 import React from 'react'
@@ -290,19 +287,9 @@ export default () => {
         max: 1,
         step: 0.1
       }
-    },
-    {
-      name: 'minValueName,maxValueName',
-      label: '数字范围',
-      template: {
-        tpl: 'number-range',
-        min: 0,
-        max: 1,
-        step: 0.1
-      }
     }
   ]
-  return <Form columns={columns} onSubmit={handleSubmit} autoSubmit={false} />
+  return <Form columns={columns} onSubmit={handleSubmit} />
 }
 ```
 
@@ -323,27 +310,27 @@ export default () => {
   const columns = [
     {
       name: 'tabs1',
-      defaultValue: 'two',
+      initialValue: 'two',
       inline: false,
       template: {
         tpl: 'tabs',
-        options: TabsOptionsData
+        items: TabsOptionsData
       }
     },
     {
       name: 'tabs2',
-      defaultValue: 'two',
+      initialValue: 'two',
       inline: false,
       template: {
         tpl: 'tabs',
         emitReset: true, // 触发其他子组件的重置
-        options: TabsOptionsData
+        items: TabsOptionsData
       }
     },
     {
       label: '分段控制器',
       name: 'segmented',
-      defaultValue: 'weekly',
+      initialValue: 'weekly',
       inline: false,
       template: {
         tpl: 'segmented',
@@ -353,7 +340,7 @@ export default () => {
     {
       name: 'select',
       label: '下拉框',
-      defaultValue: 2,
+      initialValue: 2,
       template: {
         tpl: 'select',
         allowClear: true,
@@ -363,7 +350,7 @@ export default () => {
     {
       name: 'select2',
       label: '下拉框',
-      defaultValue: null,
+      initialValue: null,
       tooltip: '下拉框 单选 全部',
       template: {
         tpl: 'select',
@@ -377,7 +364,7 @@ export default () => {
     {
       name: 'select3',
       label: '下拉框',
-      defaultValue: [1],
+      initialValue: [1],
       tooltip: '下拉框 复选 全选',
       template: {
         tpl: 'select',
@@ -392,7 +379,7 @@ export default () => {
     {
       name: 'radio',
       label: '单选框',
-      defaultValue: 1,
+      initialValue: 1,
       template: {
         tpl: 'radio',
         options: OptionsData
@@ -401,7 +388,7 @@ export default () => {
     {
       name: 'checkbox',
       label: '复选框',
-      defaultValue: [1],
+      initialValue: [1],
       template: {
         tpl: 'checkbox',
         options: OptionsData
@@ -411,7 +398,7 @@ export default () => {
       name: 'checkbox2',
       label: '复选框',
       tooltip: '带全选功能',
-      defaultValue: [1, 2, 3],
+      initialValue: [1, 2, 3],
       inline: false,
       template: {
         tpl: 'checkbox',
@@ -420,7 +407,7 @@ export default () => {
       }
     }
   ]
-  return <Form columns={columns} onSubmit={handleSubmit} autoSubmit={false} />
+  return <Form columns={columns} onSubmit={handleSubmit} />
 }
 ```
 
@@ -428,12 +415,10 @@ export default () => {
 
 日期相关分两种: 单日期(template.tpl: 'date-picker'), 日期范围(template.tpl: 'data-range-picker')
 
-日期范围需要俩字段, 即开始时间和结束时间; 仍然通过一个 **name** 字段来配置, 只需要通过 _,_ 连接就行, 例如 `name: 'startAt,endAt'`
-
 ```jsx
 import React from 'react'
 import { Form } from '@nbfe/components'
-import { showMessage, TabsOptionsData, OptionsData } from '../mock'
+import { showMessage, OptionsData } from '../mock'
 
 export default () => {
   const handleSubmit = params => {
@@ -447,24 +432,9 @@ export default () => {
       template: {
         tpl: 'date-picker'
       }
-    },
-    {
-      label: '日期范围',
-      name: 'startTime1,endTime1',
-      template: {
-        tpl: 'date-range-picker'
-      }
-    },
-    {
-      label: '日期范围',
-      name: 'startTime2,endTime2',
-      template: {
-        tpl: 'date-range-picker',
-        format: 'YYYY-MM-DD'
-      }
     }
   ]
-  return <Form columns={columns} onSubmit={handleSubmit} autoSubmit={false} />
+  return <Form columns={columns} onSubmit={handleSubmit} />
 }
 ```
 
@@ -547,7 +517,7 @@ export default () => {
       }
     }
   ]
-  return <Form columns={columns} onSubmit={handleSubmit} autoSubmit={false} />
+  return <Form columns={columns} onSubmit={handleSubmit} />
 }
 ```
 
@@ -568,7 +538,7 @@ export default () => {
     {
       label: '滑动输入条1',
       name: 'slider1',
-      defaultValue: 0,
+      initialValue: 0,
       template: {
         tpl: 'slider'
       }
@@ -576,13 +546,69 @@ export default () => {
     {
       label: '开关',
       name: 'switch',
-      defaultValue: false,
+      initialValue: false,
       template: {
         tpl: 'switch'
       }
     }
   ]
-  return <Form columns={columns} onSubmit={handleSubmit} autoSubmit={false} />
+  return <Form columns={columns} onSubmit={handleSubmit} />
+}
+```
+
+### 特殊组件-范围
+
+数字范围, 日期范围
+
+需要俩字段, 即开始和结束; 仍然通过一个 **name** 字段来配置, 只需要通过 _,_ 连接就行, 例如 `name: 'startAt,endAt'`
+
+```jsx
+import React from 'react'
+import { version } from 'antd'
+import { sleep } from '@nbfe/tools'
+import { Form } from '@nbfe/components'
+import { showMessage } from '../mock'
+
+const initialValues = {
+  minValue: 1,
+  maxValue: 6,
+  startDate: '2023-06-04 13:36:39',
+  endDate: '2023-07-10 13:36:39',
+  startTime: '11:11:11',
+  endTime: '22:22:22'
+}
+
+export default () => {
+  const handleSubmit = params => {
+    showMessage('触发了提交事件, 参数为:', params)
+  }
+  const columns = [
+    {
+      name: 'minValue,maxValue',
+      label: '数字范围',
+      template: {
+        tpl: 'number-range',
+        min: 0,
+        max: 10
+      }
+    },
+    {
+      label: '日期范围',
+      name: 'startDate,endDate',
+      template: {
+        tpl: 'date-range-picker'
+      }
+    },
+    {
+      label: '日期范围',
+      name: 'startTime,endTime',
+      template: {
+        tpl: 'time-range-picker',
+        format: 'HH:mm:ss'
+      }
+    }
+  ]
+  return <Form columns={columns} initialValues={initialValues} onSubmit={handleSubmit} />
 }
 ```
 
@@ -603,7 +629,7 @@ export default () => {
     {
       label: '评分',
       name: 'rate',
-      defaultValue: 3.5,
+      initialValue: 3.5,
       template: {
         tpl: 'rate',
         allowHalf: true
@@ -620,13 +646,23 @@ export default () => {
     {
       label: '拾色器',
       name: 'color',
-      defaultValue: '#fff',
+      initialValue: '#fff',
       template: {
         tpl: 'color-picker'
       }
+    },
+    {
+      label: '拾色器2',
+      name: 'color2',
+      initialValue: '#fff',
+      template: {
+        tpl: 'color-picker',
+        type: 'GithubPicker',
+        trigger: 'click'
+      }
     }
   ]
-  return <Form columns={columns} onSubmit={handleSubmit} autoSubmit={false} formProps={{ layout: 'horizontal' }} />
+  return <Form columns={columns} onSubmit={handleSubmit} />
 }
 ```
 
@@ -710,7 +746,7 @@ export default () => {
     {
       label: '自定义组件',
       name: 'a',
-      defaultValue: ['aa', 'bb', 'cc'],
+      initialValue: ['aa', 'bb', 'cc'],
       rules: [
         {
           validator: (rule, value) => {
@@ -736,14 +772,7 @@ export default () => {
     }
   ]
   return (
-    <Form
-      ref={formRef}
-      columns={columns}
-      autoSubmit={false}
-      showSearchBtn={false}
-      showResetBtn={false}
-      formProps={{ layout: 'horizontal' }}
-    >
+    <Form ref={formRef} columns={columns} showSearchBtn={false} showResetBtn={false}>
       <Button type="primary" onClick={handleSubmit}>
         提交
       </Button>
@@ -812,7 +841,7 @@ export default () => {
     {
       label: '用户列表',
       name: 'users',
-      defaultValue: [
+      initialValue: [
         {
           first: '方',
           last: '涛'
@@ -843,14 +872,7 @@ export default () => {
     }
   ]
   return (
-    <Form
-      ref={formRef}
-      columns={columns}
-      autoSubmit={false}
-      showSearchBtn={false}
-      showResetBtn={false}
-      formProps={{ layout: 'horizontal' }}
-    >
+    <Form ref={formRef} columns={columns} showSearchBtn={false} showResetBtn={false}>
       <Button type="primary" onClick={handleSubmit}>
         提交
       </Button>

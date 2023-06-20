@@ -12,8 +12,9 @@
     "react"
   ],
   "scripts": {
-    "docs:dev": "npx rollup -c --bundleConfigAsCjs -w & dumi dev",
+    "docs:dev": "dumi dev",
     "docs:build": "dumi build",
+    "dev": "npx rollup -c --bundleConfigAsCjs -w",
     "build": "rm -rf dist && npx rollup -c --bundleConfigAsCjs",
     "publish-beta": "npm publish --tag beta",
     "prepublishOnly": "npm run build"
@@ -29,7 +30,7 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "@rollup/plugin-babel": "^6.0.3",
-    "antd": "^4.24.4",
+    "antd": "^4.24.10",
     "dumi": "^2.1.4",
     "rollup": "^3.10.1",
     "rollup-plugin-scss": "^4.0.0",
