@@ -65,38 +65,10 @@ export default ({ api }) => {
   }
   return (
     <>
-      {!!props.length && (
-        <Table
-          title={() => <Title level={4}>属性</Title>}
-          columns={propsColumns}
-          dataSource={props}
-          {...commonTableProps}
-        />
-      )}
-      {!!events.length && (
-        <Table
-          title={() => <Title level={4}>事件</Title>}
-          columns={eventsColumns}
-          dataSource={events}
-          {...commonTableProps}
-        />
-      )}
-      {!!methods.length && (
-        <Table
-          title={() => <Title level={4}>方法</Title>}
-          columns={methodsColumns}
-          dataSource={methods}
-          {...commonTableProps}
-        />
-      )}
-      {!!columns.length && (
-        <Table
-          title={() => <Title level={4}>Column.Item 属性</Title>}
-          columns={propsColumns}
-          dataSource={columns}
-          {...commonTableProps}
-        />
-      )}
+      {!!props.length && <Table title={() => <Title level={4}>属性</Title>} columns={propsColumns} dataSource={props} {...commonTableProps} />}
+      {!!events.length && <Table title={() => <Title level={4}>事件</Title>} columns={eventsColumns} dataSource={events} {...commonTableProps} />}
+      {!!methods.length && <Table title={() => <Title level={4}>方法</Title>} columns={methodsColumns} dataSource={methods} {...commonTableProps} />}
+      {!!columns.length && <Table title={() => <Title level={4}>Column.Item 属性</Title>} columns={propsColumns} dataSource={columns} {...commonTableProps} />}
     </>
   )
 }

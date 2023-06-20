@@ -378,11 +378,7 @@ const dataSource = [
     desc: 'ddd',
     imgUrl: '',
     avatar1: '',
-    avatar2: [
-      'https://api.multiavatar.com/42.svg',
-      'https://api.multiavatar.com/43.svg',
-      'https://api.multiavatar.com/45.svg'
-    ],
+    avatar2: ['https://api.multiavatar.com/42.svg', 'https://api.multiavatar.com/43.svg', 'https://api.multiavatar.com/45.svg'],
     textEmpty: '',
     textEmpty2: 'bbb',
     textArray: ['aaa', 'bbb'],
@@ -577,9 +573,7 @@ const columns = [
 ]
 
 export default () => {
-  return (
-    <Table rowKey="id" columns={columns} dataSource={dataSource} pagination={false} size="small" scroll={{ x: 1000 }} />
-  )
+  return <Table rowKey="id" columns={columns} dataSource={dataSource} pagination={false} size="small" scroll={{ x: 1000 }} />
 }
 ```
 
@@ -630,9 +624,7 @@ const columns = [
 ]
 
 export default () => {
-  return (
-    <Table rowKey="id" columns={columns} dataSource={dataSource} pagination={false} size="small" scroll={{ x: 1000 }} />
-  )
+  return <Table rowKey="id" columns={columns} dataSource={dataSource} pagination={false} size="small" scroll={{ x: 1000 }} />
 }
 ```
 
@@ -1297,12 +1289,7 @@ const columns = [
 const renderItem = (item, index) => {
   const { name, image, homepage, desc } = item
   return (
-    <Card
-      title={<Link src={homepage}>{name}</Link>}
-      extra={<Avatar src={image} />}
-      size="small"
-      bodyStyle={{ height: 100, maxHeight: 100, overflowY: 'auto' }}
-    >
+    <Card title={<Link src={homepage}>{name}</Link>} extra={<Avatar src={image} />} size="small" bodyStyle={{ height: 100, maxHeight: 100, overflowY: 'auto' }}>
       {desc}
     </Card>
   )
