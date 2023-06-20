@@ -350,13 +350,13 @@ export default () => {
     {
       name: 'select2',
       label: '下拉框',
-      initialValue: null,
+      initialValue: '',
       tooltip: '下拉框 单选 全部',
       template: {
         tpl: 'select',
         allItem: {
           label: '全部',
-          value: null
+          value: ''
         },
         options: OptionsData
       }

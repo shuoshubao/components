@@ -15,7 +15,7 @@
       "desc": "自动触发搜索",
       "type": "boolean",
       "optionalValue": "",
-      "default": "true",
+      "default": "false",
       "version": ""
     },
     {
@@ -48,22 +48,6 @@
       "type": "boolean",
       "optionalValue": "",
       "default": "false",
-      "version": ""
-    },
-    {
-      "name": "cardProps",
-      "desc": "antd Card 组件的属性",
-      "type": "{}",
-      "optionalValue": "",
-      "default": { "size": "small", "bordered": false },
-      "version": ""
-    },
-    {
-      "name": "formProps",
-      "desc": "antd Form 组件的属性",
-      "type": "{}",
-      "optionalValue": "",
-      "default": { "layout": "inline" },
       "version": ""
     },
     {
@@ -111,7 +95,7 @@
       "version": ""
     },
     {
-      "name": "defaultValue",
+      "name": "initialValue",
       "desc": "默认值",
       "type": "any",
       "optionalValue": "",

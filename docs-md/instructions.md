@@ -78,7 +78,7 @@ template 的作用是用一段 json 来描述一个基础的 antd 表单元素�
       <td>allItem</td>
       <td>
         <div>第一项</div>
-        <div>比如 { label: '全部', value: null }</div>
+        <div>比如 { label: '全部', value: '' }</div>
       </td>
       <td>{ label, value }</td>
       <td>null</td>
@@ -409,7 +409,7 @@ interface IFormColumn {
   placeholder?: string; // 输入框选择框的 placeholder
   tooltip?: string | string[]; // label 的提示文案
   immediate?: boolean; // 是否立即触发提交事件
-  defaultValue?: string | number | (string | number)[]; // 默认值
+  initialValue?: string | number | (string | number)[]; // 默认值
   inline?: boolean; // 是否换行
   style?: CSSProperties; // form-item 样式
   template?: IFormColumnTemplate; // 内置模板 或 自定义组件
