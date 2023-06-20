@@ -96,15 +96,15 @@ export const CityOptionsData = [
 export const TabsOptionsData = [
   {
     label: '选项1',
-    value: 'one'
+    key: 'one'
   },
   {
     label: '选项2',
-    value: 'two'
+    key: 'two'
   },
   {
     label: '选项3',
-    value: 'three'
+    key: 'three'
   }
 ]
 
