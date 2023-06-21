@@ -222,8 +222,7 @@ export default () => {
     {
       name: 'input4',
       label: '文本域',
-      tooltip:
-        '透传组件 [antd - textarea|https://ant.design/components/input-cn/#components-input-demo-textarea] 的其他属性',
+      tooltip: '透传组件 [antd - textarea|https://ant.design/components/input-cn/#components-input-demo-textarea] 的其他属性',
       template: {
         inputType: 'textarea',
         rows: 2
@@ -785,6 +784,19 @@ export default () => {
 
 配置 _column.formListConfig_ 即可
 
+```json
+{
+  "min": 0, // 最少项
+  "max": Infinity, // 最多项
+  "record": null, // 新增一行时的填充数据
+  "rules": [], // 每一项的校验
+  "position": "tail", // 新增到头部还是尾部 tail | head
+  "addText": "添加一行数据", // 新增按钮 文案
+  "addButtonWidth": 200, // 新增按钮 宽度
+  "addButtonProps": {} // 新增按钮 其他属性
+}
+```
+
 ```jsx
 import React, { useRef } from 'react'
 import { Button, Input, Space } from 'antd'
@@ -809,6 +821,7 @@ const PersonInfo = props => {
             first: e.target.value
           })
         }}
+        style={{ width: 100 }}
         placeholder="请输入姓"
       />
       <span>名:</span>
@@ -820,6 +833,7 @@ const PersonInfo = props => {
             last: e.target.value
           })
         }}
+        style={{ width: 100 }}
         placeholder="请输入名"
       />
     </Space>
@@ -837,14 +851,72 @@ export default () => {
     showMessage('表单数据', formData)
   }
 
+  const initialValues = {
+    title: '12',
+    cities: ['北京', ' 上海'],
+    users: [
+      {
+        first: '方',
+        last: '涛'
+      }
+    ]
+  }
+
   const columns = [
+    {
+      label: '标题',
+      name: 'title',
+      tooltip: 'Form.Item',
+      template: {
+        inputWidth: 400
+      }
+    },
+    {
+      label: '城市',
+      name: 'cities',
+      tooltip: '和其他内置组件一样的写法',
+      rules: [
+        {
+          validator(rule, value) {
+            if (value.length < 2) {
+              return Promise.reject(new Error('至少 2 项'))
+            }
+            if (value.length > 5) {
+              return Promise.reject(new Error('至多 5 项'))
+            }
+            return Promise.resolve()
+          }
+        }
+      ],
+      formListConfig: {
+        record: '',
+        position: 'head',
+        rules: [
+          (label, index, name) => {
+            console.log(name)
+            return {
+              required: true,
+              message: [label, index + 1, '必填'].join(' ')
+            }
+          }
+        ]
+      },
+      template: {
+        tpl: 'input'
+      }
+    },
     {
       label: '用户列表',
       name: 'users',
-      initialValue: [
+      tooltip: '数组的每一项是对象, 自定义组件',
+      rules: [
         {
-          first: '方',
-          last: '涛'
+          validator: (rule, value) => {
+            if (!isUniqCollection(value)) {
+              return Promise.reject(new Error('不得重复'))
+            }
+            return Promise.resolve()
+          }
         }
       ],
       formListConfig: {
@@ -852,14 +924,16 @@ export default () => {
           first: '',
           last: ''
         },
+        addButtonWidth: 260,
         rules: [
           {
             validator: (rule, value) => {
-              console.log(222)
-              console.log(value)
-              console.log(rule)
-              if (!isUniqCollection(value)) {
-                return Promise.reject(new Error('不得重复'))
+              if (
+                Object.values(value)
+                  .map(v => v.trim())
+                  .includes('')
+              ) {
+                return Promise.reject(new Error('不得有空项'))
               }
               return Promise.resolve()
             }
@@ -872,7 +946,7 @@ export default () => {
     }
   ]
   return (
-    <Form ref={formRef} columns={columns} showSearchBtn={false} showResetBtn={false}>
+    <Form ref={formRef} initialValues={initialValues} columns={columns} showSearchBtn={false} showResetBtn={false}>
       <Button type="primary" onClick={handleSubmit}>
         提交
       </Button>
