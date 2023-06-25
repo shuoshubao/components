@@ -162,6 +162,7 @@ export default () => {
     {
       name: 'name',
       label: '姓名',
+      tooltip: '必填',
       rules: [required]
     },
     {
@@ -220,7 +221,7 @@ export default () => {
       }
     },
     {
-      name: 'input4',
+      name: 'input3',
       label: '文本域',
       tooltip: '透传组件 [antd - textarea|https://ant.design/components/input-cn/#components-input-demo-textarea] 的其他属性',
       template: {
@@ -229,14 +230,14 @@ export default () => {
       }
     },
     {
-      name: 'input5',
+      name: 'input4',
       label: '密码框',
       template: {
         inputType: 'password'
       }
     },
     {
-      name: 'input2___selectKey2',
+      name: 'selectKey5,input5',
       label: '下拉框+输入框',
       inline: false,
       template: {
@@ -245,7 +246,7 @@ export default () => {
       }
     },
     {
-      name: 'input3___selectKey3',
+      name: 'selectKey6,input6',
       label: '下拉框+搜索框',
       inline: false,
       template: {
@@ -607,7 +608,7 @@ export default () => {
       }
     }
   ]
-  return <Form columns={columns} initialValues={initialValues} onSubmit={handleSubmit} />
+  return <Form columns={columns} onSubmit={handleSubmit} />
 }
 ```
 
