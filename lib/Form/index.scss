@@ -6,32 +6,6 @@
     }
   }
 
-  .ant-form-item-label > label {
-    &::before {
-      display: none !important;
-    }
-    &::after {
-      width: 4px;
-    }
-    &.ant-form-item-required {
-      .dynamic-form-form-item-label::before {
-        display: inline-block;
-        margin-right: 4px;
-        color: #ff4d4f;
-        font-size: 14px;
-        font-family: SimSun, sans-serif;
-        line-height: 1;
-        content: '*';
-      }
-    }
-  }
-
-  .dynamic-form-form-item-label-tooltip {
-    margin-left: 4px;
-    color: #00000073;
-    cursor: help;
-  }
-
   .dynamic-form-filter-panel {
     .dynamic-form-filter-panel-tags {
       margin-top: -8px;
