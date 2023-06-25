@@ -608,7 +608,7 @@ export default () => {
       }
     }
   ]
-  return <Form columns={columns} onSubmit={handleSubmit} />
+  return <Form columns={columns} initialValues={initialValues} onSubmit={handleSubmit} />
 }
 ```
 

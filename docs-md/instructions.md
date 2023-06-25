@@ -138,7 +138,7 @@ template 的作用是用一段 json 来描述一个基础的 antd 表单元素�
   <tbody>
     <tr>
       <td>slider</td>
-      <td>InputNumberWidth</td>
+      <td>inputWidth</td>
       <td>输入框的宽度</td>
       <td>number</td>
       <td>65</td>
