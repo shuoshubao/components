@@ -147,7 +147,7 @@
 
 .dynamic-table-row-dragging,
 .dynamic-table,
-.dynamic-table-descriptions {
+.dynamic-descriptions {
   .ant-progress-line {
     width: calc(100% - 25px);
   }
@@ -226,45 +226,6 @@
         margin-left: 4px;
       }
     }
-  }
-}
-
-.dynamic-table-descriptions {
-  &.ant-descriptions-bordered {
-    .ant-descriptions-item-label,
-    .ant-descriptions-item-content {
-      padding: 10px;
-    }
-  }
-  .ant-descriptions-item-content {
-    overflow: auto;
-  }
-  &:not(.ant-descriptions-bordered) {
-    .ant-descriptions-item-label {
-      vertical-align: top;
-    }
-  }
-  .ant-descriptions-item-container {
-    align-items: flex-start;
-  }
-  .ant-descriptions-item-label {
-    word-break: keep-all;
-  }
-  .ant-descriptions-item .ant-descriptions-item-label {
-    align-items: center;
-    .dynamic-table-descriptions-item-label-tooltip {
-      margin-left: 4px;
-    }
-  }
-  .ant-descriptions-row > th,
-  .ant-descriptions-row > td {
-    padding-bottom: 10px;
-  }
-  .ant-descriptions-row:last-child > td {
-    padding-bottom: 0;
-  }
-  .ant-descriptions-item:not(:last-child) {
-    padding-right: 10px;
   }
 }
 
