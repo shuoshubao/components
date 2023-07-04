@@ -12,8 +12,8 @@ order: 2
 - label 宽度的统一, 默认是内部通过文字长度取最大值, 也可直接配置; 解决对不齐的 UI 头疼问题
 - 可直接配置 label 的提示 tooltip, 并且可以以字符串的形式来写跳转链接
 - 封装了 _value_ 和 _onChange_ 不用再写大量重复的 state 和 events
-- input 输入回车自动触发 _onSubmit_ 事件, checkbox, radio select 等其他组件 onChange 时自动触发 _onSubmit_ 事件
-- 内置 _debounce_ 优化, 防止因代码原因短时间内触发多次 _onSubmit_ 事件
+- input 输入回车自动触发 _onFinish_ 事件, checkbox, radio select 等其他组件 onChange 时自动触发 _onFinish_ 事件
+- 内置 _debounce_ 优化, 防止因代码原因短时间内触发多次 _onFinish_ 事件
 
 ## 内置表单子组件
 
@@ -86,7 +86,8 @@ export default () => {
   const columns = [
     {
       name: 'input',
-      label: '输入框'
+      label: '输入框',
+      initialValue: 'aa'
     },
     {
       name: 'select',
@@ -103,7 +104,7 @@ export default () => {
     showMessage('触发了提交事件, 参数为:', params)
   }
 
-  return <Form columns={columns} onSubmit={handleSubmit} layout="inline" showSearchBtn showResetBtn />
+  return <Form columns={columns} onFinish={handleSubmit} layout="inline" showSearchBtn showResetBtn />
 }
 ```
 
@@ -255,7 +256,7 @@ export default () => {
       }
     }
   ]
-  return <Form columns={columns} onSubmit={handleSubmit} showSearchBtn />
+  return <Form columns={columns} onFinish={handleSubmit} showSearchBtn />
 }
 ```
 
@@ -289,7 +290,7 @@ export default () => {
       }
     }
   ]
-  return <Form columns={columns} onSubmit={handleSubmit} />
+  return <Form columns={columns} onFinish={handleSubmit} />
 }
 ```
 
@@ -407,7 +408,7 @@ export default () => {
       }
     }
   ]
-  return <Form columns={columns} onSubmit={handleSubmit} />
+  return <Form columns={columns} onFinish={handleSubmit} />
 }
 ```
 
@@ -434,7 +435,7 @@ export default () => {
       }
     }
   ]
-  return <Form columns={columns} onSubmit={handleSubmit} />
+  return <Form columns={columns} onFinish={handleSubmit} />
 }
 ```
 
@@ -517,7 +518,7 @@ export default () => {
       }
     }
   ]
-  return <Form columns={columns} onSubmit={handleSubmit} />
+  return <Form columns={columns} onFinish={handleSubmit} />
 }
 ```
 
@@ -552,7 +553,7 @@ export default () => {
       }
     }
   ]
-  return <Form columns={columns} onSubmit={handleSubmit} />
+  return <Form columns={columns} onFinish={handleSubmit} />
 }
 ```
 
@@ -608,7 +609,7 @@ export default () => {
       }
     }
   ]
-  return <Form columns={columns} initialValues={initialValues} onSubmit={handleSubmit} />
+  return <Form columns={columns} initialValues={initialValues} onFinish={handleSubmit} />
 }
 ```
 
@@ -662,7 +663,7 @@ export default () => {
       }
     }
   ]
-  return <Form columns={columns} onSubmit={handleSubmit} />
+  return <Form columns={columns} onFinish={handleSubmit} />
 }
 ```
 

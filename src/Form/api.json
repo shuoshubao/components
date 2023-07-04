@@ -61,10 +61,10 @@
   ],
   "events": [
     {
-      "name": "onSubmit",
+      "name": "onFinish",
       "desc": "提交事件",
-      "signature": "(params: IAnyObject) => void",
-      "args": "params: 搜索参数",
+      "signature": "(values: Record) => void",
+      "args": "values: 表单数据",
       "version": ""
     }
   ],
