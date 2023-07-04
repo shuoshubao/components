@@ -187,7 +187,7 @@ export default () => {
   ]
 
   return (
-    <Form ref={formRef} columns={columns} showSearchBtn={false} showResetBtn={false} initialValues={initialValues}>
+    <Form ref={formRef} columns={columns} initialValues={initialValues}>
       <Button type="primary" loading={submitLoading} onClick={handleSubmit}>
         提交
       </Button>
@@ -773,7 +773,7 @@ export default () => {
     }
   ]
   return (
-    <Form ref={formRef} columns={columns} showSearchBtn={false} showResetBtn={false}>
+    <Form ref={formRef} columns={columns}>
       <Button type="primary" onClick={handleSubmit}>
         提交
       </Button>
@@ -948,7 +948,7 @@ export default () => {
     }
   ]
   return (
-    <Form ref={formRef} initialValues={initialValues} columns={columns} showSearchBtn={false} showResetBtn={false}>
+    <Form ref={formRef} initialValues={initialValues} columns={columns}>
       <Button type="primary" onClick={handleSubmit}>
         提交
       </Button>
