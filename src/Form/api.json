@@ -101,8 +101,8 @@
   ],
   "methods": [
     {
-      "name": "getFormData",
-      "desc": "获取表单的数据, 先校验规则",
+      "name": "submit",
+      "desc": "透传 submit",
       "signature": "",
       "args": "",
       "version": ""

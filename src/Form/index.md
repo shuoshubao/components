@@ -113,7 +113,6 @@ export default () => {
 ```jsx
 import React, { useRef, useState } from 'react'
 import { Form } from '@nbfe/components'
-import { Button } from 'antd'
 import { rules, sleep } from '@nbfe/tools'
 import { showMessage, CityOptionsData } from '../mock'
 
@@ -123,7 +122,7 @@ export default () => {
   const formRef = useRef()
 
   // 表单正在提交
-  const [submitLoading, setSubmitLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   // 详情数据
   const initialValues = {
@@ -134,21 +133,13 @@ export default () => {
   }
 
   // 表单提交
-  // 1. 表单校验
-  // 1.1 如果失败 **formData** 返回null, 且弹窗提示信息: '表单项填写存在错误！请检查'
-  // 1.2 校验通过则返回表单数据
-  const handleSubmit = async () => {
-    const formData = await formRef.current.getFormData()
-    console.log(111, formData)
-    if (!formData) {
-      return
-    }
-    showMessage('表单数据', formData)
-    setSubmitLoading(true)
+  const handleSubmit = async values => {
+    showMessage('表单数据', values)
+    setLoading(true)
     // 这里模仿接口请求
-    await sleep()
+    await sleep(3)
     showMessage('操作成功!')
-    setSubmitLoading(false)
+    setLoading(false)
   }
 
   const columns = [
@@ -187,11 +178,16 @@ export default () => {
   ]
 
   return (
-    <Form ref={formRef} columns={columns} initialValues={initialValues}>
-      <Button type="primary" loading={submitLoading} onClick={handleSubmit}>
-        提交
-      </Button>
-    </Form>
+    <Form
+      ref={formRef}
+      columns={columns}
+      initialValues={initialValues}
+      onFinish={handleSubmit}
+      showSubmit
+      showReset
+      okText="提交"
+      okButtonProps={{ loading }}
+    />
   )
 }
 ```
@@ -677,7 +673,7 @@ export default () => {
 
 ```jsx
 import React, { useRef, useState } from 'react'
-import { Button, Input } from 'antd'
+import { Input } from 'antd'
 import PlusCircleOutlined from '@ant-design/icons/PlusCircleOutlined'
 import MinusCircleOutlined from '@ant-design/icons/MinusCircleOutlined'
 import { map, cloneDeep } from 'lodash'
@@ -740,12 +736,8 @@ const CustomComponent = props => {
 
 export default () => {
   const formRef = useRef()
-  const handleSubmit = async () => {
-    const formData = await formRef.current.getFormData()
-    if (!formData) {
-      return
-    }
-    showMessage('表单数据', formData)
+  const handleSubmit = values => {
+    showMessage('表单数据', values)
   }
   const columns = [
     {
@@ -776,13 +768,7 @@ export default () => {
       }
     }
   ]
-  return (
-    <Form ref={formRef} columns={columns}>
-      <Button type="primary" onClick={handleSubmit}>
-        提交
-      </Button>
-    </Form>
-  )
+  return <Form ref={formRef} columns={columns} onFinish={handleSubmit} showSubmit okText="提交" />
 }
 ```
 
@@ -805,7 +791,7 @@ export default () => {
 
 ```jsx
 import React, { useRef } from 'react'
-import { Button, Input, Space } from 'antd'
+import { Input, Space } from 'antd'
 import { isUniq } from '@nbfe/tools'
 import { Form } from '@nbfe/components'
 import { showMessage } from '../mock'
@@ -849,12 +835,8 @@ const PersonInfo = props => {
 export default () => {
   const formRef = useRef()
 
-  const handleSubmit = async () => {
-    const formData = await formRef.current.getFormData()
-    if (!formData) {
-      return
-    }
-    showMessage('表单数据', formData)
+  const handleSubmit = values => {
+    showMessage('表单数据', values)
   }
 
   const initialValues = {
@@ -951,13 +933,7 @@ export default () => {
       }
     }
   ]
-  return (
-    <Form ref={formRef} initialValues={initialValues} columns={columns}>
-      <Button type="primary" onClick={handleSubmit}>
-        提交
-      </Button>
-    </Form>
-  )
+  return <Form ref={formRef} columns={columns} initialValues={initialValues} onFinish={handleSubmit} showSubmit showReset okText="提交" />
 }
 ```
 
