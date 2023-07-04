@@ -313,18 +313,22 @@ export default () => {
       name: 'tabs1',
       initialValue: 'two',
       inline: false,
+      label: 'tabs',
+      tooltip: 'emitReset: true // 将重置其他组件',
       template: {
         tpl: 'tabs',
-        items: TabsOptionsData
+        items: TabsOptionsData,
+        emitReset: true // 触发其他子组件的重置
       }
     },
     {
       name: 'tabs2',
       initialValue: 'two',
       inline: false,
+      label: 'tabs',
+      tooltip: '和其他组件一样',
       template: {
         tpl: 'tabs',
-        emitReset: true, // 触发其他子组件的重置
         items: TabsOptionsData
       }
     },
@@ -408,7 +412,7 @@ export default () => {
       }
     }
   ]
-  return <Form columns={columns} onFinish={handleSubmit} />
+  return <Form columns={columns} onFinish={handleSubmit} showReset />
 }
 ```
 
