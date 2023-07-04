@@ -35,6 +35,38 @@
       "version": ""
     },
     {
+      "name": "okText",
+      "desc": "按钮文案: 提交",
+      "type": "ReactNode",
+      "optionalValue": "",
+      "default": "查询",
+      "version": ""
+    },
+    {
+      "name": "cancelText",
+      "desc": "按钮文案: 重置",
+      "type": "ReactNode",
+      "optionalValue": "",
+      "default": "重置",
+      "version": ""
+    },
+    {
+      "name": "okButtonProps",
+      "desc": "按钮属性: 提交",
+      "type": "object",
+      "optionalValue": "",
+      "default": "{}",
+      "version": ""
+    },
+    {
+      "name": "cancelButtonProps",
+      "desc": "按钮属性: 重置",
+      "type": "object",
+      "optionalValue": "",
+      "default": "{}",
+      "version": ""
+    },
+    {
       "name": "labelWidth",
       "desc": "Form.Item label 的宽度",
       "type": "number",
@@ -49,14 +81,6 @@
       "optionalValue": "",
       "default": "false",
       "version": ""
-    },
-    {
-      "name": "onValuesChange",
-      "desc": "antd Form onValuesChange, 通过此实现级联功能",
-      "type": "({key, value, changedFields, allFields}, { columns, updateColumns, ...formNode }): void",
-      "optionalValue": "",
-      "default": "null",
-      "version": ""
     }
   ],
   "events": [
@@ -65,6 +89,13 @@
       "desc": "提交事件",
       "signature": "(values: Record) => void",
       "args": "values: 表单数据",
+      "version": ""
+    },
+    {
+      "name": "onValuesChange",
+      "desc": "antd Form onValuesChange, 通过此实现级联功能",
+      "signature": "({ key, value, changedFields, allFields}, { columns, updateColumns, ...formNode }): void",
+      "args": "",
       "version": ""
     }
   ],
