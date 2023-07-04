@@ -75,7 +75,7 @@ order: 2
 
 ### 搜索组件
 
-需要配置 `layout="inline" showSearchBtn showResetBtn`
+需要配置 `layout="inline" showSubmit showReset`
 
 ```jsx
 import React from 'react'
@@ -104,7 +104,7 @@ export default () => {
     showMessage('触发了提交事件, 参数为:', params)
   }
 
-  return <Form columns={columns} onFinish={handleSubmit} layout="inline" showSearchBtn showResetBtn />
+  return <Form columns={columns} onFinish={handleSubmit} layout="inline" showSubmit showReset />
 }
 ```
 
@@ -256,7 +256,7 @@ export default () => {
       }
     }
   ]
-  return <Form columns={columns} onFinish={handleSubmit} showSearchBtn />
+  return <Form columns={columns} onFinish={handleSubmit} showSubmit />
 }
 ```
 

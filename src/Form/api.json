@@ -19,15 +19,15 @@
       "version": ""
     },
     {
-      "name": "showSearchBtn",
-      "desc": "展示按钮: 搜索",
+      "name": "showSubmit",
+      "desc": "展示按钮: 提交",
       "type": "boolean",
       "optionalValue": "",
       "default": "false",
       "version": ""
     },
     {
-      "name": "showResetBtn",
+      "name": "showReset",
       "desc": "展示按钮: 重置",
       "type": "boolean",
       "optionalValue": "",
