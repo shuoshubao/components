@@ -6,6 +6,15 @@
     }
   }
 
+  .ant-tabs {
+    & > .ant-tabs-nav {
+      margin: 0;
+      .ant-tabs-tab {
+        padding: 5px 0;
+      }
+    }
+  }
+
   .dynamic-form-filter-panel {
     .dynamic-form-filter-panel-tags {
       margin-top: -8px;
