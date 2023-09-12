@@ -1,8 +1,6 @@
-import React from 'react'
-import { message, notification } from 'antd'
-import { isString } from 'lodash'
 import { blue, red } from '@ant-design/colors'
 import { sleep } from '@nbfe/tools'
+import { message, notification } from 'antd'
 import './index.scss'
 
 export const OptionsData = [

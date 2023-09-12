@@ -1,5 +1,4 @@
-import React from 'react'
-import { Typography, Table } from 'antd'
+import { Table, Typography } from 'antd'
 import { isObject } from 'lodash'
 
 const { Title } = Typography
