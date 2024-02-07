@@ -1,5 +1,6 @@
 import { Table, Typography } from 'antd'
 import { isObject } from 'lodash'
+import '../lib/index.scss'
 
 const { Title } = Typography
 

@@ -1,6 +1,6 @@
+import { defineConfig } from 'dumi'
 import { readFileSync } from 'fs'
 import { resolve } from 'path'
-import { defineConfig } from 'dumi'
 
 const isDevelopment = process.env.NODE_ENV === 'development'
 
@@ -41,6 +41,6 @@ export default defineConfig({
   alias: {
     '@nbfe/components': resolve(__dirname, './dist/index.esm.js')
   },
-  styles: ['https://unpkg.com/antd@4.24.4/dist/antd.min.css'],
+  styles: ['https://unpkg.com/antd@4.24.4/dist/antd.min.css', readFileSync(resolve(__dirname, './src/dumi.css')).toString()],
   headScripts: []
 })
