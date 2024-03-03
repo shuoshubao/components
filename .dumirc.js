@@ -41,6 +41,6 @@ export default defineConfig({
   alias: {
     '@nbfe/components': resolve(__dirname, './dist/index.esm.js')
   },
-  styles: ['https://unpkg.com/antd@4.24.4/dist/antd.min.css', readFileSync(resolve(__dirname, './src/dumi.css')).toString()],
+  styles: ['https://registry.npmmirror.com/antd/4.24.4/files/dist/antd.min.css', readFileSync(resolve(__dirname, './src/dumi.css')).toString()],
   headScripts: []
 })
